@@ -32,7 +32,7 @@ Converter.new(price_in_euro).convert_to(:xxx) # => raises error
 ```
 Kwota zwracana przez obiekt `Converter` powinna być zaokrąglona do dwóch miejsc po przecinku.
 
-Po zaimplementowaniu klasy `Converter` w pliku `converter.rb` [otwórz Pull Request w tym repozytorium](https://help.github.com/articles/creating-a-pull-request/).
+Po zaimplementowaniu klasy `Converter` w pliku `converter.rb` [otwórz Pull Request w tym repozytorium](https://help.github.com/articles/creating-a-pull-request/#creating-the-pull-request).
 
 Jeśli nie uda Ci się wykonać zadania w całości, nie martw się! Prześlij nam to co udało Ci się zrobić. 🤗
 

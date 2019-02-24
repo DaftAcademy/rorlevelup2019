@@ -12,6 +12,7 @@ class Converter
   
   def initialize(price)
     @price=price
+    validate_price
   end
 
   def convert_to(currency)

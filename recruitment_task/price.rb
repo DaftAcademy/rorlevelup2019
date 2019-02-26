@@ -19,3 +19,4 @@ class Price
     raise InvalidCurrency unless SUPPORTED_CURRENCIES.include?(currency)
   end
 end
+

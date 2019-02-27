@@ -44,10 +44,3 @@ class Converter
     puts amount.round(2)
   end
 end
-
-price_in_euro = Price.new(10, :eur)
-converter = Converter.new(price_in_euro)
-converter.convert_to(:usd) # => 11.3
-converter.convert_to(:eur) # => 10
-converter.convert_to(:pln) # => 43.2
-converter.convert_to(:xxx)

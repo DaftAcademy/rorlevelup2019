@@ -10,12 +10,12 @@ class Price
   def initialize(amount, currency)
     @amount = amount
     @currency = currency
-    validate_currency
+    validate_currency(currency)
   end
 
   private
 
-  def validate_currency
-    raise InvalidCurrency unless SUPPORTED_CURRENCIES.include?(currency)
+  def validate_currency(curr)
+    raise InvalidCurrency unless SUPPORTED_CURRENCIES.include?(curr)
   end
 end

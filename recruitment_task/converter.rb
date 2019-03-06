@@ -1,18 +1,18 @@
 require_relative 'price'
 
-class Converter
+class Converter < Price
   attr_reader :input_price
 
   def initialize(input_price)
     @input_price = input_price
   end
   
-  POS = {eur: 0, usd: 1, pln: 2}
+  POS = {eur: 0, usd: 1, pln: 2}.freeze
   RATES = [
-    [1, 1.13, 4.32],
-    [0.88, 1, 3.81],
-    [0.23, 0.26, 1]
-  ]
+    [1, 1.13, 4.32].freeze,
+    [0.88, 1, 3.81].freeze,
+    [0.23, 0.26, 1].freeze
+].freeze
 
   def exchange_rate(from, to)
     row = POS[from] 

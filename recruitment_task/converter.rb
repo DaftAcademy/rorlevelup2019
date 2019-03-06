@@ -1,4 +1,5 @@
 require_relative 'price'
+require "rspec/autorun"
 
 class Converter
   class InvalidCurrency < StandardError; end
@@ -33,4 +34,35 @@ class Converter
   def validate_argument
     raise InvalidPrice unless price.class == Price
   end
+end
+
+# Tested with RSpec
+describe Converter, "object" do
+  it "returns correct values with valid arguments" do
+    price_in_euro = Price.new(10, :eur)
+    converter = Converter.new(price_in_euro)
+    expect(converter.convert_to(:usd)).to eq(11.3)
+    expect(converter.convert_to(:eur)).to eq(10)
+    expect(converter.convert_to(:pln)).to eq(43.2)
+  end
+
+  it "returns value rounded to two places" do
+    price_in_euro = Price.new(10.0000001, :eur)
+    converter = Converter.new(price_in_euro)
+    expect(converter.convert_to(:usd)).to eq(11.3)
+    expect(converter.convert_to(:usd)).not_to eq(11.300000113)
+  end
+
+  it "returns InvalidCurrency error for invalid requested currency" do
+    price_in_euro = Price.new(10.0000001, :eur)
+    converter = Converter.new(price_in_euro)
+    expect { converter.convert_to(:non_existing) }.to raise_error(
+                                                    Converter::InvalidCurrency)
+  end
+
+  it "returns InvalidPrice error for invalid requested currency" do
+    expect { Converter.new("invalid input") }.to raise_error(
+                                                    Converter::InvalidPrice)
+  end
+
 end

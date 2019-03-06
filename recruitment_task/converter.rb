@@ -1,6 +1,6 @@
 require_relative 'price'
 
-class Converter
+class Converter < Price
   def initialize(price)
     @price = price
     @exchange = {
@@ -14,8 +14,8 @@ class Converter
   end
 
   def convert_to(targetCurrency)
-    # binding.pry
+    raise InvalidCurrency unless %i[eur usd pln].include?(targetCurrency)
     rate = @price.currency == targetCurrency ? 1 : @exchange["#{@price.currency}2#{targetCurrency}".to_sym]
-    sprintf('%.2f', @price.amount * rate)
+    (@price.amount * rate).round(2)
   end
 end

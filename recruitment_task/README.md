@@ -1,3 +1,6 @@
+# Rozwiązanie
+Dodano mały skrypt testujący i entry-point systemowy
+
 # Zadanie rekrutacyjne
 
 Do dyspozycji masz zaimplementowaną już klasę `Price`, której możesz użyć w następujący sposób:

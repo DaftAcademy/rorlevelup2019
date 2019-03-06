@@ -2,10 +2,14 @@
 
 class Price
   class InvalidCurrency < StandardError; end
-
+  
   SUPPORTED_CURRENCIES = %i[eur usd pln].freeze
-
+  
   attr_reader :amount, :currency
+
+  def self.currencies # use the information outside
+    SUPPORTED_CURRENCIES
+  end
 
   def initialize(amount, currency)
     @amount = amount

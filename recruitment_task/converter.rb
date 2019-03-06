@@ -9,7 +9,16 @@ class Converter
 
   def initialize(original_price)
     @price = original_price
-    @courses = {:eur => FROM_EUR, :usd=>FROM_USD, :pln=>FROM_PLN}[@price.currency]
+    case @price.currency
+    when :usd
+      @courses = FROM_USD
+    when :eur
+      @courses = FROM_EUR
+    when :pln
+      @courses = FROM_PLN
+    else
+      raise InvalidCurrency
+    end
   end
   def convert_to(currency)
     raise InvalidCurrency unless SUPPORTED_CURRENCIES.include?(currency)
@@ -20,9 +29,3 @@ class Converter
     end
   end
 end
-price_in_euro = Price.new(10, :eur)
-puts(converter = Converter.new(price_in_euro))
-puts(converter.convert_to(:usd)) # => 11.3
-puts(converter.convert_to(:eur)) # => 10
-puts(converter.convert_to(:pln)) # => 43.2
-converter.convert_to(:xxx) # => raises error

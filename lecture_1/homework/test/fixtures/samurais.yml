@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  armor: 1
+  battle_count: 1
+  join_at: 2019-03-14 18:12:17
+  death_at: 2019-03-14 18:12:17
+  clan: one
+
+two:
+  name: MyString
+  armor: 1
+  battle_count: 1
+  join_at: 2019-03-14 18:12:17
+  death_at: 2019-03-14 18:12:17
+  clan: two

@@ -7,6 +7,5 @@ class Samurai < ApplicationRecord
                                     less_than_or_equal_to: 1000 }
   validates :battle_count, presence: true
   validates :join_at, presence: true
-  validates :death_at, presence: true
   validates :clan_id, presence: true
 end

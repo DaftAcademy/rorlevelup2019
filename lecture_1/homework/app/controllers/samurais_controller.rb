@@ -1,5 +1,5 @@
 class SamuraisController < ApplicationController
-  before_action :default_limit, only: %i[index all_samurais alive_samurais]
+  before_action :default_limit, only: %i[index]
 
   def show
     render json: samurai.to_json(only: samurai_attributes)
@@ -56,10 +56,6 @@ class SamuraisController < ApplicationController
 
   def samurai_attributes
     %w[id name armor battle_count join_at death_at clan_id]
-  end
-
-  def default_limit
-    params[:limit] = 20 if params[:limit].to_i.zero?
   end
 
   def dead_or_alive

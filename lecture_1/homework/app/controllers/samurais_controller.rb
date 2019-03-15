@@ -6,13 +6,7 @@ class SamuraisController < ApplicationController
   end
 
   def index
-    samurais = if params[:alive] == 'true'
-                  clan.samurais.where(death_at: 'null').first(params[:limit].to_i)
-                elsif params[:alive] == 'false'
-                  clan.samurais.where.not(death_at: 'null').first(params[:limit].to_i)
-                else
-                  clan.samurais.first(params[:limit].to_i)
-                end
+    samurais = samurais_status
     render json: samurais.to_json(only: samurai_attributes)
   end
 
@@ -58,8 +52,14 @@ class SamuraisController < ApplicationController
     %w[id name armor battle_count join_at death_at clan_id]
   end
 
-  def dead_or_alive
-    params[:alive]
+  def samurais_status
+    case ActiveModel::Type::Boolean.new.cast(params[:alive])
+    when true
+      clan.samurais.alive.first(limit)
+    when false
+      clan.samurais.dead.first(limit)
+    else
+      clan.samurais.first(limit)
+    end
   end
 end
-

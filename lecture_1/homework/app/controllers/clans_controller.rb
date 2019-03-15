@@ -2,7 +2,7 @@ class ClansController < ApplicationController
   before_action :default_limit, only: %i[index]
 
   def index
-    clans = Clan.first(params[:limit].to_i)
+    clans = Clan.first(limit)
     render json: clans.to_json(only: %w[id name])
   end
 

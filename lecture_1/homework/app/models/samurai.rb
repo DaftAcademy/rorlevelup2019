@@ -8,4 +8,7 @@ class Samurai < ApplicationRecord
   validates :battle_count, presence: true
   validates :join_at, presence: true
   validates :clan_id, presence: true
+
+  scope :alive, -> { where(death_at: 'null') }
+  scope :dead, -> { where.not(death_at: 'null') }
 end

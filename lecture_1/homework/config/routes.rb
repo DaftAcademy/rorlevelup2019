@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
-  get   '/clans', to: 'clans#index'
-  post  '/clans', to: 'clans#create'
+  resources :clans, only: %i[index create] do
+    resources :samurais
+  end
 end

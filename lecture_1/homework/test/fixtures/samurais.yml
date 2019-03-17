@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  armor: 1
+  battles: 1
+  start: 2019-03-16
+  end: 2019-03-16
+
+two:
+  name: MyString
+  armor: 1
+  battles: 1
+  start: 2019-03-16
+  end: 2019-03-16

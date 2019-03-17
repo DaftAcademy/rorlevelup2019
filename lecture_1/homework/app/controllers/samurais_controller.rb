@@ -12,7 +12,7 @@ class SamuraisController < ApplicationController
     elsif query_params == ''
       render json: clan.samurai.to_json(only: samurai_attr)
     else
-      render json: {message: 'Wrong query parameter, you should use alive (when you ask about alive samurais) or death (when you ask about dead samurais)'}, status: 422
+      render json: {message: 'Wrong query parameter, you should use alive (when you ask about alive samurais) or death (when you ask about dead samurais)'}, status: 404
     end
   end
 

@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: 
+  armour_quality: 
+  no_battles: 
+  join_date: 
+  date_of_death: 2019-03-14 22:23:49
+
+two:
+  name: 
+  armour_quality: 
+  no_battles: 
+  join_date: 
+  date_of_death: 2019-03-14 22:23:49

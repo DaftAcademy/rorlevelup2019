@@ -10,12 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_14_210722) do
+ActiveRecord::Schema.define(version: 2019_03_14_212349) do
 
   create_table "clans", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "samurais", force: :cascade do |t|
+    t.string "name"
+    t.integer "armour_quality"
+    t.integer "number_of_battles"
+    t.datetime "join_date"
+    t.datetime "date_of_death"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "clan_id"
+    t.index ["clan_id"], name: "index_samurais_on_clan_id"
   end
 
 end

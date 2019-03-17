@@ -5,7 +5,11 @@ class SamuraisController < ApplicationController
     elsif params.has_key?(:dead)
       render json: clan.samurais.where.not(death_date: "null")
     else
-      render json: clan.samurais.to_json(only: %w[ name armor battles id death_date]) 
+      if request.query_string == ""
+        render json: clan.samurais.to_json(only: %w[ name armor battles id death_date])
+      else
+        render json: "Please use alive or dead as an additional query".to_json, status: 404
+      end
     end
   end
 

@@ -13,8 +13,8 @@ class ClansController < ApplicationController
 
   def dead
     clan = Clan.find(params[:clan_id])
-    samurais = clan.samurais.where.not(deathtime: nil)
-    render json: samurais.to_json(only: %i[id name armour joined_at deathtime])
+    samurais = clan.samurais.where.not(died_at: nil)
+    render json: samurais.to_json(only: %i[id name armour joined_at died_at])
   end
 
   private

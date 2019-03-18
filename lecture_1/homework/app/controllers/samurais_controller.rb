@@ -1,7 +1,7 @@
 class SamuraisController < ApplicationController
 
   def show
-    render json: samurai.to_json(only: %i[id name armour joined_at deathtime])
+    render json: samurai.to_json(only: %i[id name armour joined_at died_at])
   end
 
   def index
@@ -10,17 +10,17 @@ class SamuraisController < ApplicationController
 
     # Check if shogun want's to display only alive/dead samurais and if so filter them
     if params[:alive].to_s == "false"
-      samurais.select! { |samurai| samurai.deathtime != nil } # TODO: Probably should also contain the check if it's a date
+      samurais.select! { |samurai| samurai.died_at != nil } # TODO: Probably should also contain the check if it's a date
     elsif params[:alive].to_s == "true"
-      samurais.select! { |samurai| samurai.deathtime == nil }
+      samurais.select! { |samurai| samurai.died_at == nil }
     end
     
-    render json: samurais.to_json(only: %i[id name armour joined_at deathtime])
+    render json: samurais.to_json(only: %i[id name armour joined_at died_at])
   end
 
   def create
     samurai = clan.samurais.create!(samurai_params)
-    render json: samurai.to_json(only: %i[id name armour joined_at deathtime]), status: 201
+    render json: samurai.to_json(only: %i[id name armour joined_at died_at]), status: 201
   end
 
   def update
@@ -45,7 +45,7 @@ class SamuraisController < ApplicationController
   end
 
   def samurai_params
-    params.permit(:name, :armour, :joined_at, :deathtime) # I assume they might be already death ^^ ...
+    params.permit(:name, :armour, :joined_at, :died_at) # I assume they might be already death ^^ ...
   end
 
 end

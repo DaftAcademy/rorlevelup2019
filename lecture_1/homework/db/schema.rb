@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_18_180047) do
+ActiveRecord::Schema.define(version: 2019_03_18_180510) do
 
   create_table "clans", force: :cascade do |t|
     t.string "name"
@@ -21,9 +21,9 @@ ActiveRecord::Schema.define(version: 2019_03_18_180047) do
   create_table "samurais", force: :cascade do |t|
     t.string "name"
     t.integer "armour", default: 0
-    t.integer "battles", default: 0
+    t.integer "battles_count", default: 0
     t.datetime "joined_at"
-    t.datetime "deathtime"
+    t.datetime "died_at"
     t.integer "clan_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

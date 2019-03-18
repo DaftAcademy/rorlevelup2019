@@ -1,7 +1,7 @@
 class SamuraisController < ApplicationController
 
   def show
-    render json: samurai.to_json(only: %i[id name armour battles_count joined_at died_at])
+    render json: samurai.to_json()
   end
 
   def index
@@ -15,7 +15,7 @@ class SamuraisController < ApplicationController
       samurais.select! { |samurai| samurai.died_at == nil }
     end
     
-    render json: samurais.to_json(only: %i[id name armour battles_count joined_at died_at])
+    render json: samurais.to_json(only: samurai_attributes), status: :ok
   end
 
   def create
@@ -27,7 +27,7 @@ class SamuraisController < ApplicationController
     end
 
     if samurai.save
-      render json: samurai.to_json(only: %i[id name armour battles_count joined_at died_at]), status: 201
+      render json: samurai.to_json(only: samurai_attributes), status: 201
     else
       render json: { errors: samurai.errors.messages }, status: 422
     end
@@ -36,7 +36,7 @@ class SamuraisController < ApplicationController
   def update
 
     if samurai.update(samurai.params)
-      render json: samurai.to_json(only: %w[id name armour])
+      render json: samurai.to_json(only: samurai_attributes), status: :ok
     else
       render json: { errors: samurai.errors.messages }, status: 422
     end
@@ -60,6 +60,10 @@ class SamuraisController < ApplicationController
 
   def samurai_params
     params.permit(:name, :armour, :battles_count, :joined_at, :died_at) # I assume they might be already death ^^ ...
+  end
+
+  def samurai_attributes
+    %i[id name armour battles_count joined_at died_at]
   end
 
 end

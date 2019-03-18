@@ -1,2 +1,0 @@
-class SamuraiController < ApplicationController
-end

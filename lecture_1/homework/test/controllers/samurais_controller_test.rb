@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class ClanControllerTest < ActionDispatch::IntegrationTest
+class SamuraisControllerTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end

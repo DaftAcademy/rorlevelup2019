@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
   resources :clans, only: [:index, :create] do
-    resources :samurais
+    get 'dead', to: 'clans#dead'
+    resources :samurais 
   end
 
 end

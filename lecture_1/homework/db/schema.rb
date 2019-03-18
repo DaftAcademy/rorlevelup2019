@@ -20,10 +20,10 @@ ActiveRecord::Schema.define(version: 2019_03_14_212349) do
 
   create_table "samurais", force: :cascade do |t|
     t.string "name"
-    t.integer "armour_quality"
-    t.integer "number_of_battles"
+    t.integer "armor"
+    t.integer "battles"
     t.datetime "join_date"
-    t.datetime "date_of_death"
+    t.datetime "death_date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "clan_id"

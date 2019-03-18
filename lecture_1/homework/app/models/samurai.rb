@@ -7,6 +7,9 @@ class Samurai < ApplicationRecord
   validates :battles_count, presence: true
   validates :joined_date, presence: true
 
+  scope :alive, -> {where('death_date IS NULL')}
+  scope :dead, -> {where('death_date IS NOT NULL')}
+
   def set_defaults
     self.battles_count ||= 0
     self.death_date ||= nil

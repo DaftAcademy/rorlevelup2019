@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  cuirass_quality: 1
+  battles_count: 1
+  joined_date: 2019-03-18
+  death_date: 2019-03-18
+  clan: one
+
+two:
+  name: MyString
+  cuirass_quality: 1
+  battles_count: 1
+  joined_date: 2019-03-18
+  death_date: 2019-03-18
+  clan: two

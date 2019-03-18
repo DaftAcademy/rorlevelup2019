@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  root 'clans#index'
+  resources :clans, only: %i[index show create update destroy] do
+    resources :samurais, only: %i[index show create update destroy] do
+      get 'active', on: :collection
+      get 'inactive', on: :collection
+    end
+  end
 end

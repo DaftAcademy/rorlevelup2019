@@ -19,14 +19,28 @@ class SamuraisController < ApplicationController
   end
 
   def create
-    samurai = clan.samurais.create!(samurai_params)
-    render json: samurai.to_json(only: %i[id name armour joined_at died_at]), status: 201
+    samurai = clan.samurais.new(samurai_params)
+
+    # If samurai is being created inside the Clan his joined_at time wasn't provided let him join the clan now!
+    if samurai.joined_at == nil && samurai.clan_id != nil
+      samurai.joined_at = DateTime.now
+    end
+
+    if samurai.save
+      render json: samurai.to_json(only: %i[id name armour joined_at died_at]), status: 201
+    else
+      render json: { errors: samurai.errors.messages }, status: 422
+    end
   end
 
   def update
-    samurai.update!(samurai_params)
 
-    render json: samurai.to_json(only: %w[id name armour])
+    if samurai.update(samurai.params)
+      render json: samurai.to_json(only: %w[id name armour])
+    else
+      render json: { errors: samurai.errors.messages }, status: 422
+    end
+
   end
 
   def destroy
@@ -45,7 +59,7 @@ class SamuraisController < ApplicationController
   end
 
   def samurai_params
-    params.permit(:name, :armour, :joined_at, :died_at) # I assume they might be already death ^^ ...
+    params.permit(:name, :armour, :battle_count, :joined_at, :died_at) # I assume they might be already death ^^ ...
   end
 
 end

@@ -1,11 +1,12 @@
 class SamuraisController < ApplicationController
+
   def index
     if params.has_key?(:alive)
-      samurais = Samurai.alive
+      samurais = clan.samurais.alive
     elsif params.has_key?(:dead)
-      samurais = Samurai.dead
+      samurais = clan.samurais.dead
     else
-      samurais = Samurai.all
+      samurais = clan.samurais
     end
 
     render json: samurais.to_json(only: %w[id name armor battles killed_date join_date clan_id])
@@ -43,6 +44,6 @@ class SamuraisController < ApplicationController
   end
 
   def samurai_params
-    params.permit(:name,:armor,:battles,:killed_date)
+    params.permit(:name,:armor,:battles,:killed_date, :join_date)
   end
 end

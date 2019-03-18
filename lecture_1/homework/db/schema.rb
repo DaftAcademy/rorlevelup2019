@@ -14,14 +14,16 @@ ActiveRecord::Schema.define(version: 2019_03_16_124746) do
 
   create_table "clans", force: :cascade do |t|
     t.string "name", limit: 256, null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "samurais", force: :cascade do |t|
     t.string "name", limit: 256, null: false
     t.integer "armor", null: false
     t.integer "battles", default: 0, null: false
+    t.datetime "join_date", null: false
     t.datetime "killed_date"
-    t.datetime "join_date", default: "2019-03-16 13:07:43"
     t.integer "clan_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

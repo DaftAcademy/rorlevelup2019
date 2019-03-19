@@ -12,11 +12,14 @@ death_days = (1.month.ago.to_date..Date.today.to_date).to_a
 join_days = (1.year.ago.to_date..5.weeks.ago.to_date).to_a
 
 clans.each do |clan|
-  new_clan = Clan.create(name: clan)
+  Clan.create(name: clan.capitalize)
+end
+
+Clan.all.each do |clan|
   rand(5..12).times do |n|
     death_date = (rand(3) == 0 ? death_days[rand(death_days.count)] : nil )
     join_date = join_days[rand(join_days.count)]
-    new_clan.samurais.create(name: "#{new_clan}_san_#{n}", armor: rand(1001),
+    clan.samurais.create(name: "#{clan.name.capitalize}_san_#{n}", armor: rand(1001),
                             battles_count: rand(20), death_date: death_date,
                             join_date: join_date)
   end

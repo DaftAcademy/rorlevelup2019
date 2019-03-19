@@ -1,0 +1,2 @@
+class SamuraisController < ApplicationController
+end

@@ -5,7 +5,10 @@ class Samurai < ApplicationRecord
               inclusion: { in:  0..1000 }
   validates :battles_count,  presence: true, numericality: { only_integer: true }
 
-  def alive?
-    death_date.nil?
+  def self.alive
+    where(death_date: nil)
+  end
+  def self.dead
+    where.not(death_date: nil)
   end
 end

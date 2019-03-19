@@ -1,21 +1,27 @@
 class WarriorsController < ApplicationController
   def index
-    warriors = clan.warriors
+    if params[:alive]
+      warriors = clan.warriors.where("death_date is null")
+    elsif params[:dead]
+      warriors = clan.warriors.where("death_date is not null")
+    else 
+      warriors = clan.warriors
+    end      
     render json: warriors.to_json(only: %w[name armour battles join_date death_date])
   end
   
   def show
-    render json: warrior.to_json (only: %w[name armour battles join_date death_date])
+    render json: warrior.to_json(only: %w[name armour battles join_date death_date])
   end
 
   def create
     warrior = clan.warriors.create!(warrior_params)
-    render json: warrior.to_json (only: %w[name armour battles join_date death_date])
+    render json: warrior.to_json(only: %w[name armour battles join_date death_date])
   end
 
   def update
     warrior.update!(warrior_params)
-    render json: warrior.to_json (only: %w[name armour battles join_date death_date])
+    render json: warrior.to_json(only: %w[name armour battles join_date death_date])
   end
 
   def destroy

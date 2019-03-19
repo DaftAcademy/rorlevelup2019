@@ -1,7 +1,7 @@
 class ClansController < ApplicationController
 
   def create
-    clan = Clan.create!(params.permit(:name)) #.require(:clan) <- pro8l3m in POSTMAN
+    clan = Clan.create!(params.require(:clan).permit(:name))
     render json: clan.to_json(only: %w[id name]), status: 201
   end
 

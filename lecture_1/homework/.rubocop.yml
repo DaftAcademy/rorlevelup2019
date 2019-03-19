@@ -5,3 +5,5 @@ inherit_gem:
 Style/FrozenStringLiteralComment:
   Enabled: false
 
+Style/AndOr:
+  Enabled: false

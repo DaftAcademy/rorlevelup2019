@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :clans
+  resources :clans, only: [:create, :index]
 end

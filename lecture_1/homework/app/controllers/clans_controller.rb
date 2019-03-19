@@ -5,9 +5,12 @@ class ClansController < ApplicationController
   end
 
   def create
-    clan = clans.create!(clan_params)
-
-    render json: clan.to_json(only: %w[id name]), status: 201
+    clan = Clan.new(clan_params)
+    if clan.save
+      render json: clan.to_json(only: %w[id name]), status: 201
+    else
+      render json: { errors: clan.errors.full_messages }, status: 422
+    end
   end
 
   private

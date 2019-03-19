@@ -2,8 +2,10 @@ module Api
   module V1
     class SamuraisController < ApplicationController  
       def index
-        samurais = choose_samurais_group
+        (render_all_samurais && return) if params[:dead].blank?
         
+        samurais = dead_or_alive
+
         render json: samurais.to_json(only: samurai_traits)
       end
       
@@ -14,13 +16,19 @@ module Api
       def create
         samurai = clan.samurais.create!(samurai_params)
 
-        render json: samurai.to_json(only: samurai_traits), status: 201
+        if samurai.save
+          render json: samurai.to_json(only: samurai_traits), status: 201
+        else
+          render json: { errors: samurai.errors.messages }, status: 422
+        end
       end
 
       def update
-        samurai.update!(samurai_params)
-
-        render json: samurai.to_json(only: samurai_traits)
+        if samurai.update!(samurai_params)
+          render json: samurai.to_json(only: samurai_traits)
+        else
+          render json: { errors: samurai.errors.messages }, status: 422
+        end
       end
 
       def destroy
@@ -31,8 +39,8 @@ module Api
 
       private
 
-      def choose_samurais_group
-        params[:dead].empty? ? clan.samurais : dead_or_alive
+      def render_all_samurais
+        render json: clan.samurais.to_json(only: samurai_traits)
       end
 
       def dead_or_alive
@@ -52,7 +60,7 @@ module Api
       end
 
       def samurai_traits
-        %w[name armor battles join_date death_date clan_id]
+        %i[id name armor battles join_date death_date clan_id]
       end
     end
   end

@@ -62,6 +62,6 @@ class SamuraisController < ApplicationController
     end
 
     def set_samurai
-      @samurai ||= clan.samurais.find(params[:id])
+      @samurai ||= set_clan.samurais.find(params[:id])
     end
 end

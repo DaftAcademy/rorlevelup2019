@@ -2,7 +2,20 @@ class SamuraisController < ApplicationController
 
     # GET /clans/:clan_id/samurais
     def index
-        samurais = clan.samurais.first(params[:limit].to_i)
+        if params[:alive].present?
+            if params[:alive] == "false"
+                samurais = clan.samurais.where.not(death_date: nil)
+            elsif params[:alive] == "true"
+                samurais = clan.samurais.where(death_date: nil)
+            end
+        else
+            samurais = clan.samurais
+        end
+
+        if params[:limit].present?
+            samurais = samurais.first(params[:limit].to_i)
+        end
+
         render json: samurais.to_json(only: %w[id name armor battles join_date death_date])
     end
 

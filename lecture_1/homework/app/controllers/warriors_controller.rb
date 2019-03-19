@@ -15,13 +15,20 @@ class WarriorsController < ApplicationController
   end
 
   def create
-    warrior = clan.warriors.create!(warrior_params)
-    render json: warrior.to_json(only: %w[name armour battles join_date death_date])
+    warrior = clan.warriors.new(warrior_params)
+    if warrior.save
+      render json: warrior.to_json(only: %w[name armour battles join_date death_date]), status: 201
+    else
+      render json: { errors: warrior.errors.messages }, status: 422 
+    end
   end
 
   def update
-    warrior.update!(warrior_params)
-    render json: warrior.to_json(only: %w[name armour battles join_date death_date])
+    if warrior.update(warrior _params)
+      render json: warrior.to_json(only: %w[name armour battles join_date death_date]), status: 201
+    else
+      render json: { errors: warrior.errors.messages }, status: 422 
+    end 
   end
 
   def destroy

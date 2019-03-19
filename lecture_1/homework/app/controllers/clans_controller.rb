@@ -1,8 +1,12 @@
 class ClansController < ApplicationController
 
   def create
-    clan = Clan.create!(params.require(:clan).permit(:name))
-    render json: clan.to_json(only: %w[id name]), status: 201
+    clan = Clan.new(params.require(:clan).permit(:name))
+    if clan.save
+      render json: clan.to_json(only: %w[id name]), status: 201
+    else
+      render json: { errors: clan.errors.messages }, status: 422 
+    end
   end
 
   def index

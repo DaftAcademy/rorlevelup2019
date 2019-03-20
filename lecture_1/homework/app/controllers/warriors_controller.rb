@@ -1,8 +1,8 @@
 class WarriorsController < ApplicationController
   def index
-    if params[:alive]
+    if params[:alive] == "true"
       warriors = clan.warriors.where("death_date is null")
-    elsif params[:dead]
+    elsif params[:alive] == "false"
       warriors = clan.warriors.where("death_date is not null")
     else 
       warriors = clan.warriors

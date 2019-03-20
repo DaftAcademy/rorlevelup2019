@@ -119,6 +119,34 @@ RSpec.describe 'Samurais API' do
         expect(response.body).to match(/Validation failed: Name can't be blank/)
       end
     end
+
+    context 'when an invalid samurai name' do
+      before { post "/clans/#{clan_id}/samurais", params: invalid_attributes }
+
+      let(:invalid_attributes) { { name: 'S', armor_quality: 1000, battle_count: 93 } }
+
+      it 'should return status code 422' do
+        expect(response).to have_http_status(422)
+      end
+
+      it 'should return a failure message' do
+        expect(response.body).to match(/Validation failed: Name is too short/)
+      end
+    end
+
+    context 'when an invalid samurai armor quality' do
+      before { post "/clans/#{clan_id}/samurais", params: invalid_attributes }
+
+      let(:invalid_attributes) { { name: 'Samurai Jack', armor_quality: 1001, battle_count: 93 } }
+
+      it 'should return status code 422' do
+        expect(response).to have_http_status(422)
+      end
+
+      it 'should return a failure message' do
+        expect(response.body).to match(/Validation failed: Armor quality must be less than or equal to 1000/)
+      end
+    end
   end
 
   describe 'PUT /clans/:clan_id/samurais/:id' do

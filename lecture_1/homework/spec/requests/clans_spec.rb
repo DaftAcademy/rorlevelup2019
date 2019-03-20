@@ -72,5 +72,19 @@ RSpec.describe 'Clans API', type: :request do
             .to match(/Validation failed: Name can't be blank/)
       end
     end
+
+    context 'when an invalid clan name' do
+      before { post '/clans', params: invalid_attributes }
+
+      let(:invalid_attributes) { { name: 'S' } }
+
+      it 'should return status code 422' do
+        expect(response).to have_http_status(422)
+      end
+
+      it 'should return a failure message' do
+        expect(response.body).to match(/Validation failed: Name is too short/)
+      end
+    end
   end
 end

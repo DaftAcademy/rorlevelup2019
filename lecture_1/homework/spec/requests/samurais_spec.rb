@@ -2,14 +2,15 @@ require 'rails_helper'
 
 RSpec.describe 'Samurais API' do
   let!(:clan) { create(:clan) }
-  let!(:samurais) { create_list(:samurai, 20, clan_id: clan.id) }
+  let!(:samurais_alive) { create_list(:samurai, 12, clan_id: clan.id) }
+  let!(:samurais_dead) { create_list(:samurai, 8, clan_id: clan.id, died_at: DateTime.now)}
   let(:clan_id) { clan.id }
-  let(:id) { samurais.first.id }
+  let(:id) { samurais_alive.first.id }
 
   describe 'GET /clans/:clan_id/samurais' do
-    before { get "/clans/#{clan_id}/samurais" }
-
     context 'when clan exists' do
+      before { get "/clans/#{clan_id}/samurais" }
+
       it 'should return status code 200' do
         expect(response).to have_http_status(200)
       end
@@ -19,7 +20,45 @@ RSpec.describe 'Samurais API' do
       end
     end
 
+    context 'when request param alive has value true' do
+      before { get "/clans/#{clan_id}/samurais?alive=true" }
+
+      it 'should return status code 200' do
+        expect(response).to have_http_status(200)
+      end
+
+      it 'should return alive samurais' do
+        expect(json.size).to eq(12)
+      end
+    end
+
+    context 'when request param alive has value false' do
+      before { get "/clans/#{clan_id}/samurais?alive=false" }
+
+      it 'should return status code 200' do
+        expect(response).to have_http_status(200)
+      end
+
+      it 'should return dead samurais' do
+        expect(json.size).to eq(8)
+      end
+    end
+
+    context 'when request param alive has incorrect value' do
+      before { get "/clans/#{clan_id}/samurais?alive=wrong" }
+
+      it 'should return status code 400' do
+        expect(response).to have_http_status(400)
+      end
+
+      it 'should return a not found message' do
+        expect(response.body).to match(/Validation failed: Alive param should have boolean value/)
+      end
+    end
+
     context 'when clan does not exist' do
+      before { get "/clans/#{clan_id}/samurais" }
+
       let(:clan_id) { 0 }
 
       it 'should return status code 404' do

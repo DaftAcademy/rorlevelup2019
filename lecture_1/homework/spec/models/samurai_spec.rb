@@ -8,6 +8,7 @@ RSpec.describe Samurai, type: :model do
   it { should validate_presence_of(:armor_quality) }
   it { should validate_numericality_of(:armor_quality).is_greater_than_or_equal_to(0).is_less_than_or_equal_to(1000) }
   it { should validate_presence_of(:battle_count) }
-  it { should allow_value(nil).for(:joined_at) }
+  it { should validate_presence_of(:joined_at) }
+  it { should validate_presence_of(:clan_id) }
   it { should allow_value(nil).for(:died_at) }
 end

@@ -98,7 +98,7 @@ RSpec.describe 'Samurais API' do
   end
 
   describe 'POST /clans/:clan_id/samurais' do
-    let(:valid_attributes) { { name: 'Samurai Jack', armor_quality: 1000, battle_count: 93 } }
+    let(:valid_attributes) { { name: 'Samurai Jack', armor_quality: 1000, battle_count: 93, joined_at: '2009-05-05' } }
 
     context 'when request attributes are valid' do
       before { post "/clans/#{clan_id}/samurais", params: valid_attributes }
@@ -123,7 +123,7 @@ RSpec.describe 'Samurais API' do
     context 'when an invalid samurai name' do
       before { post "/clans/#{clan_id}/samurais", params: invalid_attributes }
 
-      let(:invalid_attributes) { { name: 'S', armor_quality: 1000, battle_count: 93 } }
+      let(:invalid_attributes) { { name: 'S', armor_quality: 1000, battle_count: 93, joined_at: '2009-05-05' } }
 
       it 'should return status code 422' do
         expect(response).to have_http_status(422)
@@ -137,7 +137,7 @@ RSpec.describe 'Samurais API' do
     context 'when an invalid samurai armor quality' do
       before { post "/clans/#{clan_id}/samurais", params: invalid_attributes }
 
-      let(:invalid_attributes) { { name: 'Samurai Jack', armor_quality: 1001, battle_count: 93 } }
+      let(:invalid_attributes) { { name: 'Samurai Jack', armor_quality: 1001, battle_count: 93, joined_at: '2009-05-05' } }
 
       it 'should return status code 422' do
         expect(response).to have_http_status(422)
@@ -145,6 +145,20 @@ RSpec.describe 'Samurais API' do
 
       it 'should return a failure message' do
         expect(response.body).to match(/Validation failed: Armor quality must be less than or equal to 1000/)
+      end
+    end
+
+    context 'when an invalid samurai join date' do
+      before { post "/clans/#{clan_id}/samurais", params: invalid_attributes }
+
+      let(:invalid_attributes) { { name: 'Samurai Jack', armor_quality: 1000, battle_count: 93, joined_at: 'abc' } }
+
+      it 'should return status code 422' do
+        expect(response).to have_http_status(422)
+      end
+
+      it 'should return a failure message' do
+        expect(response.body).to match(/Validation failed: Joined at can't be blank/)
       end
     end
   end

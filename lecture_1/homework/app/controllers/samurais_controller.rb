@@ -1,7 +1,7 @@
 class SamuraisController < ApplicationController
   # GET /clans/:clan_id/samurais
   def index
-     params.has_key?(:alive) ? handle_alive : json_response(clan.samurais.to_json(only: samurai_attributes))
+     params.has_key?(:alive) ? handle_alive : json_response(clan.samurais.first(limit).to_json(only: samurai_attributes))
   end
 
   # GET /clans/:clan_id/samurais/:id
@@ -31,9 +31,9 @@ class SamuraisController < ApplicationController
 
   def handle_alive
     if params[:alive] == 'true'
-      json_response(clan.samurais.alive.to_json(only: samurai_attributes))
+      json_response(clan.samurais.alive.first(limit).to_json(only: samurai_attributes))
     elsif params[:alive] == 'false'
-      json_response(clan.samurais.dead.to_json(only: samurai_attributes))
+      json_response(clan.samurais.dead.first(limit).to_json(only: samurai_attributes))
     else
       json_response('Validation failed: Alive param must have boolean value', 400)
     end

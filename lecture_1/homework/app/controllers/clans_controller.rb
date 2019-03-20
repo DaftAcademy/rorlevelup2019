@@ -30,6 +30,6 @@ class ClansController < ApplicationController
   end
 
   def clans
-    @clans ||= Clan.all
+    @clans ||= Clan.first(limit)
   end
 end

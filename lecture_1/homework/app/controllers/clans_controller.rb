@@ -27,7 +27,7 @@ class ClansController < ApplicationController
   end
 
   def clan_attr
-    return ["id", "name"]
+    %w[id name]
   end
 
 end

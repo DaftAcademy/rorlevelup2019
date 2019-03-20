@@ -1,3 +1,8 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get '/samurais', to: 'samurais#index'
+  resources :samurais, only: %i[index show]
+  resources :clans do
+    resources :samurais, only: %i[index create update destroy show]
+  end
 end

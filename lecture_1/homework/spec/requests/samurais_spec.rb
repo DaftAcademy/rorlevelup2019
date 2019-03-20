@@ -59,7 +59,7 @@ RSpec.describe 'Samurais API' do
   end
 
   describe 'POST /clans/:clan_id/samurais' do
-    let(:valid_attributes) { { name: 'Samurai Jack', amor_quality: 1000, battle_count: 93 } }
+    let(:valid_attributes) { { name: 'Samurai Jack', armor_quality: 1000, battle_count: 93 } }
 
     context 'when request attributes are valid' do
       before { post "/clans/#{clan_id}/samurais", params: valid_attributes }
@@ -88,8 +88,8 @@ RSpec.describe 'Samurais API' do
     before { put "/clans/#{clan_id}/samurais/#{id}", params: valid_attributes }
 
     context 'when samurai exists' do
-      it 'should return status code 204' do
-        expect(response).to have_http_status(204)
+      it 'should return status code 200' do
+        expect(response).to have_http_status(200)
       end
 
       it 'should update the samurai' do

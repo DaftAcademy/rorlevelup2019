@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe 'Clans API', type: :request do
 
-  let!(:clans) { create_list(:clans, 10) }
+  let!(:clans) { create_list(:clan, 10) }
   let(:clan_id) { clans.first.id }
 
   describe 'GET /clans' do

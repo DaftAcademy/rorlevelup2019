@@ -8,7 +8,7 @@ class SamuraisController < ApplicationController
       if request.query_string == ""
         render json: clan.samurais.to_json(only: %w[ name armor battles id death_date])
       else
-        render json: "Please use alive or dead as an additional query".to_json, status: 404
+        render json: {message: "Please use alive or dead as an additional query"}, status: 400
       end
     end
   end
@@ -37,7 +37,6 @@ class SamuraisController < ApplicationController
 
   def destroy
     samurai.destroy!
-    render json: "You have deleted #{samurai[:name]} Samurai".to_json, status: 200
   end
 
   private

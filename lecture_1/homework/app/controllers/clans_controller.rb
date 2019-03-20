@@ -27,7 +27,6 @@ class ClansController < ApplicationController
 
   def destroy
     clan.destroy!
-    render json: "You have deleted #{clan[:name]} Clan".to_json, status: 200
   end
 
   private

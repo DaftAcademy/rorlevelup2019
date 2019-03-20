@@ -1,7 +1,7 @@
 class ClansController < ApplicationController
   # GET /clans
   def index
-    json_response(clans.to_json(only: clan_attributes))
+    json_response(clans.first(limit).to_json(only: clan_attributes))
   end
 
   # POST /clans
@@ -30,6 +30,6 @@ class ClansController < ApplicationController
   end
 
   def clans
-    @clans ||= Clan.first(limit)
+    @clans ||= Clan.all
   end
 end

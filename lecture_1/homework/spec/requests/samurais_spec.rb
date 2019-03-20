@@ -52,7 +52,7 @@ RSpec.describe 'Samurais API' do
       end
 
       it 'should return a not found message' do
-        expect(response.body).to match(/Validation failed: Alive param should have boolean value/)
+        expect(response.body).to match(/Validation failed: Alive param must have boolean value/)
       end
     end
 

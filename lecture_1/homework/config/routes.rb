@@ -1,3 +1,10 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  get 'samurais/index'
+  get 'clans/index'
+  get '/clans/:clan_id/alive', to: 'samurais#alive'
+  get '/clans/:clan_id/dead', to: 'samurais#dead'
+  resources :clans do
+    resources :samurais
+  end
 end
+

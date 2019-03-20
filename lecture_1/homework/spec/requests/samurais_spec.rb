@@ -173,6 +173,10 @@ RSpec.describe 'Samurais API' do
         expect(response).to have_http_status(200)
       end
 
+      it 'should return updated samurai' do
+        expect(response.body).to match(/Samurai Nojack/)
+      end
+
       it 'should update the samurai' do
         updated_samurai = Samurai.find(id)
         expect(updated_samurai.name).to match(/Samurai Nojack/)

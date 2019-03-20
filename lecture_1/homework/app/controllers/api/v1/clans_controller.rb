@@ -8,7 +8,7 @@ module Api
       end
 
       def create
-        clan = Clan.create!(clan_params)
+        clan = Clan.new(clan_params)
 
         if clan.save
           render json: clan.to_json(only: %w[id name]), status: 201

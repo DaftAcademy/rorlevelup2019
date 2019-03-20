@@ -2,7 +2,7 @@ module Api
   module V1
     class SamuraisController < ApplicationController  
       def index
-        (render_all_samurais && return) if params[:dead].blank?
+        return render_all_samurais if params[:dead].blank?
         
         samurais = dead_or_alive
 
@@ -14,7 +14,7 @@ module Api
       end
 
       def create
-        samurai = clan.samurais.create!(samurai_params)
+        samurai = clan.samurais.new(samurai_params)
 
         if samurai.save
           render json: samurai.to_json(only: samurai_traits), status: 201

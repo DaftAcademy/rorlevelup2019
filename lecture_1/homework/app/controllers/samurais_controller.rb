@@ -61,7 +61,7 @@ class SamuraisController < ApplicationController
   end
 
   def samurai_params
-      params.permit(:name,:armour,:battle_counter)
+      params.permit(:name,:armour,:battle_counter,:joined,:died)
   end
   
 end

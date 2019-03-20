@@ -1,13 +1,13 @@
 class ClansController < ApplicationController
   # GET /clans
   def index
-    json_response(as_json(clans))
+    json_response(clans.to_json(only: clan_attributes))
   end
 
   # POST /clans
   def create
     clan = Clan.create!(clan_params)
-    json_response(as_json(clan), :created)
+    json_response(clan.to_json(only: clan_attributes), :created)
   end
 
   # GET /clans/:id
@@ -17,8 +17,8 @@ class ClansController < ApplicationController
 
   private
 
-  def as_json(clan)
-    clan.to_json(only: %w[id name])
+  def clan_attributes
+    %i[id name]
   end
 
   def clan_params

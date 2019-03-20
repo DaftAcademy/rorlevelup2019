@@ -1,24 +1,24 @@
 class SamuraisController < ApplicationController
   # GET /clans/:clan_id/samurais
   def index
-    json_response(as_json(clan.samurais))
+    json_response(clan.samurais.to_json(only: samurai_attributes))
   end
 
   # GET /clans/:clan_id/samurais/:id
   def show
-    json_response(as_json(samurai))
+    json_response(samurai.to_json(only: samurai_attributes))
   end
 
   # POST /clans/:clan_id/samurais
   def create
     samurai = clan.samurais.create!(samurai_params)
-    json_response(as_json(samurai), :created)
+    json_response(samurai.to_json(only: samurai_attributes), :created)
   end
 
   # PUT /clans/:clan_id/samurais/:id
   def update
     samurai.update!(samurai_params)
-    json_response(as_json(samurai))
+    json_response(samurai.to_json(only: samurai_attributes))
   end
 
   # DELETE /clans/:clan_id/samurais/:id
@@ -29,12 +29,12 @@ class SamuraisController < ApplicationController
 
   private
 
-  def as_json(samurai)
-    samurai.to_json(only: %w[id name armor_quality battle_count joined_at died_at clan_id])
+  def samurai_attributes
+    %i[id name armor_quality battle_count joined_at died_at clan_id]
   end
 
   def samurai_params
-    params.permit(:name, :armor_quality, :battle_count)
+    params.permit(:name, :armor_quality, :battle_count, :joined_at, :died_at)
   end
 
   def clan

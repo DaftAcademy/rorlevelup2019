@@ -4,14 +4,19 @@ class SamuraisController < ApplicationController
   end
 
   def index
-    samurais = clan.samurais.all
-
+    if params[:alive].blank?
+      samurais = clan.samurais
+    elsif params[:alive] == "true"
+      samurais = clan.samurais.alive
+    elsif params[:alive] == "false"
+      samurais = clan.samurais.dead
+    end
     render json: samurais.to_json(only: %w[id name protection battles join_date death_date clan_id])
   end
 
   def create
     samurai = Samurai.new(samurai_params)
-    samurai.clan =clan
+    samurai.clan = clan
     if samurai.save
       render json: samurai.to_json(only: %w[id name protection battles join_date death_date clan_id]), status: 201
     else
@@ -46,5 +51,13 @@ class SamuraisController < ApplicationController
 
   def samurai_params
     params.permit(:name, :protection, :battles, :join_date, :death_date, :clan_id)
+  end
+
+  def dead_samurais
+    samurais = clan.samurais.dead
+  end
+
+  def alive_samurais
+    samurais = clan.samurais.alive
   end
 end

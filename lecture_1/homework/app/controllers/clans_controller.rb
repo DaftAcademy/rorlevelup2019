@@ -1,6 +1,6 @@
 class ClansController < ApplicationController
   def index
-    clans = Clan.first(params[:limit].to_i)
+    clans = Clan.all
     render json: clans.to_json(only: %w[id name])
   end
 

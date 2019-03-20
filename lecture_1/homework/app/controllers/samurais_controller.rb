@@ -1,6 +1,6 @@
 class SamuraisController < ApplicationController
-  before_action :set_clan
-  before_action :samurai
+  #before_action :set_clan
+  #before_action :samurai
 
   def index
     samurais = clan.samurais.all
@@ -12,8 +12,8 @@ class SamuraisController < ApplicationController
   end
 
   def create
-    clan ||= Clan.find(params[:clan_id])
-    samurai = clan.samurais.create(samurai_params)
+    #clan ||= Clan.find(params[:clan_id])
+    samurai = clan.samurais.new(samurai_params)
     if samurai.save
       render json: samurai.to_json(only: %i[:id name armour]),
              status: 201
@@ -52,13 +52,12 @@ class SamuraisController < ApplicationController
 
   private
 
-  def set_clan
+  def clan
     clan ||= Clan.find(params[:clan_id])
   end
 
   def samurai
     clan ||= Clan.find(params[:clan_id])
-    samurai ||= clan.samurais.find(params[:id])
   end
 
   def samurai_params

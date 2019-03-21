@@ -3,33 +3,21 @@ class SamuraisController < ApplicationController
   before_action :set_clan,    only: %i[index create active inactive]
 
   def index
-    samurais ||= @clan.samurais.first(limit_param.to_i)
-    render json: samurais.to_json(only: %w[id name])
+    render json: filter_samurais.to_json(only: %i[id name])
   end
 
   def show
-    render json: @samurai.to_json(except: %w[created_at updated_at])
+    render json: @samurai.to_json(only: attributes)
   end
 
   def create
-    samurai ||= @clan.samurais.new(samurai_params)
-    if samurai.save
-      render json: samurai.to_json(except: %w[created_at updated_at]), status: 201
-    else
-      render json: { message: "Something went wrong!",
-                     status: 422,
-                     errors: samurai.errors.full_messages }, status: 422
-    end
+    samurai ||= @clan.samurais.create!(samurai_params)
+    render json: samurai.to_json(only: attributes), status: 201
   end
 
   def update
-    if @samurai.update_attributes(samurai_params)
-      render json: @samurai.to_json(except: %w[created_at updated_at])
-    else
-      render json: { message: "Something went wrong!",
-                     status: 422,
-                     errors: @samurai.errors.full_messages }, status: 422
-    end
+    @samurai.update_attributes!(samurai_params)
+      render json: @samurai.to_json(only: attributes)
   end
 
   def destroy
@@ -37,19 +25,9 @@ class SamuraisController < ApplicationController
     head 204
   end
 
-  def active
-    active = @clan.samurais.where(died: nil)
-    render json: active.to_json(except: %w[created_at updated_at])
-  end
-
-  def inactive
-    inactive = @clan.samurais.where("died")
-    render json: inactive.to_json(except: %w[created_at updated_at])
-  end
-
   private
 
-    def limit_param
+    def limit
       params.permit(:limit)[:limit] || 10
     end
 
@@ -63,5 +41,21 @@ class SamuraisController < ApplicationController
 
     def set_samurai
       @samurai ||= set_clan.samurais.find(params[:id])
+    end
+
+    def attributes
+      %i[id name combats armor joined died clan_id]
+    end
+
+    def filter_samurais
+      samurais ||= @clan.samurais.all
+
+      if params[:dead] == "true"
+        samurais.dead.first(limit.to_i)
+      elsif params[:dead] == "false"
+        samurais.alive.first(limit.to_i)
+      else
+        samurais.first(limit.to_i)
+      end
     end
 end

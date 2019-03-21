@@ -13,4 +13,7 @@ class Samurai < ApplicationRecord
                                       greater_than_or_equal_to: 0,
                                       less_than_or_equal_to: 1000 }
   validates :joined,  presence: true
+
+  scope :alive, -> { where(died: nil) }
+  scope :dead, -> { where.not(died: nil) }
 end

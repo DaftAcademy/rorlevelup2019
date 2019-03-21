@@ -2,33 +2,22 @@ class ClansController < ApplicationController
   before_action :set_clan, only: %i[show update destroy]
 
   def index
-    clans = Clan.first(limit_param.to_i)
-    render json: clans.to_json(only: %w[id name])
+    clans = Clan.first(limit.to_i)
+    render json: clans.to_json(only: attributes)
   end
 
   def show
-    render json: @clan.to_json(only: %w[id name])
+    render json: @clan.to_json(only: attributes)
   end
 
   def create
-    clan = Clan.new(clan_params)
-    if clan.save
-      render json: clan.to_json(only: %w[id name]), status: 201
-    else
-      render json: { message: "Something went wrong!",
-                     status: 422,
-                     errors: clan.errors.full_messages }, status: 422
-    end
+    clan = Clan.create!(clan_params)
+    render json: clan.to_json(only: attributes), status: 201
   end
 
   def update
-    if @clan.update(clan_params)
-      render json: @clan.to_json(only: %w[id name])
-    else
-      render json: { message: "Something went wrong!",
-                     status: 422,
-                     errors: @clan.errors.full_messages }, status: 422
-    end
+    @clan.update_attributes!(clan_params)
+    render json: @clan.to_json(only: attributes)
   end
 
   def destroy
@@ -38,7 +27,7 @@ class ClansController < ApplicationController
 
   private
 
-    def limit_param
+    def limit
       params.permit(:limit)[:limit] || 10
     end
 
@@ -48,5 +37,9 @@ class ClansController < ApplicationController
 
     def set_clan
       @clan = Clan.find(params[:id])
+    end
+
+    def attributes
+      %i[id name]
     end
 end

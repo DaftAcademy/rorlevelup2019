@@ -1,7 +1,15 @@
 class SamuraisController < ApplicationController
   # GET /samurais
   def index
-    samurais = clan.samurais.all()
+    if(params[:alive].present?)
+      if(params[:alive] == "true")
+        samurais = clan.samurais.where.not(death: nil)
+      elsif(params[:alive] == "false")
+        samurais = clan.samurais.where(death: nil)
+      end
+    else
+     samurais = clan.samurais.all()
+    end
     render json: samurais.to_json()
   end
 

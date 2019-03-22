@@ -17,7 +17,7 @@ class ClansController < ApplicationController
     clan = Clan.new(clan_params)
 
     if clan.save
-      render json: clan, status: 201, location: clan
+      render json: clan, status: 201
     else
       render json: clan.errors, status: 422
     end

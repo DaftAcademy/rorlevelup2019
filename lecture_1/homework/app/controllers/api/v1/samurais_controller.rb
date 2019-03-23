@@ -49,17 +49,16 @@ module Api
       end
 
       def samurai_attributes
-        %w[id name armor battle_count join_at death_at clan_id]
+        %i[id name armor battle_count join_at death_at clan_id]
       end
 
       def samurais_status
-        case ActiveModel::Type::Boolean.new.cast(params[:alive])
-        when true
-          clan.samurais.alive.first(limit)
-        when false
-          clan.samurais.dead.first(limit)
-        else
+        if params[:alive].blank?
           clan.samurais.first(limit)
+        elsif params[:alive] == 'true'
+          clan.samurais.alive.first(limit)
+        elsif params[:alive] == 'false'
+          clan.samurais.dead.first(limit)
         end
       end
     end

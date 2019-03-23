@@ -1,8 +1,6 @@
 module Api
   module V1
     class SamuraisController < ApplicationController
-      before_action :default_limit, only: %i[index]
-
       def show
         render json: samurai.to_json(only: samurai_attributes)
       end

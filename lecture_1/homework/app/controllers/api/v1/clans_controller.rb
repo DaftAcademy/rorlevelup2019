@@ -1,8 +1,6 @@
 module Api
   module V1
     class ClansController < ApplicationController
-      before_action :default_limit, only: %i[index]
-
       def index
         clans = Clan.first(limit)
         render json: clans.to_json(only: %w[id name])

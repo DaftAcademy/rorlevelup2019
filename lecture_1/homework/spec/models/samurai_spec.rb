@@ -52,14 +52,14 @@ RSpec.describe Samurai, type: :model do
 
   context "when armor equals 1000" do
     it "is valid" do
-      samurai.armor = 100
+      samurai.armor = 1000
       expect(samurai).to be_valid
     end
   end
 
   context "with clan_id that does not exist" do
     it "is not valid" do
-      samurai.clan_id = 1002
+      samurai.clan_id = 1787002
       expect(samurai).to_not be_valid
     end
   end

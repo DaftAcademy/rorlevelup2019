@@ -9,7 +9,7 @@ module Api
             samurais = clan.samurais.dead
           else
             render json: "Wrong value for the key 'alive'".to_json,
-                   status: 404 and return
+                   status: 400 and return
           end
         else
           samurais = clan.samurais
@@ -19,32 +19,24 @@ module Api
 
       def show
         render json: samurai.to_json(only: render_params)
-      rescue ActiveRecord::ActiveRecordError => e
-        render json: e.to_json, status: 404
       end
 
       def create
         samurai = clan.samurais.create!(samurai_params)
 
         render json: samurai.to_json(only: render_params), status: 201
-      rescue ActiveRecord::ActiveRecordError => e
-        render json: e.to_json, status: 422
       end
 
       def update
         samurai.update!(samurai_params)
 
         render json: samurai.to_json(only: render_params)
-      rescue ActiveRecord::ActiveRecordError => e
-        render json: e.to_json, status: 422
       end
 
       def destroy
         samurai.destroy!
 
         head 204
-      rescue => e
-        render json: e.to_json, status: 404
       end
 
       private

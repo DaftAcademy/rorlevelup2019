@@ -11,8 +11,6 @@ module Api
         clan = Clan.create!(clan_params)
 
         render json: clan.to_json, status: 201
-      rescue ActiveRecord::ActiveRecordError => e
-        render json: e.to_json, status: 422
       end
 
       private

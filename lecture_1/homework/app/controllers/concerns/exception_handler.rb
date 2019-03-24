@@ -2,19 +2,14 @@ module ExceptionHandler
   extend ActiveSupport::Concern
 
   included do
-    rescue_from ActiveRecord::RecordInvalid, with: :four_twenty_two
-    rescue_from ActiveRecord::RecordNotFound, with: :forty_four
-  end
+    # JSON response with message; Status code 422 - Unprocessable entity
+    rescue_from ActiveRecord::RecordInvalid do |exception|
+      json_response({message: exception.message}, :unprocessable_entity)
+    end
 
-  private
-
-  # JSON response with message; Status code 404 - Not found
-  def forty_four(e)
-    json_response({message: e.message}, :not_found)
-  end
-
-  # JSON response with message; Status code 422 - Unprocessable entity
-  def four_twenty_two(e)
-    json_response({ message: e.message }, :unprocessable_entity)
+    # JSON response with message; Status code 404 - Not found
+    rescue_from ActiveRecord::RecordNotFound do |exception|
+      json_response({message: exception.message}, :not_found)
+    end
   end
 end

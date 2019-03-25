@@ -7,7 +7,9 @@ module Api
       end
 
       def index
+        samurais = set_samurai
 
+        render json: samurais.to_json(only: SAMURAI_ATTRIBUTES)
       end
 
       def create
@@ -51,7 +53,13 @@ module Api
       end
 
       def set_samurai
-        samurais = Samurai.where(death_time: nil)
+        if params.has_key?(:alive)
+          clan.samurai.alive.first(limit)
+        elsif params.has_key?(:dead)
+          clan.samurai.dead.first(limit)
+        else
+          clan.samurais.first(limit)
+        end 
       end
     end
   end 

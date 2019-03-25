@@ -4,4 +4,7 @@ class Samurai < ApplicationRecord
   validates :name, presence: true
   validates :armor, presence: true, numericality: { greater_than_or_equal_to: 0, less_than_or_equal_to: 1000, only_integer: true }
   validates :fought_battles, presence: true, numericality: { only_integer: true }
+
+  scope :alive, -> { where(death_at: 'null' ) }
+  scope :dead,  -> { where.not(death_at: 'null' ) }
 end

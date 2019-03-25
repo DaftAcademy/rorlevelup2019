@@ -3,6 +3,8 @@ require 'rails_helper'
 RSpec.describe Samurai, type: :model do
 
   let(:samurai) { create(:samurai) }
+
+  it { should belong_to(:clan) }
   
   context "New samurai" do 
     it "is valid" do 

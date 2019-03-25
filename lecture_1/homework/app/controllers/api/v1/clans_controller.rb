@@ -4,10 +4,10 @@ module Api
       def create
         clan = Clan.new(clan_params)
 
-        if clan.save?
-        render json: clan.to_json(only: %i[id name]), status: 201
+        if clan.save
+        render json: clan.to_json(only: %i[id name]), status: 200
         else
-        rener json: { :error => clan.errors.full_messages }, status: 422
+        render json: { :error => clan.errors.full_messages }, status: 422
         end
       end
 

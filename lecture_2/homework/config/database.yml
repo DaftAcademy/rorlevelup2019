@@ -1,0 +1,11 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  database: rorlevelup2019
+  
+development:
+  <<: *default
+
+test: &test
+  <<: *default
+  database: flode_test

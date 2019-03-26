@@ -2,7 +2,6 @@ class SamuraisController < ApplicationController
 
     # GET /clans/:clan_id/samurais
     def index
-
         samurais = clan.samurais
 
         samurais = filter_samurais(samurais, params)
@@ -14,14 +13,22 @@ class SamuraisController < ApplicationController
 
     # POST /clans/:clan_id/samurais
     def create
-        samurai.create!(samurai_params)
+        begin
+        clan.samurais.create!(samurai_params)
         render json: samurai.to_json(only: %w[id name armor battles join_date death_date]), status: 201
+        rescue ActiveRecord::RecordInvalid => exception
+            render json: exception.to_json(only %w[error]), status: 422
+        end
     end
 
     # PUT /clans/:clan_id/samurais/:id
     def update
+        begin
         samurai.update!(samurai_params)
         render json: samurai.to_json(only: %w[id name armor battles join_date death_date])
+        rescue ActiveRecord::RecordInvalid => exception
+            render json: exception.to_json(only %w[error]), status: 422
+        end
     end
 
     # DELETE /clans/:clan_id/samurais/:id

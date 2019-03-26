@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -12,18 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20_190_314) do
-  create_table 'clans', force: :cascade do |t|
-    t.string 'name', limit: 256, null: false
+ActiveRecord::Schema.define(version: 2019_03_26_182653) do
+
+  create_table "clans", force: :cascade do |t|
+    t.string "name", limit: 256, null: false
+    t.index ["name"], name: "index_clans_on_name", unique: true
   end
 
-  create_table 'samurais', force: :cascade do |t|
-    t.string 'name', limit: 256, null: false
-    t.integer 'armor', null: false
-    t.integer 'battles', null: false
-    t.datetime 'join_date', null: false
-    t.datetime 'death_date'
-    t.integer 'clan_id'
-    t.index ['clan_id'], name: 'index_samurais_on_clan_id'
+  create_table "warriors", force: :cascade do |t|
+    t.string "name", limit: 256, null: false
+    t.integer "armor", null: false
+    t.integer "battles", null: false
+    t.datetime "join_date", null: false
+    t.datetime "death_date"
+    t.integer "clan_id"
+    t.string "type", default: "Samurai"
+    t.string "defensible_type"
+    t.integer "defensible_id"
+    t.index ["clan_id"], name: "index_warriors_on_clan_id"
+    t.index ["defensible_type", "defensible_id"], name: "index_warriors_on_defensible_type_and_defensible_id"
   end
+
 end

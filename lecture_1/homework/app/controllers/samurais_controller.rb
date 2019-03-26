@@ -4,7 +4,7 @@ class SamuraisController < ApplicationController
 
   # GET /clans/:clan_id/samurais
   def index
-    json_response(@clan.samurais)
+    json_response(samurais)
   end
 
   # GET /clans/:clan_id/samurais/:id
@@ -28,12 +28,9 @@ class SamuraisController < ApplicationController
     @samurai.destroy
   end
 
-  def dead
-    json_response(@clan.samurais.where.not(death_date: [nil, ""]))
-  end
-
-  def alive
-    json_response(@clan.samurais.where(death_date: [nil, ""]))
+  def samurais
+    return @clan.samurais unless params.has_key?(:alive)
+    params[:alive] == true ?  @clan.samurais.alive : @clan.samurais.dead
   end
 
   private

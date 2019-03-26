@@ -2,10 +2,10 @@ class SamuraisController < ApplicationController
 
   def index
     if params[:alive].present?
-      if params[:alive].to_i == 0
-        render json: clan.samurais.dead.to_json(only: %w[id clan_id name armor_quality battle_count join_date death_date])
-      else
+      if params[:alive] == "true"
         render json: clan.samurais.alive.to_json(only: %w[id clan_id name armor_quality battle_count join_date death_date])
+      else
+        render json: clan.samurais.dead.to_json(only: %w[id clan_id name armor_quality battle_count join_date death_date])
       end
     else
       render json: clan.samurais.to_json(only: %w[id clan_id name armor_quality battle_count join_date death_date])

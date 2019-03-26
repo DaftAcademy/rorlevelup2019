@@ -1,39 +1,50 @@
 require 'rails_helper'
 
-RSpec.describe ClansController, type: :controller do
+RSpec.describe ClansController, type: :request do
 
-  describe "GET #show" do
+  let!(:clan) { create(:clan) }
+
+  describe "GET /clans/:id" do
+    before { get "/clans/#{clan.id}" }
     it "returns http success" do
-      get :show
+      expect(response).to have_http_status(:success)
+      expect(response.body).not_to be_empty
+    end
+  end
+
+  describe "GET /clans" do
+    before { get '/clans' }
+    it "returns http success" do
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET #index" do
-    it "returns http success" do
-      get :index
-      expect(response).to have_http_status(:success)
+  describe "POST /clans" do
+    before { post '/clans', params: { name: "klan odc 1231" } }
+    it "returns created clan" do
+      expect(JSON.parse(response.body)['name']).to eq("klan odc 1231")
+    end
+
+    it "returns 422 when invalid data" do
+      post '/clans'
+      expect(response).to have_http_status(422)
     end
   end
 
-  describe "GET #create" do
-    it "returns http success" do
-      get :create
-      expect(response).to have_http_status(:success)
+  describe "PUT /clans/:id" do
+    before { put "/clans/#{clan.id}", params: { name: "klan odc 1233" }  }
+    it "returns updated name" do
+      expect(JSON.parse(response.body)['name']).to eq("klan odc 1233")
     end
   end
 
-  describe "GET #update" do
-    it "returns http success" do
-      get :update
-      expect(response).to have_http_status(:success)
-    end
-  end
-
-  describe "GET #destroy" do
-    it "returns http success" do
-      get :destroy
-      expect(response).to have_http_status(:success)
+  describe "DELETE /clans" do
+    before {
+      post '/clans', params: { name: "klan odc 1231" }
+      delete '/clans/2'
+    }
+    it "returns http no content" do
+      expect(response).to have_http_status(204)
     end
   end
 

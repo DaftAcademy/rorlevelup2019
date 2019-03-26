@@ -37,6 +37,6 @@ class ClansController < ApplicationController
   end
 
   def clan_params
-    params.permit(:name, :id)
+    params.permit(:name)
   end
 end

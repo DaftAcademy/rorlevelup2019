@@ -10,7 +10,6 @@ class ClansController < ApplicationController
   # POST /clans
   def create
     @clan = Clan.create!(clan_params)
-    @clan ? json_response(@clan, :created) : json_response('Error', :unprocessable_entity)
   end
 
   private

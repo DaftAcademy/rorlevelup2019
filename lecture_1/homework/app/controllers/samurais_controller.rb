@@ -2,26 +2,19 @@ class SamuraisController < ApplicationController
 
     # GET /clans/:clan_id/samurais
     def index
-        if params[:alive].present?
-            if params[:alive] == "false"
-                samurais = clan.samurais.where.not(death_date: nil)
-            elsif params[:alive] == "true"
-                samurais = clan.samurais.where(death_date: nil)
-            end
-        else
-            samurais = clan.samurais
-        end
 
-        if params[:limit].present?
-            samurais = samurais.first(params[:limit].to_i)
-        end
+        samurais = clan.samurais
+
+        samurais = filter_samurais(samurais, params)
+
+        samurais = samurais.first(params[:limit].to_i) if params[:limit].present?
 
         render json: samurais.to_json(only: %w[id name armor battles join_date death_date])
     end
 
     # POST /clans/:clan_id/samurais
     def create
-        samurai = clan.samurais.create!(samurai_params)
+        samurai.create!(samurai_params)
         render json: samurai.to_json(only: %w[id name armor battles join_date death_date]), status: 201
     end
 
@@ -44,11 +37,22 @@ class SamuraisController < ApplicationController
     end
 
     def samurai
-        clan.samurais.find(params[:id])
+        @samurai ||= clan.samurais.find(params[:id])
     end
 
     def samurai_params
         params.permit(:name, :armor, :battles, :join_date, :death_date)
+    end
+
+    def filter_samurais(samurais, params)
+        samurais = filter_alive(samurais, params[:alive]) if params[:alive].present?
+        return samurais
+    end
+
+    def filter_alive(samurais, is_alive)
+        samurais = samurais.where(death_date: nil) if is_alive == 'true'
+        samurais = samurais.where.not(death_date: nil) if is_alive == 'false'
+        return samurais
     end
 
 end

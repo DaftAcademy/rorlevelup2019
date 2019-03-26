@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_26_202731) do
+ActiveRecord::Schema.define(version: 2019_03_26_203423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(version: 2019_03_26_202731) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_clans_on_name", unique: true
   end
 
   create_table "hussars", force: :cascade do |t|
@@ -62,6 +63,7 @@ ActiveRecord::Schema.define(version: 2019_03_26_202731) do
     t.datetime "updated_at", null: false
     t.string "defensible_type"
     t.bigint "defensible_id"
+    t.index ["clan_id", "name"], name: "index_warriors_on_clan_id_and_name", unique: true, where: "(death_date IS NULL)"
     t.index ["clan_id"], name: "index_warriors_on_clan_id"
     t.index ["defensible_type", "defensible_id"], name: "index_warriors_on_defensible_type_and_defensible_id"
   end

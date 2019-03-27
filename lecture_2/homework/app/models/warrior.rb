@@ -1,6 +1,7 @@
 class Warrior < ApplicationRecord
     belongs_to :clan
     belongs_to :defensible, polymorphic: true
+    has_one :weapon, as: :attackable
 
     validates :name, presence: true, uniqueness: { scope: 'death_date.present?', :clan_id }
     validates :armor_quality, numericality: { only_integer: true,

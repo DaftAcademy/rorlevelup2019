@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   resources :clans, only: %i[index create] do
-    resources :samurais
+    scope module: 'clans' do
+      resources :samurais
+    end
   end
 end

@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+clan_1 = Clan.create!(name: 'Blooming cherry')
+p '1 clan created'
+# Defensible.create!("castle")
+Samurai.create!(name: 'Mietek', armor_quality: 100, join_date: Date.today, clan: clan_1)
+# Hussar.create!(name: 'Mietek_ale_nieżywy', armor_quality: 23, join_date: Date.today, death_date: Date.today, clan: clan_1)
+# Bowman.create!(name: 'Mietek_ale_inny', armor_quality: 75, join_date: Date.today, clan: clan_1)
+# Canon.create!(name: 'Mietek_ale_armata', armor_quality: 75, join_date: Date.today, clan: clan_1)
+# p 'army crated'

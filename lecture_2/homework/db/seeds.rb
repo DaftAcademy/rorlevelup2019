@@ -10,7 +10,10 @@ clan_1 = Clan.create!(name: 'Blooming cherry')
 p '1 clan created'
 # Defensible.create!("castle")
 Samurai.create!(name: 'Mietek', armor_quality: 100, join_date: Date.today, clan: clan_1)
-# Hussar.create!(name: 'Mietek_ale_nieżywy', armor_quality: 23, join_date: Date.today, death_date: Date.today, clan: clan_1)
-# Bowman.create!(name: 'Mietek_ale_inny', armor_quality: 75, join_date: Date.today, clan: clan_1)
-# Canon.create!(name: 'Mietek_ale_armata', armor_quality: 75, join_date: Date.today, clan: clan_1)
+Samurai.create!(name: 'Mietek_ale_nieżywy', armor_quality: 23, join_date: Date.today, death_date: Date.today, clan: clan_1)
+Bowman.create!(name: 'Mietek_ale_z_rogalem', armor_quality: 75, join_date: Date.today, clan: clan_1)
+Canon.create!(name: 'Mietek_ale_armata', armor_quality: 75, join_date: Date.today, clan: clan_1)
+Hussar.create!(name: 'Mietek_ale_Zagłoba', armor_quality: 100, join_date: Date.today, clan: clan_1)
+
+p clan_1.warriors.map(&:attack)
 # p 'army crated'

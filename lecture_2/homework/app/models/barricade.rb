@@ -1,0 +1,2 @@
+class Barricade < ApplicationRecord
+end

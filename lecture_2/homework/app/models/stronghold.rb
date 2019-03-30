@@ -1,0 +1,2 @@
+class Stronghold < ApplicationRecord
+end

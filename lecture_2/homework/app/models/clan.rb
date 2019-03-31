@@ -1,4 +1,5 @@
 class Clan < ApplicationRecord
-  has_many :samurais, dependent: :destroy
-  validates :name, presence: true
+  has_many :warriors, dependent: :destroy
+  validates :name, presence: true, uniqueness: true
+
 end

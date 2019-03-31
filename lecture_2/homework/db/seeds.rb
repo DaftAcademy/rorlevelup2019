@@ -5,3 +5,10 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+c1 = Clan.create!(name: 'Minamoto')
+d = Stronghold.create!(name: 'Himeji')
+s1 = Samurai.create!(name: 'Tokugawa', clan: c1,defensible: d)
+s2 = Samurai.create!(name: 'Hoji', clan: c1,defensible: d)
+sword = Sword.create!(name: 'Amaterasu',damage: 100,range: 2,warrior: s1)
+ranged = Ranged.create!(name: 'Chidori' , damage: 10, range: 20, warrior: s2)
+#

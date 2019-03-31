@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_14_150921) do
+ActiveRecord::Schema.define(version: 2019_03_29_155307) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,25 @@ ActiveRecord::Schema.define(version: 2019_03_14_150921) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "samurais", force: :cascade do |t|
+  create_table "strongholds", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "towers", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trees", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "warriors", force: :cascade do |t|
     t.string "name", null: false
     t.integer "armor_quality", default: 0
     t.integer "number_of_battles", default: 0
@@ -30,8 +48,25 @@ ActiveRecord::Schema.define(version: 2019_03_14_150921) do
     t.bigint "clan_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["clan_id"], name: "index_samurais_on_clan_id"
+    t.string "type", default: "Samurai"
+    t.string "defensible_type"
+    t.bigint "defensible_id"
+    t.index ["clan_id"], name: "index_warriors_on_clan_id"
+    t.index ["defensible_type", "defensible_id"], name: "index_warriors_on_defensible_type_and_defensible_id"
+    t.index ["name"], name: "index_warriors_on_name", unique: true
   end
 
-  add_foreign_key "samurais", "clans"
+  create_table "weapons", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "type", default: "Sword"
+    t.integer "damage", default: 1
+    t.integer "range", default: 1
+    t.bigint "warrior_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["warrior_id"], name: "index_weapons_on_warrior_id"
+  end
+
+  add_foreign_key "warriors", "clans"
+  add_foreign_key "weapons", "warriors"
 end

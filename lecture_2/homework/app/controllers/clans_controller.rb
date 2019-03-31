@@ -11,7 +11,7 @@ class ClansController < ApplicationController
 
   private
 
-  def clan_params
-    params.permit(:name)
-  end
+    def clan_params
+      params.permit(:name)
+    end
 end

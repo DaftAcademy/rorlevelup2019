@@ -35,16 +35,16 @@ module Clans
 
     private
 
-    def clan
-      @clan ||= Clan.find(params[:clan_id])
-    end
+      def clan
+        @clan ||= Clan.find(params[:clan_id])
+      end
 
-    def samurai
-      @samurai ||= Samurai.find_by!(id: params[:id], clan_id: params[:clan_id])
-    end
+      def samurai
+        @samurai ||= Samurai.find_by!(id: params[:id], clan_id: params[:clan_id])
+      end
 
-    def samurai_params
-      params.permit(:name, :death_date, :armor_quality, :number_of_battles, :join_date)
-    end
+      def samurai_params
+        params.permit(:name, :death_date, :armor_quality, :number_of_battles, :join_date)
+      end
   end
 end

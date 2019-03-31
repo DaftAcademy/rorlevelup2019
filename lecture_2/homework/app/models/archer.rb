@@ -1,8 +1,6 @@
-class Samurai < Warrior
-  
+class Archer < Warrior
   #TODO: Fill with weapon
   def attack
     "#{name} used "
   end
-
 end

@@ -5,6 +5,6 @@ FactoryBot.define do
     number_of_battles { Random.rand(20) }
     death_date { Faker::Date.between(2.years.ago, Date.today) }
     join_date { Faker::Date.between(4.years.ago, 3.years.ago) }
-    association :clan    
+    association :clan
   end
 end

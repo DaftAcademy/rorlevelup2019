@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_27_062534) do
+ActiveRecord::Schema.define(version: 2019_03_31_200856) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,12 @@ ActiveRecord::Schema.define(version: 2019_03_27_062534) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["name"], name: "index_clans_on_name", unique: true
+  end
+
+  create_table "structures", force: :cascade do |t|
+    t.string "type", default: "Wall"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "warriors", force: :cascade do |t|
@@ -32,14 +38,13 @@ ActiveRecord::Schema.define(version: 2019_03_27_062534) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "type", default: "Samurai"
-    t.string "defensible_type"
-    t.bigint "defensible_id"
     t.string "attackable_type"
     t.bigint "attackable_id"
+    t.bigint "structure_id"
     t.index ["attackable_type", "attackable_id"], name: "index_warriors_on_attackable_type_and_attackable_id"
     t.index ["clan_id"], name: "index_warriors_on_clan_id"
-    t.index ["defensible_type", "defensible_id"], name: "index_warriors_on_defensible_type_and_defensible_id"
     t.index ["name", "clan_id"], name: "index_warriors_on_name_and_clan_id", unique: true, where: "(death_date IS NULL)"
+    t.index ["structure_id"], name: "index_warriors_on_structure_id"
   end
 
   create_table "weapons", force: :cascade do |t|

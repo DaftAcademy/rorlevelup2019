@@ -1,3 +1,2 @@
-class Tower < ApplicationRecord
-    has_many :warriors, as: :defensible
+class Tower < Structure
 end

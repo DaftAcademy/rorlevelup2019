@@ -1,3 +1,2 @@
-class Wall < ApplicationRecord
-    has_many :warriors, as: :defensible
+class Wall < Structure
 end

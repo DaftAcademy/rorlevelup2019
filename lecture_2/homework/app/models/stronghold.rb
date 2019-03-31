@@ -1,3 +1,2 @@
-class Stronghold < ApplicationRecord
-    has_many :warriors, as: :defensible
+class Stronghold < Structure
 end

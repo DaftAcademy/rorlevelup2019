@@ -1,3 +1,2 @@
-class Barricade < ApplicationRecord
-    has_many :warriors, as: :defensible
+class Barricade < Structure
 end

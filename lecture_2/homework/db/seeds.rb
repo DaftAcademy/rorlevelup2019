@@ -9,8 +9,10 @@
   clan = Clan.create(name: 'Superclan')
   Clan.create(name: 'Plague')
   barricade = Barricade.create
-  Warrior.create(clan: clan, name: 'Abe Masakatsu', 
-                             defensible: barricade)
+  warrior = Warrior.create(clan: clan, name: 'Abe Masakatsu', 
+                                       defensible: barricade)
+  warrior.create_weapon
+  
   Warrior.create(clan: clan, name: 'Adachi Yasumori', 
-                             defensible: barricade, 
+                             defensible: barricade,
                              death_date: Date.today)

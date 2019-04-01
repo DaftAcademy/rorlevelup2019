@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b08ef588-530e-4915-b1b3-b249d6ecf2a8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/rorlevelup2019.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/rorlevelup2019.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lecture_2/homework/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/lecture_2/homework/.gitignore" afterDir="false" />
-    </list>
+    <list default="true" id="b08ef588-530e-4915-b1b3-b249d6ecf2a8" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -43,7 +40,7 @@
     <session id="-852504092">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="3" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.opened" value="1" />
         </counts>
@@ -272,11 +269,10 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1385000" />
+    <option name="totallyTimeSpent" value="1957000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="149" y="158" width="1132" height="803" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26330274" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />

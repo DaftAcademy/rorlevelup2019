@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Clans
   class SamuraisController < ApplicationController
     def show
@@ -20,7 +22,7 @@ module Clans
     def create
       samurai = clan.samurais.create!(samurai_params)
 
-      render json: samurai.to_json, status: 201
+      render json: samurai.to_json, status: :created
     end
 
     def update

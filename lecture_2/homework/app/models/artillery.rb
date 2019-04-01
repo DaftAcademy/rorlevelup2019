@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class Artillery < Warrior
   def attack
-    "Pooof!!!"
+    'Pooof!!!'
   end
 end

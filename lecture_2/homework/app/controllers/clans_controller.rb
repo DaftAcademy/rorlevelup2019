@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ClansController < ApplicationController
   def index
     render json: Clan.all.to_json
@@ -6,7 +8,7 @@ class ClansController < ApplicationController
   def create
     clan = Clan.create!(clan_params)
 
-    render json: clan.to_json, status: 201
+    render json: clan.to_json, status: :created
   end
 
   private

@@ -1,6 +1,7 @@
 class Warrior < ApplicationRecord
   belongs_to :clan
   belongs_to :defensible, polymorphic: true
+  has_one :weapon, as: :offensive
 
   validates :name, presence: true,
                    uniqueness: { conditions: -> { where("death_date IS NULL") },

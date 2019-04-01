@@ -3,7 +3,7 @@
 module Clans
   class WarriorsController < ApplicationController
     def show
-      render json: warrior.to_json
+      render json: warrior.as_json(:include => 'clan', :include => 'defensible')
     end
 
     def index
@@ -22,17 +22,18 @@ module Clans
     def create
       warrior = clan.warriors.create!(warrior_params)
 
-      render json: warrior.to_json, status: :created
+      render json: warrior.as_json(:include => 'clan'), status: :created
     end
 
     def update
       warrior.update!(warrior_params)
 
-      render json: warrior.to_json
+      render json: warrior.as_json(:include => 'clan')
     end
 
     def destroy
       warrior.destroy!
+      render head:204
     end
 
     private

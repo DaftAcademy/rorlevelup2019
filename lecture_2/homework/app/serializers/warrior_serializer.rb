@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WarriorSerializer < ActiveModel::Serializer
   attributes :id, :name, :type, :armor_quality,
              :number_of_battles, :death_date, :join_date

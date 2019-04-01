@@ -1,7 +1,7 @@
 class Warrior < ApplicationRecord
     belongs_to :clan
     belongs_to :structure
-    has_one :weapon, as: :attackable
+    belongs_to :weapon
 
     validates :name, presence: true, uniqueness: { scope: :clan_id }, if: Proc.new { |it| it.death_date.blank? }, on: :update
     validates :name, presence: true, uniqueness: { scope: :clan_id }, unless: Proc.new { |it| it.death_date.blank? }, on: :create

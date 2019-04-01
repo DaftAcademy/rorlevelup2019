@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_01_143516) do
+ActiveRecord::Schema.define(version: 2019_04_01_151334) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -19,7 +19,6 @@ ActiveRecord::Schema.define(version: 2019_04_01_143516) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["name"], name: "index_clans_on_name"
   end
 
   create_table "warriors", force: :cascade do |t|
@@ -33,6 +32,7 @@ ActiveRecord::Schema.define(version: 2019_04_01_143516) do
     t.datetime "updated_at", null: false
     t.string "type", default: "Samurai"
     t.index ["clan_id"], name: "index_warriors_on_clan_id"
+    t.index ["name"], name: "index_warriors_on_name", unique: true
   end
 
   add_foreign_key "warriors", "clans"

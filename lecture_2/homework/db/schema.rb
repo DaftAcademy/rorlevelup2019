@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_31_114701) do
+ActiveRecord::Schema.define(version: 2019_03_31_185234) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,12 @@ ActiveRecord::Schema.define(version: 2019_03_31_114701) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "bows", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "range", default: 30
+  end
+
   create_table "clans", force: :cascade do |t|
     t.string "name", default: "unnamed", null: false
     t.datetime "created_at", null: false
@@ -37,6 +43,12 @@ ActiveRecord::Schema.define(version: 2019_03_31_114701) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "katanas", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "range", default: 2
+  end
+
   create_table "strongholds", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -45,6 +57,12 @@ ActiveRecord::Schema.define(version: 2019_03_31_114701) do
   create_table "towers", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "wands", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "range", default: 15
   end
 
   create_table "warriors", force: :cascade do |t|
@@ -63,5 +81,18 @@ ActiveRecord::Schema.define(version: 2019_03_31_114701) do
     t.index ["defensible_type", "defensible_id"], name: "index_warriors_on_defensible_type_and_defensible_id"
   end
 
+  create_table "weapons", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "damage", null: false
+    t.bigint "warrior_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "type", default: "Katana"
+    t.integer "kind"
+    t.integer "range", default: 1
+    t.index ["warrior_id"], name: "index_weapons_on_warrior_id"
+  end
+
   add_foreign_key "warriors", "clans"
+  add_foreign_key "weapons", "warriors"
 end

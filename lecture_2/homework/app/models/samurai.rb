@@ -5,4 +5,8 @@ class Samurai < Warrior
     "#{name} used "
   end
 
+  def style
+    :melee
+  end
+
 end

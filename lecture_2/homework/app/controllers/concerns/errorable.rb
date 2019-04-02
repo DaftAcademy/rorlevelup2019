@@ -6,7 +6,7 @@ module Errorable
     rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_error
   end
 
-  def render_validation_error(expeption)
+  def render_validation_error(exception)
     render json: exception.record.errors, status: 422
   end
 

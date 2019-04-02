@@ -1,0 +1,44 @@
+rescue_from ActiveRecord::RecordInvalid, with: :render_validation_error
+rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_error
+
+^ Zrobić tak! 
+
+Dodać metody render validation error itd 
+Zajmowanie się mniejszymi błędami, ak to, że nie znaleziono jakiegoś resourca z danym id
+itd
+
+Obsługa błędów: Sentry.io: trackowanie błędów 500
+
+2. Standard {JSON: API}
+
+    Też gotowe biblioteki itd.
+
+    a. Koncept czegoś takiego jak resource object: opis jednego obiektu.
+    Mamy jego id, typ obiektu i atrybuty
+
+    Możemy też zwracać kolekcje obiektów
+
+    Obiekty mogą też mieć relacje!
+
+3. Serializacja danych (bo są do tego biblioteki!)
+->  Active Model Serializer (gem 'active_model_serializers') 
+    Twórcy twierdzą, że jest niewspierany i będzie przepisywany, ale na początek jest prosty
+
+    Możemy potem serializować rzeczy:
+    rails g serializer shogun
+
+    w powstałej klasie ShogunSerializer dodajemy atrybuty które chcemy
+
+    i już nie musimy robić to_json! Jeżeli renderujemy Shoguna, to samo się znajdzie ShogunSerializer.
+
+    No ale on nie robi w standardzie {JSON: API}
+
+    Więc w configu musimy mu to ustalić: ActiveModelSerializers.config.adapter = :json_api
+
+    Żeby includować inne obiekty w obiektach, (include 'clan') też musimy mu zrobić serializer!
+
+    Inne api: fast_jsonapi (netflixowe, robi 1000 razy szybciej, bo active model serializer był dla nich za wolny)
+        jsonapi-resources (większy)
+        panko (NIE wspiera json: api, ale jest ciekawym rozwiązaniem: do api wewnętrznego)
+
+    

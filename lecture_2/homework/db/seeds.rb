@@ -5,3 +5,13 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+Stronghold.create!(name: "Castamare")
+Stronghold.create!(name: "Black Castle")
+Stronghold.create!(name: "Old Town")
+Tower.create!(name: "High Tower")
+Tower.create!(name: "Black Tower")
+Tower.create!(name: "Rock Tower")
+Tavern.create!(name: "Grey Goose")
+Tavern.create!(name: "Fool")
+Tavern.create!(name: "One more")

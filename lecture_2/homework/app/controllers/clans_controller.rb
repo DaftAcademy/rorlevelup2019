@@ -9,9 +9,18 @@ class ClansController < ApplicationController
     render json: clan.to_json, status: 201
   end
 
+  def destroy
+    clan.destroy!
+  end
+
   private
 
   def clan_params
     params.permit(:name)
   end
+
+  def clan
+    @clan ||= Clan.find(params[:id])
+  end
+
 end

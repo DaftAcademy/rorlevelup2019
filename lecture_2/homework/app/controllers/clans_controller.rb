@@ -1,16 +1,16 @@
 class ClansController < ApplicationController
   
   def index
-    render json: Clan.all.to_json
+    render json: Clan.all
   end
 
   def create
     clan = Clan.create!(clan_params)
-    render json: clan.to_json, status: 201
+    render json: clan
   end
 
   def show 
-    render json: clan
+    render json: clan, include: 'warriors'
   end
 
   private
@@ -22,5 +22,9 @@ class ClansController < ApplicationController
   def clan
     @clan ||= Clan.find(params[:id])
   end
-  
+
+  def clan_params
+    params.premit(:name)
+  end
+
 end

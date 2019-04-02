@@ -9,7 +9,9 @@
 clan_1 = Clan.create!(name: 'Blooming cherry')
 clan_2 = Clan.create!(name: 'Blooming apple')
 p '1 clan created'
-p Samurai.create!(name: 'Mietek', armor_quality: 100, join_date: Date.today, clan: clan_1, defensible: Castle.create)
+p mietek = Samurai.create!(name: 'Mietek', armor_quality: 100, join_date: Date.today, clan: clan_1, defensible: Castle.create, offensible: Magical.create!(name: 'nmkkj'))
+
+# mietek.offensible =  Magical.create!(name: 'nmkkj')
 p Samurai.create!(name: 'Mietek', armor_quality: 100, join_date: Date.today, clan: clan_2, defensible: Castle.create)
 # p Samurai.create!(name: 'Mietek', armor_quality: 100, join_date: Date.today, clan: clan_1, defensible: Castle.create)
 p Samurai.create!(name: 'Mietek_ale_nieżywy', armor_quality: 23, join_date: Date.today, death_date: Date.today, clan: clan_1, defensible: Stronghold.create)

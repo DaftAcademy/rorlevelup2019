@@ -7,10 +7,14 @@ module Errorable
     end
 
     def render_validation_error(exception)
-        render json: exception.record.errors, status: 422
+        data = { errors: [] }
+        data[:errors] << { title: exception.message, status: 422 }
+        render json: data, status: :unprocessable_entity
     end
 
     def render_not_found_error(exception)
-        render json: { errors: exception.message }, status: 404
+        data = { errors: [] }
+        data[:errors] << { title: exception.message, status: 404 }
+        render json: data, status: :not_found
     end
 end

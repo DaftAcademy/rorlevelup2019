@@ -10,12 +10,30 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_02_183738) do
+ActiveRecord::Schema.define(version: 2019_04_02_193549) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "clans", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "strongholds", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "towers", force: :cascade do |t|
+    t.string "name", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "trees", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -40,9 +58,9 @@ ActiveRecord::Schema.define(version: 2019_04_02_183738) do
 
   create_table "weapons", force: :cascade do |t|
     t.string "name", null: false
-    t.string "type", default: "Sword"
-    t.integer "damege", default: 1
-    t.integer "ranage", default: 1
+    t.string "type"
+    t.integer "damage", default: 1
+    t.integer "range", default: 1
     t.bigint "warrior_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

@@ -23,17 +23,13 @@ class WarriorsController < ApplicationController
     end
       
     def update
-     begin
       warrior.update!(wars_params)
-      render json: warrior, include: 'clan'
-     end        
+      render json: warrior, include: 'clan'     
     end
       
     def destroy
-     begin
       warrior.destroy!
       render head:204
-     end  
     end
 
     private
@@ -47,6 +43,6 @@ class WarriorsController < ApplicationController
     end
 
     def wars_params
-     params.permit(:name, :armor_quality, :join_date, :death_date)
+     params.permit(:clan_id,:name,:type,:defensible_id,:defensible_type, :armor_quality, :join_date, :death_date)
     end
 end

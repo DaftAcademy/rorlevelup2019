@@ -3,8 +3,13 @@
 class Warrior < ApplicationRecord
     belongs_to :clan
     belongs_to :defensible, polymorphic: true
+    has_one :weapon
+
+    validates_presence_of :weapon
   
     validates :name, presence: true, length: { maximum: 256 }
+    validates_uniqueness_of :name, scope: :clan_id, conditions: -> { where(death_date: 'nil') }, message: "There can be only one living samurai of that name in a clan."
+
     validates :armor, presence: true, numericality: { greater_than: 0, less_than: 1000, only_integer: true }
     validates :battles, presence: true, numericality: { greater_than_or_equal_to: 0, only_integer: true }
     validates :join_date, presence: true

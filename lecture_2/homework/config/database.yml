@@ -1,11 +1,9 @@
-default: &default
+development:
   adapter: postgresql
   encoding: unicode
-  database: szoroh
-
-development:
-  <<: *default
+  database: development_pg
 
 test: &test
-  <<: *default
-  database: szoroh
+  adapter: postgresql
+  encoding: unicode
+  database: test_pg

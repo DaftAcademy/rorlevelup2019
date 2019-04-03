@@ -1,0 +1,11 @@
+class CreateTowers < ActiveRecord::Migration[5.2]
+  def change
+    create_table :towers do |t|
+
+      t.string :name, null: false
+      t.integer :height, default: 20
+      t.integer :strength, default: 100
+      t.timestamps
+    end
+  end
+end

@@ -11,5 +11,14 @@
 require 'faker'
 
 10.times do
-  Clan.create!(name: Faker::Games::ElderScrolls.race)
+ klan = Clan.create!(name: Faker::Games::ElderScrolls.race)
 end
+
+
+
+#klan         = Clan.create!(name: Faker::Name)
+#twierdza     = Stronghold.create!(name: Faker::House::ElderScrolls.race)
+#samurai_one  = Samurai.create!(name: Faker::Name::ElderScrolls.race, clan: klan, defensible: twierdza)
+#samurai_two  = Samurai.create!(name: Faker::Name::ElderScrolls.race, clan: klan, defensible: twierdza)
+#sword        = Sword.create!(name: Faker::Name::ElderScrolls.race, damage: 100, range: 2, warrior: samurai_one )
+#range        = Range.create!(name: Faker::Name::ElderScrolls.race, damage: 10, range: 20, warrior: samurai_two)

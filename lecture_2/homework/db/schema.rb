@@ -64,7 +64,7 @@ ActiveRecord::Schema.define(version: 2019_03_28_190612) do
     t.bigint "clan_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "type", default: "Saumrai"
+    t.string "type", default: "Samurai"
     t.string "defensible_type"
     t.bigint "defensible_id"
     t.string "offensible_type"
@@ -72,6 +72,17 @@ ActiveRecord::Schema.define(version: 2019_03_28_190612) do
     t.index ["clan_id"], name: "index_warriors_on_clan_id"
     t.index ["defensible_type", "defensible_id"], name: "index_warriors_on_defensible_type_and_defensible_id"
     t.index ["offensible_type", "offensible_id"], name: "index_warriors_on_offensible_type_and_offensible_id"
+  end
+
+  create_table "weapons", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "range", default: 0, null: false
+    t.integer "damage", default: 0, null: false
+    t.string "offensible_type"
+    t.bigint "offensible_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["offensible_type", "offensible_id"], name: "index_weapons_on_offensible_type_and_offensible_id"
   end
 
   add_foreign_key "warriors", "clans"

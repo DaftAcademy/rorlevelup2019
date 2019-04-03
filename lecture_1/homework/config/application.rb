@@ -35,3 +35,7 @@ module Lecture1
     config.api_only = true
   end
 end
+
+Raven.configure do |config|
+  config.dsn = 'https://ef34a25d19614ea8a135644b1fbe3df6:4393a31f314646f8a9b108a2479fcd3b@sentry.io/1430496'
+end

@@ -42,7 +42,7 @@ class WarriorsController < ApplicationController
   end
 
   def warrior_params
-    params.permit(:name, :armor, :battles, :join_date, :death_date, :type)
+    params.permit(:name, :armor, :battles, :join_date, :death_date, :type, :weapon)
   end
 
   def warrior_json(warrior)

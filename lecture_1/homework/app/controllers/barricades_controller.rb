@@ -2,7 +2,6 @@ class BarricadesController < ApplicationController
 
     # GET /barricades
     def index
-      barricades = barricades
       render json: barricade_json(barricades)
     end
 

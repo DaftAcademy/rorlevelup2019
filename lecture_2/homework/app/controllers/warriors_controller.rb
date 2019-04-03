@@ -36,6 +36,7 @@ class WarriorsController < ApplicationController
   end
 
   def warrior
+    clan ||= Clan.find(params[:clan_id])
     @warrior ||= clan.warriors.find(params[:id])
   end
 

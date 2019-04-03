@@ -10,15 +10,22 @@
 
 require 'faker'
 
-10.times do
- klan = Clan.create!(name: Faker::Games::ElderScrolls.race)
-end
+#10.times do
+# klan = Clan.create!(name: Faker::Games::ElderScrolls.race)
+# end
 
 
 
-#klan         = Clan.create!(name: Faker::Name)
-#twierdza     = Stronghold.create!(name: Faker::House::ElderScrolls.race)
-#samurai_one  = Samurai.create!(name: Faker::Name::ElderScrolls.race, clan: klan, defensible: twierdza)
-#samurai_two  = Samurai.create!(name: Faker::Name::ElderScrolls.race, clan: klan, defensible: twierdza)
-#sword        = Sword.create!(name: Faker::Name::ElderScrolls.race, damage: 100, range: 2, warrior: samurai_one )
-#range        = Range.create!(name: Faker::Name::ElderScrolls.race, damage: 10, range: 20, warrior: samurai_two)
+
+
+
+klan1 = Clan.create!(name: "Klan_Debski22")
+klan2 = Clan.create!(name: "Klan_Wawer22")
+twierdza     = Stronghold.create(name: 'Twierdza_X22')
+samurai_one  = Samurai.create(name: 'Madek22', clan: klan1, defensible: twierdza)
+samurai_two  = Samurai.create(name: 'Kasia22', clan: klan2, defensible: twierdza)
+sword        = Sword.create(name: 'Super_Sword_One122', damage: 100, range: 2, warrior: samurai_one )
+range = Ranged.create(name: 'Ala_ma_kota122', damage: 10, range: 20, warrior: samurai_two)
+
+p sword
+puts range

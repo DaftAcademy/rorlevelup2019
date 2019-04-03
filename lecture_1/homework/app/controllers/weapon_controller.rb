@@ -1,0 +1,2 @@
+class WeaponController < ApplicationController
+end

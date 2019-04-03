@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_02_204228) do
+ActiveRecord::Schema.define(version: 2019_04_03_133456) do
 
-  create_table "barricade", force: :cascade do |t|
+  create_table "barricades", force: :cascade do |t|
     t.string "name", limit: 256, null: false
     t.integer "defense", null: false
   end
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_04_02_204228) do
     t.index ["name"], name: "index_clans_on_name", unique: true
   end
 
-  create_table "stronghold", force: :cascade do |t|
+  create_table "strongholds", force: :cascade do |t|
     t.string "name", limit: 256, null: false
     t.integer "defense", null: false
   end
@@ -45,6 +45,7 @@ ActiveRecord::Schema.define(version: 2019_04_02_204228) do
     t.string "type", default: "melee", null: false
     t.integer "range", null: false
     t.integer "warrior_id"
+    t.integer "damage", default: 0, null: false
     t.index ["warrior_id"], name: "index_weapons_on_warrior_id"
   end
 

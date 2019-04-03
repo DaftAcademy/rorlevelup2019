@@ -2,9 +2,6 @@
 
 class WarriorsController < ApplicationController
 
-  rescue_from ActiveRecord::RecordInvalid, with: :render_validation_error
-  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_error
-
   # GET /clans/:clan_id/warriors
   def index
     warriors = clan.warriors
@@ -20,18 +17,12 @@ class WarriorsController < ApplicationController
   def create
     warrior = clan.warriors.create!(warrior_params)
     render json: warrior_json(warrior), status: 201
-  rescue ActiveRecord::RecordInvalid => exception
-    render json: exception.to_json(only: %w[error]), status: 422
-  rescue ActiveRecord::SubclassNotFound => exception
-    render json: exception.to_json(only: %w[error]), status: 422
   end
 
   # PUT /clans/:clan_id/warriors/:id
   def update
     warrior.update!(samurai_params)
     render json: warrior_json(warrior)
-  rescue ActiveRecord::RecordInvalid => exception
-    render json: exception.to_json(only: %w[error]), status: 422
   end
 
   # DELETE /clans/:clan_id/warriors/:id
@@ -70,12 +61,6 @@ class WarriorsController < ApplicationController
     warriors
   end
 
-  def render_validation_error(exception)
-    render json: exception.record.errors, status: 422
-  end
 
-  def render_not_found_error(exception)
-    render json: { error: exception.message }, status: 404
-  end 
 
 end

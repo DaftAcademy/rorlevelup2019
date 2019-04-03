@@ -1,12 +1,12 @@
 class ClansController < ApplicationController
   def index
-    render json: Clan.all.to_json
+    render json: Clan.all, include: 'warriors'
   end
 
   def create
     clan = Clan.create!(clan_params)
 
-    render json: clan.to_json, status: 201
+    render json: clan, status: 201
   end
 
   private

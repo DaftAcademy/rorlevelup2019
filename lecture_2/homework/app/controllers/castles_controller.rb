@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CastlesController < ApplicationController
   def index
     castle = Castle.all
@@ -22,5 +24,4 @@ class CastlesController < ApplicationController
   def castle
     @castle ||= Castle.find_by!(id: params[:id])
   end
-
 end

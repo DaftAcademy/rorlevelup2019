@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Castle < ApplicationRecord
   has_many :warriors, as: :defensible
 

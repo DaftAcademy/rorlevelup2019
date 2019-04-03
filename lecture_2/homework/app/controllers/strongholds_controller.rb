@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StrongholdsController < ApplicationController
   def index
     stronghold = Stronghold.all

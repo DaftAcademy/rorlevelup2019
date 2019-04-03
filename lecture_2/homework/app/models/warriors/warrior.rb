@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Warrior < ApplicationRecord
   has_one :weapon, dependent: :destroy
   belongs_to :clan

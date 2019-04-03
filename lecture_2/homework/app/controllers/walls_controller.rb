@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WallsController < ApplicationController
   def index
     wall = Wall.all
@@ -22,5 +24,4 @@ class WallsController < ApplicationController
   def wall
     @wall ||= Wall.find_by!(id: params[:id])
   end
-
 end

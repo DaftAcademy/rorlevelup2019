@@ -1,6 +1,7 @@
+# frozen_string_literal: true
+
 module Clans
   class WeaponsController < ApplicationController
-
     def index
       weapon = Weapon.all
       render json: weapon
@@ -20,6 +21,5 @@ module Clans
     def weapon_params
       params.permit(:name, :type, :range, :damage)
     end
-
   end
 end

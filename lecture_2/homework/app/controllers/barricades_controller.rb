@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class BarricadesController < ApplicationController
   def index
     barricade = Barricade.all

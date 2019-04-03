@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TowersController < ApplicationController
   def index
     tower = Tower.all

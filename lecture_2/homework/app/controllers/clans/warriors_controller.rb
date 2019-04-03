@@ -1,16 +1,17 @@
+# frozen_string_literal: true
+
 module Clans
   class WarriorsController < ApplicationController
-
     def show
-      render json: warrior, include: "*."
+      render json: warrior, include: '*.'
     end
 
     def index
-      if building
-        warriors = building.warriors
-      else
-        warriors = clan.warriors
-      end
+      warriors = if building
+                   building.warriors
+                 else
+                   clan.warriors
+                 end
 
       if params.key?(:alive)
         if params[:alive].to_i == 0
@@ -24,11 +25,11 @@ module Clans
     end
 
     def create
-      if building
-        warrior = building.warriors.create!(warrior_params)
-      else
-        warrior = clan.warriors.create!(warrior_params)
-      end
+      warrior = if building
+                  building.warriors.create!(warrior_params)
+                else
+                  clan.warriors.create!(warrior_params)
+                end
 
       render json: warrior, status: 201
     end

@@ -1,5 +1,6 @@
-Rails.application.routes.draw do
+# frozen_string_literal: true
 
+Rails.application.routes.draw do
   resources :castles, only: %i[index show create] do
     resources :warriors, module: :clans do
       resources :weapons, only: %i[create]
@@ -25,7 +26,7 @@ Rails.application.routes.draw do
   end
 
   resources :walls, only: %i[index show create] do
-    resources :warriors, module: :clans  do
+    resources :warriors, module: :clans do
       resources :weapons, only: %i[create]
     end
   end
@@ -37,5 +38,4 @@ Rails.application.routes.draw do
   end
 
   resources :weapons, module: :clans, only: %i[index]
-
 end

@@ -1,7 +1,7 @@
 module Clans
   class WarriorsController < ApplicationController
     def show
-      render json: warrior.to_json
+      render json: warrior
     end
 
     def index
@@ -9,21 +9,24 @@ module Clans
       samurais = warriors.where(type: "Samurai")
       hussars = warriors.where(type: "Hussar")
       archers = warriors.where(type: "Archer")
+      wizards = warriors.where(type: "Wizard")
       if params.has_key?(:alive)
-        render json: warriors.alive.to_json
+        render json: warriors.alive
       elsif params.has_key?(:dead)
-        render json: warriors.dead.to_json
+        render json: warriors.dead
       elsif params.has_key?(:samurais)
-        render json: samurais.to_json
+        render json: samurais
       elsif params.has_key?(:hussars)
-        render json: hussars.to_json
+        render json: hussars
       elsif params.has_key?(:archers)
-        render json: archers.to_json
+        render json: archers
+      elsif params.has_key?(:wizards)
+        render json: wizards
       else
         if request.query_string == ""
-          render json: warriors.to_json
+          render json: warriors
         else
-          render json: {message: "Please use alive or dead as an additional query"}, status: 400
+          render json: {message: "Your query in not valid"}, status: 400
         end
       end
     end

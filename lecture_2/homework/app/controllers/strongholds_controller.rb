@@ -10,13 +10,13 @@ class StrongholdsController < ApplicationController
   end
 
   def create
-    stronghold = stronghold.create(stronghold_params)
+    stronghold = Stronghold.create!(stronghold_params)
   end
 
   private
 
   def stronghold
-    @stronghold ||= stronghold.find(params[:id])
+    @stronghold ||= Stronghold.find(params[:id])
   end
 
   def stronghold_params

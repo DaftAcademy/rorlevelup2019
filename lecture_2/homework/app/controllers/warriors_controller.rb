@@ -13,7 +13,7 @@ class WarriorsController < ApplicationController
   end
 
   def show
-    render json: warrior, include: 'clan', include: 'defensible', include: 'weapon'
+    render json: warrior, include: %w[clan defensible weapon]
   end
 
   def create

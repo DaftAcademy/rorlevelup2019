@@ -1,5 +1,6 @@
+# frozen_string_literal: true
+
 class ClansController < ApplicationController
-  
   def index
     render json: Clan.all
   end
@@ -9,7 +10,7 @@ class ClansController < ApplicationController
     render json: clan
   end
 
-  def show 
+  def show
     render json: clan, include: 'warriors'
   end
 
@@ -26,5 +27,4 @@ class ClansController < ApplicationController
   def clan_params
     params.premit(:name)
   end
-
 end

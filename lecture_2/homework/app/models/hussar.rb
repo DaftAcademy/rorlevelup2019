@@ -1,6 +1,7 @@
-class Hussar < Warrior
+# frozen_string_literal: true
 
-    def attack
-        "Charge!"
-    end
+class Hussar < Warrior
+  def attack
+    'Charge!'
+  end
 end

@@ -10,18 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_14_150921) do
+ActiveRecord::Schema.define(version: 2019_03_31_204718) do
 
   # These are extensions that must be enabled in order to support this database
+  enable_extension "adminpack"
   enable_extension "plpgsql"
+
+  create_table "buildings", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "type", default: "Fortress", null: false
+    t.integer "defense", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "clans", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_clans_on_name", unique: true
   end
 
-  create_table "samurais", force: :cascade do |t|
+  create_table "warriors", force: :cascade do |t|
     t.string "name", null: false
     t.integer "armor_quality", default: 0
     t.integer "number_of_battles", default: 0
@@ -30,8 +40,25 @@ ActiveRecord::Schema.define(version: 2019_03_14_150921) do
     t.bigint "clan_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["clan_id"], name: "index_samurais_on_clan_id"
+    t.string "type", default: "Samurai"
+    t.string "defensible_type"
+    t.bigint "defensible_id"
+    t.string "equipment_type"
+    t.bigint "equipment_id"
+    t.index ["clan_id"], name: "index_warriors_on_clan_id"
+    t.index ["defensible_type", "defensible_id"], name: "index_warriors_on_defensible_type_and_defensible_id"
+    t.index ["equipment_type", "equipment_id"], name: "index_warriors_on_equipment_type_and_equipment_id"
+    t.index ["name"], name: "index_warriors_on_name", unique: true, where: "(death_date IS NULL)"
   end
 
-  add_foreign_key "samurais", "clans"
+  create_table "weapons", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "type", null: false
+    t.integer "damage", default: 1, null: false
+    t.integer "range", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "warriors", "clans"
 end

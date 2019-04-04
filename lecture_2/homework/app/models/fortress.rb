@@ -1,0 +1,2 @@
+class Fortress < Building
+end

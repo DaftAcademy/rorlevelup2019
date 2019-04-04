@@ -1,7 +1,7 @@
 class Warrior < ApplicationRecord
   belongs_to :clan
   belongs_to :defensible, polymorphic: true
-  has_one :weapon
+  has_one :weapon, dependent: :destroy
 
   validates :name,
             presence: true,

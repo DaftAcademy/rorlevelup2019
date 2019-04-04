@@ -17,6 +17,8 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+ActiveModelSerializers.config.adapter = :json_api
+
 module Lecture1
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

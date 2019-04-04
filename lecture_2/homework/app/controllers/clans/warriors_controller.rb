@@ -1,32 +1,32 @@
 module Clans
   class WarriorsController < ApplicationController
     def show
-      render json: warrior
+      render json: warrior, include: %w[clan weapon]
     end
 
     def index
       warriors = clan.warriors
       if params.key?(:alive)
         if params[:alive].to_i == 0
-          render json: warriors.dead
+          render json: warriors.dead, include: %w[clan weapon]
         else
-          render json: warriors.alive
+          render json: warriors.alive, include: %w[clan weapon]
         end
       else
-        render json: warriors
+        render json: warriors, include: %w[clan weapon]
       end
     end
 
     def create
       warrior = clan.warriors.create!(warrior_params)
 
-      render json: warrior, status: 201
+      render json: warrior, include: %w[clan weapon], status: 201
     end
 
     def update
       warrior.update!(warrior_params)
 
-      render json: warrior
+      render json: warrior, include: %w[clan weapon]
     end
 
     def destroy

@@ -10,7 +10,7 @@ class TreesController < ApplicationController
   end
 
   def create
-    tree = Tree.create(tree_params)
+    tree = Tree.create!(tree_params)
   end
 
   private

@@ -10,7 +10,7 @@ class TowerController < ApplicationController\
   end
 
   def create
-    tower = Tower.create(tower_params)
+    tower = Tower.create!(tower_params)
   end
 
   private

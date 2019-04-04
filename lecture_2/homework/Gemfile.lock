@@ -57,6 +57,8 @@ GEM
     concurrent-ruby (1.1.5)
     crass (1.0.4)
     erubi (1.8.0)
+    faraday (0.15.4)
+      multipart-post (>= 1.2, < 3)
     ffi (1.10.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
@@ -80,6 +82,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.11.3)
     msgpack (1.2.9)
+    multipart-post (2.0.0)
     nio4r (2.3.1)
     nokogiri (1.10.2)
       mini_portile2 (~> 2.4.0)
@@ -117,6 +120,8 @@ GEM
     rb-inotify (0.10.0)
       ffi (~> 1.0)
     ruby_dep (1.5.0)
+    sentry-raven (2.9.0)
+      faraday (>= 0.7.6, < 1.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -148,6 +153,7 @@ DEPENDENCIES
   pg
   puma (~> 3.11)
   rails (~> 5.2.2)
+  sentry-raven
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data

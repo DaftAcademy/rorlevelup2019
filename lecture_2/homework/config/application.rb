@@ -19,6 +19,10 @@ Bundler.require(*Rails.groups)
 
 ActiveModelSerializers.config.adapter = :json_api
 
+Raven.configure do |config|
+  config.dsn = 'https://1f46e8ba0ab54ed59fb66e82706bc62e:53c7482d3645408384f8dd384dcb21bb@sentry.io/1428297'
+end
+
 module Lecture1
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

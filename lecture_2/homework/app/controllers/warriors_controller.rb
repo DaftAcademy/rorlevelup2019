@@ -1,6 +1,6 @@
 class WarriorsController < ApplicationController
     def show
-      render json: WarriorSerializer.new(warrior)
+      render json: WarriorSerializer.new(warrior, include: [:weapon, :structure])
     end
 
     def index

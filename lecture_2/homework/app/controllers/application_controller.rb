@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::API
-  include Service_Object::Error_Service
   before_action :set_raven_context
+  include Errors
 
   private
 

@@ -5,9 +5,8 @@ class Warrior < ApplicationRecord
   belongs_to :defensible, polymorphic: true
   has_one :weapon
 
-  validates 
   validates :clan, presence: true
-  validates :name, presence: true , uniquness: true
+  validates :name, presence: true , uniqueness: true
   validates :armor_quality, numericality: { only_integer: true,
                                             greater_than_or_equal_to: 0,
                                             less_than_or_equal_to: 100 }

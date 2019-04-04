@@ -14,6 +14,7 @@ require 'action_view/railtie'
 require 'action_cable/engine'
 # require "sprockets/railtie"
 require 'rails/test_unit/railtie'
+require_relative '../config/Keys'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -22,7 +23,7 @@ Bundler.require(*Rails.groups)
 ActiveModelSerializers.config.adapter = :json_api
 
 Raven.configure do |config|
-  config.dsn = 'https://ac82bfaa6870437f915d192e11df04ae:9b0240c88c86409e97afb4cdbffc20e2@sentry.io/1429578'
+  config.dsn = Keys::SENTRY_KEY
 end
 
 module Lecture1

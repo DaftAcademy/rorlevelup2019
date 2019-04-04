@@ -2,24 +2,24 @@
 
 class TowerController < ApplicationController\
   def index
-                          render json: Tree.all
-    end
+    render json: Tower.all
+  end
 
   def show
-    render json: tree
+    render json: tower
   end
 
   def create
-    tree = Tree.create(tree_params)
+    tower = Tower.create(tower_params)
   end
 
   private
 
-  def tree
-    @tree ||= Tree.find(params[:id])
+  def tower
+    @tower ||= tower.find(params[:id])
   end
 
-  def tree_params
+  def tower_params
     params.permit(:name)
   end
 end

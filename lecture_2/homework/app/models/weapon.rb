@@ -1,5 +1,5 @@
 class Weapon < ApplicationRecord
-  belongs_to :weaponable, polymorphic: true
+  belongs_to :warrior
 
   validates :name, presence: true
 

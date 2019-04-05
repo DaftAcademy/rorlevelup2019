@@ -33,3 +33,11 @@ module Lecture1
     config.api_only = true
   end
 end
+
+# JSON API format with Serializer
+ActiveModelSerializers.config.adapter = :json_api
+
+# Sentry
+Raven.configure do |config|
+  config.dsn = ''
+end

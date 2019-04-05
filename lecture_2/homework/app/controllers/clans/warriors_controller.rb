@@ -1,18 +1,18 @@
 module Clans
   class WarriorsController < ApplicationController
     def show
-      render json: warrior.to_json
+      render json: warrior, include: '*'
     end
 
     def index
       warriors = clan.warriors
-      if request.query_string == ""
-        render json: warriors.to_json
+      if request.query_string == ''
+        render json: warriors
       else
         if params.key?(:dead)
-          render json: warriors.dead.to_json
+          render json: warriors.dead
         elsif params.key?(:alive)
-          render json: warriors.alive.to_json
+          render json: warriors.alive
         else
           render json: {message: 'Wrong query parameter, you should use alive (when you ask about alive) or dead (when you ask about dead)'}, status: 400
         end        
@@ -22,13 +22,13 @@ module Clans
     def create
       warrior = clan.warriors.create!(warrior_params)
 
-      render json: warrior.to_json, status: 201
+      render json: warrior, status: 201
     end
 
     def update
       warrior.update!(warrior_params)
 
-      render json: warrior.to_json
+      render json: warrior, include: '*'
     end
 
     def destroy

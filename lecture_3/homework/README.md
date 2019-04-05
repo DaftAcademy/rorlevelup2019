@@ -1,0 +1,14 @@
+# Zadanie domowe z zaawansowanego API (trzeci wykład)
+
+Wygląda na to, że Szogun ma poważne plany związane z rozwojem naszego API. W zeszłym tygodniu zaprosił do swojego pałacu buddyjskich mnichów, którzy przez wiele lat zgłębiali tajniki pisania czystego kodu. Efektem tej wizyty jest oczywiście kolejne zadanie dla nas :flushed:
+
+Treść zadania pozostaje ta sama co [w zeszłym tygodniu](https://github.com/daftcode/rorlevelup2019/tree/master/lecture_2/homework) (obydwa zadania najlepiej rozwiązać w jednym pull requeście), ale musimy dostosować rozwiązania do kilku wskazówek pozostawionych nam przez mnichów (tl;dr na samym dole):
+
+1. Droga do zaawansowanego API krętą jest, ale nagroda wielka czeka na jej końcu. Pierwszym krokiem w Twojej drodze powinno być osiągnięcie stanu DRY. Stan ten wywodzi się od słów “Don’t Repeat Yourself” i pozwala uzyskać kod najwyższej jakości. Spróbuj zatem obsługę błędów zrobić tak, aby tylko raz musieć ją napisać. Przepotężna metoda `rescue_from` będzie do osiągnięcia celu bardzo pomocna. Wszystkie błędy o kodzie 422 i 404 obłużone być powinny w jednym tylko miejscu.
+2. Czy API spełnia swoją funkcję jeśli nikt z niego korzystać nie potrafi? Aby twoja aplikacja mogła nieść radość użytkownikom zastosuj się do wiedzy zawartej w wielkiej księdze (serio jest wielka - nie musicie tego całego czytać :smiley:) [standardu JSON:API](https://jsonapi.org/format/). Oczywiście czas nasz cennym jest, więc mądrze do problemu podejść należy. Najlepiej skorzystać z rozwiązań istniejacych i wielokrotnie sprawdzonych. Rozwiązania te zamknięte są między innymi w gemach zwanych [active_model_serializers](https://github.com/rails-api/active_model_serializers) i [fast_jsonapi](https://github.com/Netflix/fast_jsonapi). Popatrz na nie uważnie i wybierz ten, który największą radość Ci sprawia. Niech Twoje API zgodnie ze standardem odpowiada na wszystkie zapytania (te poprawne, jak i te powodujące błąd).
+3. Pamiętaj, że czas cennym jest zasobem, a dodatkowe requesty wiele czasu wymagają. Po raz kolejny zaczerpnij z dobrodziejstw JSON:API i tam gdzie uznasz to za potrzebne dodaj do odpowiedzi sekcję `included`. Ograniczysz w ten sposób liczbę dodatkowych requestów i przyniesiesz szczęście użytkownikom.
+4. Spełniając powyższe wskazówki nadasz czystość i wysoką jakość swojej aplikacji. Jeśli chcesz (czyli to jest już część dla chętnych) osiagnąć najwyższy poziom wtajemniczenia musisz jeden jeszcze krok wykonać. Musisz wybrać się w podróż do świątyni [Sentry.io](https://sentry.io/), gdzie bezpłatnie dołączyć mozesz do ich usług. Następnie, spróbuj tak swoją aplikację skonfigurować, żeby wszystkie nieobsłużone błędy do Sentry przesyłała :mailbox:
+
+---
+
+Czyli tłumacząc z ichniego na nasze, chcemy stworzyć moduł obsługujący błędy ze wszystkich kontrolerów, przerobić nasze odpowiedzi na zgodne z JSON:API i zadbać o zaincludowanie dodatkowych rekordów w tych zapytaniach w których ma to sens :thinking:

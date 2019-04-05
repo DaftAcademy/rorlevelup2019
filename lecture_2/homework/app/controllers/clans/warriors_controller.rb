@@ -1,27 +1,23 @@
 module Clans
   class WarriorsController < ApplicationController
     def show
-      render json: warrior
+      render json: warrior, include: ["weapon", "clan"]
     end
 
     def index
       warriors = clan.warriors
-      samurais = warriors.where(type: "Samurai")
-      hussars = warriors.where(type: "Hussar")
-      archers = warriors.where(type: "Archer")
-      wizards = warriors.where(type: "Wizard")
       if params.has_key?(:alive)
         render json: warriors.alive
       elsif params.has_key?(:dead)
         render json: warriors.dead
       elsif params.has_key?(:samurais)
-        render json: samurais
+        render json: warriors.where(type: "Samurai")
       elsif params.has_key?(:hussars)
-        render json: hussars
+        render json: warriors.where(type: "Hussar")
       elsif params.has_key?(:archers)
-        render json: archers
+        render json: warriors.where(type: "Archer")
       elsif params.has_key?(:wizards)
-        render json: wizards
+        render json: warriors.where(type: "Wizard")
       else
         if request.query_string == ""
           render json: warriors
@@ -32,8 +28,8 @@ module Clans
     end
 
     def create
-      warrior_new = clan.warriors.create!(warrior_params)
-      render json: warrior_new.to_json, status: 201
+      warrior = clan.warriors.create!(warrior_params)
+      render json: warrior, status: 201
     end
 
     def update

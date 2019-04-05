@@ -1,7 +1,7 @@
 class CreateWeapons < ActiveRecord::Migration[5.2]
   def change
     create_table :weapons do |t|
-      t.string :weapon_name, null: false, unique: true
+      t.string :name, null: false, unique: true
       t.string :type, null: false
       t.integer :min_range, null: false
       t.integer :max_range, null: false

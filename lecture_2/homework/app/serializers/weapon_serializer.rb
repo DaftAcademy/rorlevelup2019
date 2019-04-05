@@ -1,3 +1,3 @@
 class WeaponSerializer < ActiveModel::Serializer
-  attributes :id, :damage, :range
+  attributes :damage, :range
 end

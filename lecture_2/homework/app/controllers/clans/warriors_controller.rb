@@ -1,7 +1,7 @@
 module Clans
   class WarriorsController < ApplicationController
     def show
-      render json: warrior, include: ['clan', 'weapon']
+      render json: warrior, include: ['clan', 'weapon', 'construction']
     end
 
     def index
@@ -20,13 +20,14 @@ module Clans
     def create
       warrior = clan.warriors.create!(warrior_params)
 
-      render json: warrior, status: 201
+      render json: warrior, include: ['clan', 'weapon', 'construction'],
+             status: 201
     end
 
     def update
       warrior.update!(warrior_params)
 
-      render json: warrior
+      render json: warrior, include: ['clan', 'weapon', 'construction']
     end
 
     def destroy
@@ -40,11 +41,14 @@ module Clans
       end
 
       def warrior
-        @warrior ||= Warrior.find_by!(id: params[:id], clan_id: params[:clan_id])
+        @warrior ||= Warrior.find_by!(id: params[:id],
+                                      clan_id: params[:clan_id])
       end
 
       def warrior_params
-        params.permit(:name, :death_date, :armor_quality, :number_of_battles, :join_date, :defensible_type, :defensible_id)
+        params.permit(:name, :death_date, :armor_quality,
+                      :number_of_battles, :join_date,
+                      :construction_id, :weapon_id)
       end
   end
 end

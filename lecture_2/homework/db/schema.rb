@@ -10,15 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_01_155437) do
+ActiveRecord::Schema.define(version: 2019_04_05_103702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "barricades", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "clans", force: :cascade do |t|
     t.string "name", null: false
@@ -27,24 +22,11 @@ ActiveRecord::Schema.define(version: 2019_04_01_155437) do
     t.index ["name"], name: "index_clans_on_name", unique: true
   end
 
-  create_table "gates", force: :cascade do |t|
+  create_table "constructions", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "strongholds", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "towers", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "walls", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string "type", default: "Barricade"
+    t.string "name", null: false
   end
 
   create_table "warriors", force: :cascade do |t|
@@ -57,11 +39,12 @@ ActiveRecord::Schema.define(version: 2019_04_01_155437) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "type", default: "Samurai"
-    t.string "defensible_type"
-    t.bigint "defensible_id"
+    t.bigint "construction_id"
+    t.bigint "weapon_id"
     t.index ["clan_id"], name: "index_warriors_on_clan_id"
-    t.index ["defensible_type", "defensible_id"], name: "index_warriors_on_defensible_type_and_defensible_id"
+    t.index ["construction_id"], name: "index_warriors_on_construction_id"
     t.index ["name", "clan_id"], name: "index_warriors_on_name_and_clan_id", unique: true, where: "(death_date IS NULL)"
+    t.index ["weapon_id"], name: "index_warriors_on_weapon_id"
   end
 
   create_table "weapons", force: :cascade do |t|
@@ -75,5 +58,6 @@ ActiveRecord::Schema.define(version: 2019_04_01_155437) do
   end
 
   add_foreign_key "warriors", "clans"
+  add_foreign_key "warriors", "constructions"
   add_foreign_key "weapons", "warriors"
 end

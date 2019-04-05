@@ -1,3 +1,1 @@
-class Gate < ApplicationRecord
-  has_many :warriors, as: :defensible
-end
+class Gate < Construction; end

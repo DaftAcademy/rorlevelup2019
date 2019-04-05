@@ -1,16 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Warrior, type: :model do
-  subject(:warrior) { build :samurai, defensible_type: 'Barricade',
-                                      defensible_id: 1, clan_id: 1 }
+  subject(:warrior) { build :samurai, construction_id: 1, clan_id: 1 }
 
   it { is_expected.to be_valid }
   it { is_expected.to belong_to :clan }
-  it { is_expected.to belong_to :defensible }
+  it { is_expected.to belong_to :construction }
 
-  context 'when defensible id does not exist' do
+  context 'when construction id does not exist' do
     it 'is not valid' do
-      warrior.defensible_id = -1
+      warrior.construction_id = -1
       expect(warrior).to_not be_valid
     end
   end

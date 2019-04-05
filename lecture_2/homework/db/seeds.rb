@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
@@ -22,7 +24,8 @@ masahiro = Warrior.create!(name: 'Masahiro',
                            death_date: nil,
                            clan: clans.first,
                            type: 'Samurai',
-                           defensible: tower)
+                           defensible: tower,
+                           weapon_of_choice: 'Melee')
 
 janusz = Warrior.create!(name: 'Janusz',
                          armor_quality: 54,
@@ -31,7 +34,8 @@ janusz = Warrior.create!(name: 'Janusz',
                          death_date: '1848-06-07',
                          clan: clans.first,
                          type: 'Hussar',
-                         defensible: gate)
+                         defensible: gate,
+                         weapon_of_choice: 'Ranged')
 
 izami = Warrior.create!(name: 'Izami',
                         armor_quality: 24,
@@ -40,7 +44,8 @@ izami = Warrior.create!(name: 'Izami',
                         death_date: nil,
                         clan: clans.first,
                         type: 'Archer',
-                        defensible: tower)
+                        defensible: tower,
+                        weapon_of_choice: 'Ranged')
 
 thor = Warrior.create!(name: 'Thor',
                        armor_quality: 100,
@@ -49,24 +54,25 @@ thor = Warrior.create!(name: 'Thor',
                        death_date: '1848-06-07',
                        clan: clans.last,
                        type: 'Hussar',
-                       defensible: gate)
+                       defensible: gate,
+                       weapon_of_choice: 'Magical')
 
-masahiro.create_weapon(name: 'Excalibur',
-                       range: 2,
-                       damage: 60,
-                       type: 'Melee')
+masahiro.create_weapon!(name: 'Excalibur',
+                        range: 2,
+                        damage: 60,
+                        type: 'Melee')
 
-thor.create_weapon(name: 'Mjolnir',
-                   range: 100,
-                   damage: 100,
-                   type: 'Magical')
+thor.create_weapon!(name: 'Mjolnir',
+                    range: 100,
+                    damage: 100,
+                    type: 'Magical')
 
-izami.create_weapon(name: 'Bow',
-                    range: 80,
-                    damage: 20,
-                    type: 'Ranged')
-
-janusz.create_weapon(name: 'CrossBow',
-                     range: 90,
-                     damage: 40,
+izami.create_weapon!(name: 'Bow',
+                     range: 80,
+                     damage: 20,
                      type: 'Ranged')
+
+janusz.create_weapon!(name: 'CrossBow',
+                      range: 90,
+                      damage: 40,
+                      type: 'Ranged')

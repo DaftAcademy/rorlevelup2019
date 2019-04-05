@@ -12,6 +12,8 @@ class Warrior < ApplicationRecord
                                             greater_than_or_equal_to: 0,
                                             less_than_or_equal_to: 100 }
 
+  validates :weapon_of_choice, presence: true, inclusion: { in: Weapon::KINDS }
+
   scope :alive, -> { where('death_date IS NULL') }
   scope :dead, -> { where('death_date IS NOT NULL') }
 end

@@ -1,9 +1,10 @@
 # frozen_string_literal: true
 
 class Warrior < ApplicationRecord
-  belongs_to :clan
+  belongs_to :clan, counter_cache: true
   belongs_to :building, optional: true
   has_one :weapon, dependent: :destroy
+  has_one :mercenary
 
   validates :name, presence: true, uniqueness: { conditions: -> { where(death_date: nil) } }
   validates :armor_quality, numericality: { only_integer: true,

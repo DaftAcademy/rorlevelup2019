@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_05_073739) do
+ActiveRecord::Schema.define(version: 2019_04_05_090544) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,19 @@ ActiveRecord::Schema.define(version: 2019_04_05_073739) do
     t.string "name", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "warriors_count", default: 0, null: false
+  end
+
+  create_table "mercenaries", force: :cascade do |t|
+    t.string "name"
+    t.integer "experience"
+    t.string "preferred_weapon_kind"
+    t.datetime "available_from"
+    t.integer "price"
+    t.bigint "warrior_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["warrior_id"], name: "index_mercenaries_on_warrior_id", unique: true
   end
 
   create_table "warriors", force: :cascade do |t|
@@ -56,6 +69,7 @@ ActiveRecord::Schema.define(version: 2019_04_05_073739) do
     t.index ["warrior_id"], name: "index_weapons_on_warrior_id"
   end
 
+  add_foreign_key "mercenaries", "warriors"
   add_foreign_key "warriors", "buildings"
   add_foreign_key "warriors", "clans"
   add_foreign_key "weapons", "warriors"

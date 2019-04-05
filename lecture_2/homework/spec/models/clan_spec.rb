@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Clan, model: :clan do
@@ -5,8 +7,8 @@ RSpec.describe Clan, model: :clan do
 
   it { should have_many(:warriors).dependent(:destroy) }
 
-  context "Clans should have name" do
-    it "is valid" do
+  context 'Clans should have name' do
+    it 'is valid' do
       expect(clan).to be_valid
     end
   end

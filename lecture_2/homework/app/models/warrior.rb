@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Warrior < ApplicationRecord
   belongs_to :clan
 

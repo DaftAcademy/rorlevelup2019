@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Clan < ApplicationRecord
   belongs_to :clan
   belongs_to :defensible, polymorphic: true

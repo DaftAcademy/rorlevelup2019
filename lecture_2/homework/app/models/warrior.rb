@@ -3,8 +3,8 @@ class Warrior < ApplicationRecord
     belongs_to :structure
     belongs_to :weapon
 
-    validates :name, presence: true, uniqueness: { scope: :clan_id }, if: Proc.new { |it| it.death_date.blank? }, on: :update
-    validates :name, presence: true, uniqueness: { scope: :clan_id }, unless: Proc.new { |it| it.death_date.blank? }, on: :create
+    validates :name, presence: true, uniqueness: { scope: :clan_id, conditions: -> { where('death_date IS NULL') },
+                                                 message: "The name has to be unique within clan's alive members." }
     
     validates :armor_quality, numericality: { only_integer: true,
                                             greater_than_or_equal_to: 0,

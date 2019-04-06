@@ -31,10 +31,5 @@ module Lecture1
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
-
-    # export SENTRY_DSN = 'https://1b23753457534df6b5cd5b617f8dae82:40ea8a11e8d74b7aac8af85b27ba48bf@sentry.io/1428892'
-    Raven.configure do |config|
-      config.dsn = 'https://1b23753457534df6b5cd5b617f8dae82:40ea8a11e8d74b7aac8af85b27ba48bf@sentry.io/1428892'
-    end
   end
 end

@@ -3,7 +3,7 @@
 class Warrior < ApplicationRecord
   belongs_to :clan
 
-  validates :name, presence: true
+  validates :name, presence: true, uniqueness: { conditions: -> { where(death_date: nil) } }
   validates :armor_quality, numericality: { only_integer: true,
                                             greater_than_or_equal_to: 0,
                                             less_than_or_equal_to: 100 }

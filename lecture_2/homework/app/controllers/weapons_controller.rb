@@ -8,7 +8,7 @@ class WeaponsController < ApplicationController
   end
 
   def create
-    weapon = clan.warrior.weapon.create!(wars_params)
+    weapon = Weapon.create!(wars_params)
     render json: weapon, include: 'warrior'
   end
 
@@ -29,7 +29,7 @@ class WeaponsController < ApplicationController
   end
 
   def warrior
-    @warrior ||= clan.warriors.find(params[:warrior_id])
+    @warrior ||= Clan.warriors.find(params[:warrior_id])
   end
 
   def weapon
@@ -37,6 +37,6 @@ class WeaponsController < ApplicationController
   end
 
   def wars_params
-    params.permit(:name, :type, :damage, :range)
+    params.permit(:name, :type, :damage, :range, :warrior_id)
   end
 end

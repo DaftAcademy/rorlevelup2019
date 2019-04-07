@@ -1,12 +1,12 @@
 class WarriorsController < ApplicationController
   def index
-    if params.has_key?(:alive)
-      warrior = clan.warriors.where(died: nil)
-    elsif params.has_key?(:dead)
-      warrior = clan.warriors.where.not(died: nil)
-    else
-      warrior = clan.warriors.all
-    end
+    warrior = if params.key?(:alive)
+                clan.warriors.alive
+              elsif params.key?(:dead)
+                clan.warriors.dead
+              else
+                clan.warriors.all
+              end
     render json: warrior
   end
 
@@ -15,7 +15,7 @@ class WarriorsController < ApplicationController
   end
 
   def create
-    warrior = clan.warriors.create!(wars_params)
+    warrior = Clan.warriors.create!(wars_params)
     render json: warrior, include: 'clan'
   end
 
@@ -41,7 +41,7 @@ class WarriorsController < ApplicationController
   end
 
   def wars_params
-    params.permit(:clan_id,:name,:type,:defensible_id,:defensible_type, :armor_quality, :join_date, :death_date)
+    params.permit(:clan_id, :name, :type, :defensible_id, :defensible_type, :armor_quality, :join_date, :death_date)
   end
 
 end

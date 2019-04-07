@@ -43,7 +43,6 @@ ActiveRecord::Schema.define(version: 2019_04_07_095025) do
     t.string "type", default: "Samurai"
     t.string "defensible_type"
     t.bigint "defensible_id"
-    t.string "weapon"
     t.index ["clan_id"], name: "index_warriors_on_clan_id"
     t.index ["defensible_type", "defensible_id"], name: "index_warriors_on_defensible_type_and_defensible_id"
   end
@@ -52,11 +51,12 @@ ActiveRecord::Schema.define(version: 2019_04_07_095025) do
     t.string "name", null: false
     t.integer "range", default: 0, null: false
     t.integer "damage", default: 0, null: false
-    t.bigint "warrior_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "warrior_id"
     t.index ["warrior_id"], name: "index_weapons_on_warrior_id"
   end
 
   add_foreign_key "warriors", "clans"
+  add_foreign_key "weapons", "warriors"
 end

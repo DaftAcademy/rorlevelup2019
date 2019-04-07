@@ -3,7 +3,9 @@
 module Clans
   class WarriorsController < ApplicationController
     def show
-      json_response(WarriorSerializer.new(warrior).serialized_json)
+      options = {}
+      options[:include] = [:weapon]
+      json_response(WarriorSerializer.new(warrior, options).serialized_json)
     end
 
     def index

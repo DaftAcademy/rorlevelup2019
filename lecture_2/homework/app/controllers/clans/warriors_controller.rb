@@ -1,13 +1,15 @@
+# frozen_string_literal: true
+
 module Clans
   class WarriorsController < ApplicationController
     def show
-      json_response(@warrior)
+      json_response(warrior)
     end
 
     def index
       warriors = clan.warriors
       if params.key?(:alive)
-        if params[:alive].to_i == 0
+        if params[:alive].to_i.zero?
           json_response(warriors.dead)
         else
           json_response(warriors.alive)

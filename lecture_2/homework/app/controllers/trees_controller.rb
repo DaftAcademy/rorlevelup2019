@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class TreesController < ApplicationController
   def index
     render json: Tree.all
@@ -11,7 +13,6 @@ class TreesController < ApplicationController
     tree = Tree.create!(tree_params)
     render json: tree
   end
-
 
   private
 

@@ -2,8 +2,82 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1d705c5b-38f1-46b5-b297-4a4068952b37" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/homework.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/homework.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Rakefile" beforeDir="false" afterPath="$PROJECT_DIR$/Rakefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/channels/application_cable/channel.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/channels/application_cable/channel.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/channels/application_cable/connection.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/channels/application_cable/connection.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/clans/samurais_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/clans/samurais_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/clans_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/clans_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/strongholds_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/strongholds_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/towers_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/towers_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/trees_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/trees_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/warriors_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/warriors_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/weapons_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/weapons_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/jobs/application_job.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/jobs/application_job.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/mailers/application_mailer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/mailers/application_mailer.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/application_record.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/application_record.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/clan.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/clan.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/hussar.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/hussar.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/magical.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/magical.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/ranged.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/ranged.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/samurai.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/samurai.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/stronghold.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/stronghold.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/sword.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/sword.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/tower.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/tower.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/tree.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/tree.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/models/warrior.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/warrior.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/weapon.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/weapon.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/serializers/clan_serializer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/serializers/clan_serializer.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/serializers/exception_serializer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/serializers/exception_serializer.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/serializers/warrior_serializer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/serializers/warrior_serializer.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/serializers/weapon_serializer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/serializers/weapon_serializer.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/bundle" beforeDir="false" afterPath="$PROJECT_DIR$/bin/bundle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/rails" beforeDir="false" afterPath="$PROJECT_DIR$/bin/rails" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/rake" beforeDir="false" afterPath="$PROJECT_DIR$/bin/rake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/setup" beforeDir="false" afterPath="$PROJECT_DIR$/bin/setup" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/spring" beforeDir="false" afterPath="$PROJECT_DIR$/bin/spring" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/update" beforeDir="false" afterPath="$PROJECT_DIR$/bin/update" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.ru" beforeDir="false" afterPath="$PROJECT_DIR$/config.ru" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/application.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/application.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/boot.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/boot.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/environment.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environment.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/environments/development.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/development.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/environments/production.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/production.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/environments/test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/environments/test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/application_controller_renderer.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/application_controller_renderer.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/backtrace_silencers.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/backtrace_silencers.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/cors.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/cors.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/filter_parameter_logging.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/filter_parameter_logging.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/inflections.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/inflections.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/mime_types.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/mime_types.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/initializers/wrap_parameters.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/initializers/wrap_parameters.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/puma.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/puma.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/spring.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/spring.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190314150921_create_clans_and_samurais.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20190314150921_create_clans_and_samurais.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190401133537_rename_samurai_to_warrior.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20190401133537_rename_samurai_to_warrior.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190401151334_add_index_name_to_warrior.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20190401151334_add_index_name_to_warrior.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190401171532_add_defensible_to_warrior.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20190401171532_add_defensible_to_warrior.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190402190926_create_strongholds.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20190402190926_create_strongholds.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190402192203_create_towers.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20190402192203_create_towers.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190402193117_create_trees.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20190402193117_create_trees.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20190402193549_create_weapons.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20190402193549_create_weapons.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/seeds.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/seeds.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/errors_method.rb" beforeDir="false" afterPath="$PROJECT_DIR$/lib/errors_method.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/strongholds_controller_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/controllers/strongholds_controller_test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/towers_controller_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/controllers/towers_controller_test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/trees_controller_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/controllers/trees_controller_test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/warriors_controller_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/controllers/warriors_controller_test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/controllers/weapons_controller_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/controllers/weapons_controller_test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/stronghold_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/stronghold_test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/tower_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/tower_test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/tree_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/tree_test.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/weapon_test.rb" beforeDir="false" afterPath="$PROJECT_DIR$/test/models/weapon_test.rb" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.bundle/" />
     <ignored path="$PROJECT_DIR$/components/" />
@@ -21,7 +95,7 @@
     <session id="955702947">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="36" />
+          <entry key="project.closed" value="37" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.14" value="1" />
           <entry key="project.open.time.15" value="1" />
@@ -41,22 +115,22 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="Gemfile" value="4" />
+          <entry key="Gemfile" value="5" />
           <entry key="gitignore" value="2" />
           <entry key="md" value="1" />
-          <entry key="rb" value="139" />
+          <entry key="rb" value="142" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="Markdown" value="1" />
           <entry key="PLAIN_TEXT" value="2" />
-          <entry key="Ruby" value="143" />
+          <entry key="Ruby" value="147" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="Gemfile" value="68" />
+          <entry key="Gemfile" value="71" />
           <entry key="md" value="21" />
           <entry key="rb" value="3109" />
         </counts>
@@ -64,7 +138,7 @@
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="Markdown" value="21" />
-          <entry key="Ruby" value="3177" />
+          <entry key="Ruby" value="3180" />
         </counts>
       </usages-collector>
     </session>
@@ -75,7 +149,7 @@
         <entry file="file://$PROJECT_DIR$/db/migrate/20190401151334_add_index_name_to_warrior.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="24">
-              <caret line="2" column="44" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
+              <caret line="4" column="44" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
             </state>
           </provider>
         </entry>
@@ -84,7 +158,7 @@
         <entry file="file://$PROJECT_DIR$/db/migrate/20190401133537_rename_samurai_to_warrior.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="72">
-              <caret line="6" selection-start-line="6" selection-end-line="6" />
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
             </state>
           </provider>
         </entry>
@@ -93,7 +167,7 @@
         <entry file="file://$PROJECT_DIR$/db/migrate/20190314150921_create_clans_and_samurais.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="216">
-              <caret line="18" selection-start-line="18" selection-end-line="18" />
+              <caret line="20" selection-start-line="20" selection-end-line="20" />
             </state>
           </provider>
         </entry>
@@ -101,53 +175,53 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/db/schema.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="393">
-              <caret line="62" column="33" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
+            <state relative-caret-position="405">
+              <caret line="63" column="33" selection-start-line="63" selection-start-column="33" selection-end-line="63" selection-end-column="33" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/migrate/20190402193549_create_weapons.rb">
+        <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="13" selection-start-line="13" selection-end-line="13" />
+            <state relative-caret-position="60">
+              <caret line="5" selection-start-line="5" selection-end-line="5" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/migrate/20190402193117_create_trees.rb">
+        <entry file="file://$PROJECT_DIR$/app/controllers/clans_controller.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="120">
+              <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="11" selection-end-column="12" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/strongholds_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="312">
+              <caret line="26" selection-start-line="26" selection-end-line="26" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/clan.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="12">
+              <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
+        <entry file="file://$PROJECT_DIR$/Gemfile">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="12">
-              <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/migrate/20190402192203_create_towers.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/migrate/20190402190926_create_strongholds.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="9" selection-start-line="9" selection-end-line="9" />
+            <state relative-caret-position="168">
+              <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -156,7 +230,7 @@
         <entry file="file://$PROJECT_DIR$/db/migrate/20190401171532_add_defensible_to_warrior.rb">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="60">
-              <caret line="5" selection-start-line="5" selection-end-line="5" />
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
             </state>
           </provider>
         </entry>
@@ -204,7 +278,6 @@
         <option value="$PROJECT_DIR$/app/models/swrod.rb" />
         <option value="$PROJECT_DIR$/app/models/magical.rb" />
         <option value="$PROJECT_DIR$/config/application.rb" />
-        <option value="$PROJECT_DIR$/Gemfile" />
         <option value="$PROJECT_DIR$/app/serializers/clan_serializer.rb" />
         <option value="$PROJECT_DIR$/app/serializers/warrior_serializer.rb" />
         <option value="$PROJECT_DIR$/app/serializers/exception_serializer.rb" />
@@ -223,6 +296,7 @@
         <option value="$PROJECT_DIR$/app/controllers/application_controller.rb" />
         <option value="$PROJECT_DIR$/lib/errors_method.rb" />
         <option value="$PROJECT_DIR$/app/models/warrior.rb" />
+        <option value="$PROJECT_DIR$/Gemfile" />
       </list>
     </option>
   </component>
@@ -233,7 +307,8 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="y" value="24" />
+    <option name="x" value="411" />
+    <option name="y" value="296" />
     <option name="width" value="917" />
     <option name="height" value="711" />
   </component>
@@ -471,15 +546,15 @@
       <workItem from="1554295012801" duration="1111000" />
       <workItem from="1554667132411" duration="358000" />
       <workItem from="1554712726600" duration="577000" />
-      <workItem from="1554718162832" duration="1399000" />
+      <workItem from="1554718162832" duration="1662000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="44945000" />
+    <option name="totallyTimeSpent" value="45208000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="0" y="24" width="917" height="711" extended-state="0" />
+    <frame x="411" y="296" width="917" height="711" extended-state="0" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.38057142" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -591,27 +666,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/strongholds_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/clans_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="10" column="3" selection-start-line="10" selection-start-column="3" selection-end-line="11" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/clan.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="12">
-          <caret line="1" column="20" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/hussar.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="48">
@@ -685,13 +739,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Gemfile">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="25" selection-start-line="25" selection-end-line="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/trees_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="156">
@@ -730,63 +777,91 @@
     <entry file="file://$PROJECT_DIR$/db/migrate/20190402193117_create_trees.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20190402192203_create_towers.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20190402190926_create_strongholds.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
-          <caret line="9" selection-start-line="9" selection-end-line="9" />
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20190401171532_add_defensible_to_warrior.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="60">
-          <caret line="5" selection-start-line="5" selection-end-line="5" />
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20190401133537_rename_samurai_to_warrior.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="72">
-          <caret line="6" selection-start-line="6" selection-end-line="6" />
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20190401151334_add_index_name_to_warrior.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="24">
-          <caret line="2" column="44" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="44" />
+          <caret line="4" column="44" selection-start-line="4" selection-start-column="44" selection-end-line="4" selection-end-column="44" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/migrate/20190314150921_create_clans_and_samurais.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
-          <caret line="18" selection-start-line="18" selection-end-line="18" />
+          <caret line="20" selection-start-line="20" selection-end-line="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/db/schema.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="393">
-          <caret line="62" column="33" selection-start-line="62" selection-start-column="33" selection-end-line="62" selection-end-column="33" />
+        <state relative-caret-position="405">
+          <caret line="63" column="33" selection-start-line="63" selection-start-column="33" selection-end-line="63" selection-end-column="33" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/controllers/application_controller.rb">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/clans_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="10" lean-forward="true" selection-start-line="10" selection-end-line="11" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/strongholds_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="26" selection-start-line="26" selection-end-line="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/clan.rb">
+      <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="12">
-          <caret line="1" column="22" selection-start-line="1" selection-start-column="22" selection-end-line="1" selection-end-column="22" />
+          <caret line="1" lean-forward="true" selection-start-line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Gemfile">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="42" />
         </state>
       </provider>
     </entry>

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class WeaponsController < ApplicationController
   def show
     render json: weapon, include: 'warrior'
@@ -19,7 +21,7 @@ class WeaponsController < ApplicationController
 
   def destroy
     weapon.destroy!
-    render head:204
+    render head: 204
   end
 
   private

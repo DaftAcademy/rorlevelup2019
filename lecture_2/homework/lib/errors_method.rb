@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 module ErrorsMethod
-# Add handle errors
+  # Add handle errors
   rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_err
   rescue_from ActiveRecord::RecordInvalid, with: :render_invalid
 
@@ -10,5 +12,4 @@ module ErrorsMethod
   def render_invalid(exception)
     render json: exception, status: 422
   end
-
 end

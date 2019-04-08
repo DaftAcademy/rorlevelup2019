@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class StrongholdsController < ApplicationController
   def index
     render json: Stronghold.all
@@ -12,8 +14,6 @@ class StrongholdsController < ApplicationController
     render json: stronghold
   end
 
-
-
   private
 
   def stronghold
@@ -23,5 +23,4 @@ class StrongholdsController < ApplicationController
   def stronghold_params
     params.permit(:name)
   end
-
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ClansController < ApplicationController
   def index
     render json: Clan.all
@@ -21,5 +23,4 @@ class ClansController < ApplicationController
   def clan
     @clan ||= Clan.find(params[:id])
   end
-
 end

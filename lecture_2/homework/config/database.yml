@@ -1,11 +1,23 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username:
+  password:
   database: rorlevelup2019
   
 development:
   <<: *default
+  username:
+  password:
+  encoding: unicode
+  database: rorlevelup2019
 
 test: &test
   <<: *default
   database: flode_test
+
+production:
+  encoding: unicode
+  pool: 5
+  username:
+  password:

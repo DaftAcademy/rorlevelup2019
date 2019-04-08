@@ -2,8 +2,12 @@
 
 module ErrorsMethod
   # Add handle errors
-  rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_err
-  rescue_from ActiveRecord::RecordInvalid, with: :render_invalid
+
+  included_modules do
+    rescue_from ActiveRecord::RecordNotFound, with: :render_not_found_err
+    rescue_from ActiveRecord::RecordInvalid, with: :render_invalid
+  end
+
 
   def render_not_found_err(exception)
     render json: exception, status: 404

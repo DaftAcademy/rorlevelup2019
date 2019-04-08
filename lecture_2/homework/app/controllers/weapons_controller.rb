@@ -31,7 +31,8 @@ class WeaponsController < ApplicationController
   end
 
   def warrior
-    @warrior ||= Clan.warriors.find(params[:warrior_id])
+    clan ||= Clan.find(params[:clan_id])
+    @warrior ||= clan.warriors.find(params[:warrior_id])
   end
 
   def weapon

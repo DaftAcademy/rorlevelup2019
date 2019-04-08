@@ -18,8 +18,11 @@ SAMURAIS_NAMES.each do |samurai|
   if rand(10) >= 7
     joining_time = (Date.today - sam.join_date).to_i
     sam.death_date = sam.join_date + (rand(joining_time)).days  
-    sam.save!
+    if sam.save!
+      puts "#{samurai} created"
+    else
+      puts "#{samurai} not created"
+    end
   end
 
-  puts "#{samurai} created"
 end

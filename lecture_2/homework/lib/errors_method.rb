@@ -10,5 +10,5 @@ module ErrorsMethod
   def render_invalid(exception)
     render json: exception, status: 422
   end
-  
+
 end

@@ -10,8 +10,16 @@ Rails.application.routes.draw do
       post 'employ_best'
     end
 
+    collection do
+      post 'employ_best_better'
+    end
+
     member do
       post 'employ'
+    end
+
+    member do
+      post 'employ_better'
     end
   end
 end

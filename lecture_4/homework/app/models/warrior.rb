@@ -18,4 +18,8 @@ class Warrior < ApplicationRecord
   def weapon_or_empty
     weapon || MissingWeapon.new
   end
+
+  def mercenary
+    super || NullMercenary.new
+  end
 end

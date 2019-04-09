@@ -1,11 +1,10 @@
-class MercenaryService
+class ClanFinder
+  attr_reader :params
   def initialize(params:)
-    @clan = find_clan(params)
+    @params = params
   end
 
-  private
-
-  def find_clan(params)
+  def run
     if params[:clan_id]
       Clan.find(params[:clan_id])
     else

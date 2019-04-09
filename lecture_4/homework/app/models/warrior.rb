@@ -12,6 +12,11 @@ class Warrior < ApplicationRecord
                                             less_than_or_equal_to: 100 }
   validates :preferred_weapon_kind, presence: true, inclusion: { in: Weapon::KINDS }
 
+  def use_weapon
+    return weapon.type.demodulize if weapon
+    NullWeapon.new.type
+  end
+
   scope :alive, -> { where('death_date IS NULL') }
   scope :dead, -> { where('death_date IS NOT NULL') }
 end

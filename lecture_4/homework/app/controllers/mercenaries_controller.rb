@@ -11,7 +11,7 @@ class MercenariesController < ApplicationController
   end
 
   def employ_best
-    mercenary = Mercenary.where('available_from < ?', Time.now).order(price: :asc).first # TODO: what about experience?
+    mercenary = MostExperiencedMercenaryFinder.new.run
     clan = find_clan
     building = find_building
     warrior_class = clan.warriors.select('type, count(type) as warriors_count').group(:type).order('warriors_count ASC').first.class

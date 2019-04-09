@@ -1,0 +1,3 @@
+class Warrior < Character
+
+end

@@ -1,4 +1,6 @@
 class Warrior < ApplicationRecord
+  has_one :weapon, foreign_key: 'warrior_id', dependent: :nullify
+
   belongs_to :clan
   belongs_to :defensible, polymorphic: true
 

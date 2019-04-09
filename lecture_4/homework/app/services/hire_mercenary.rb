@@ -28,8 +28,4 @@ class HireMercenary
   def create_weapon
     MercenaryWeaponCreator.new(mercenary: mercenary).run
   end
-
-  # def hire
-  #   warrior_class.create!(name: mercenary.name, clan: clan, building: building, preferred_weapon_kind: mercenary.preferred_weapon_kind, mercenary: mercenary)
-  # end
 end

@@ -1,5 +1,6 @@
 class Warrior < ApplicationRecord
   after_create :leads_of_warrior
+  belongs_to :defensible, polymorphic: true
   belongs_to :clan
 
   validates :name, presence: true
@@ -12,6 +13,6 @@ class Warrior < ApplicationRecord
   scope :dead, -> { where('death_date IS NOT NULL') }
 
   def leads_of_warrior
-    puts "++++ You've created new #{kind} #{name}!++++\n---- Your army has now #{Clan.find(clan_id).warriors.count} warriors----\n"
+    puts "++++ You've created new #{kind} #{name}!++++\n---- Your clan #{Clan.find(clan_id).name} has now #{Clan.find(clan_id).warriors.count} warriors----\n"
   end
 end

@@ -2,6 +2,6 @@
 
 class NoMercenary
   def mercenary
-    'This warrior has no mercenary'
+    "This warrrior doesn't have a mercenary"
   end
 end

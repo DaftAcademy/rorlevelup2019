@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_09_205324) do
+ActiveRecord::Schema.define(version: 2019_04_09_220735) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 2019_04_09_205324) do
     t.string "type", default: "Samurai"
     t.string "defensible_type"
     t.bigint "defensible_id"
+    t.string "weapon_kind"
     t.index ["clan_id"], name: "index_warriors_on_clan_id"
     t.index ["defensible_type", "defensible_id"], name: "index_warriors_on_defensible_type_and_defensible_id"
     t.index ["name", "clan_id"], name: "index_warriors_on_name_and_clan_id", unique: true, where: "(death_date IS NULL)"
@@ -66,7 +67,10 @@ ActiveRecord::Schema.define(version: 2019_04_09_205324) do
     t.integer "range", default: 2
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "warrior_id"
+    t.index ["warrior_id"], name: "index_weapons_on_warrior_id"
   end
 
   add_foreign_key "warriors", "clans"
+  add_foreign_key "weapons", "warriors"
 end

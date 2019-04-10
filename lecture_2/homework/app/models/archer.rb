@@ -1,9 +1,7 @@
 class Archer < Warrior
-  attr_accessor :weapon 
 
+  validates :weapon, inclusion: { in: "Bow"}, allow_nil: true
   def attack
     "#{name} use Bow"
   end
-
-  validates :weapon, allow_nil: true
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_09_123449) do
+ActiveRecord::Schema.define(version: 2019_04_10_073723) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -26,6 +26,11 @@ ActiveRecord::Schema.define(version: 2019_04_09_123449) do
   end
 
   create_table "battering_rams", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "bows", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -47,6 +52,16 @@ ActiveRecord::Schema.define(version: 2019_04_09_123449) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "katanas", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "lances", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "peasants", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -57,12 +72,27 @@ ActiveRecord::Schema.define(version: 2019_04_09_123449) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "stick_with_shits", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "strongholds", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "swords", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "trenches", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "wands", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -80,8 +110,19 @@ ActiveRecord::Schema.define(version: 2019_04_09_123449) do
     t.string "attack", default: "Punch"
     t.string "defensible_type"
     t.bigint "defensible_id"
+    t.string "equipment"
     t.index ["clan_id"], name: "index_warriors_on_clan_id"
     t.index ["defensible_type", "defensible_id"], name: "index_warriors_on_defensible_type_and_defensible_id"
+  end
+
+  create_table "weapons", force: :cascade do |t|
+    t.integer "damage"
+    t.integer "range"
+    t.bigint "warrior_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "species", default: "Melee"
+    t.index ["warrior_id"], name: "index_weapons_on_warrior_id"
   end
 
   create_table "wizards", force: :cascade do |t|
@@ -90,4 +131,5 @@ ActiveRecord::Schema.define(version: 2019_04_09_123449) do
   end
 
   add_foreign_key "warriors", "clans"
+  add_foreign_key "weapons", "warriors"
 end

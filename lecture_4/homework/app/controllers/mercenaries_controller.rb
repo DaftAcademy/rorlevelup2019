@@ -17,6 +17,7 @@ class MercenariesController < ApplicationController
   end
 
   def employ
+    #noticed that there is no reason to manually check if warrior is available rather then to user method from model
     return unless mercenary.free?
     warrior = merc_employer.employ(mercenary)
     render json: warrior, include: [:mercenary]

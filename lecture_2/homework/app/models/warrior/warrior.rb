@@ -1,4 +1,4 @@
-class Samurai < ApplicationRecord
+class Warrior < ApplicationRecord
   belongs_to :clan
 
   validates :name, presence: true

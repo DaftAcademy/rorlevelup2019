@@ -36,7 +36,6 @@ module ServiceObjects
     end
 
     def find_clan
-      puts "tryied to get clans, params: #{params}"
       QueryObjects::ClanQuery.find_by_id(params[:clan_id])
     end
 

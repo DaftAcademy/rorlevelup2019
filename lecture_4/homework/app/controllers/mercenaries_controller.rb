@@ -17,7 +17,7 @@ class MercenariesController < ApplicationController
   end
 
   def employ
-    return unless mercenary.available_from < Time.now
+    return unless mercenary.free?
     warrior = merc_employer.employ(mercenary)
     render json: warrior, include: [:mercenary]
   end

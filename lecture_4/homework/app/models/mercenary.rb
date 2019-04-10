@@ -13,4 +13,8 @@ class Mercenary < ApplicationRecord
 
   scope :alive, -> { where('death_date IS NULL') }
   scope :dead, -> { where('death_date IS NOT NULL') }
+
+  def free?
+    available_from < Time.now ? true : false
+  end
 end

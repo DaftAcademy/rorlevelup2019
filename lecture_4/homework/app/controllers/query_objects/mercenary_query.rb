@@ -23,6 +23,10 @@ module QueryObjects
         relation.where('available_from < ? And warrior_id is null', Time.now)
     end
 
+    def self.not_busy(relation: Mercenary)
+        relation.where('available_from < ?', Time.now)
+    end
+
     def self.available_by_exp(relation: Mercenary)
         self.order_by_exp(relation: self.available)
     end

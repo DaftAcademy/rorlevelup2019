@@ -3,7 +3,8 @@
 # This controller is written badly on purpose. Please refactor this
 class MercenariesController < ApplicationController
   def index
-    render json: Mercenary.where('available_from < ?', Time.now).all
+    #should i change it to available, since we cant use merc that were already taken?
+    render json: QueryObjects::MercenaryQuery.not_busy().all
   end
 
   def show
@@ -28,7 +29,7 @@ class MercenariesController < ApplicationController
   end
 
   def mercenary
-    @mercenary ||= Mercenary.find(params[:id])
+    @mercenary ||= QueryObjects::MercenaryQuery.find_by_id(params[:id])
   end
 
 end

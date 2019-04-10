@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class MissingWeapon
   def type
-    "ranged"
+    'ranged'
   end
 end

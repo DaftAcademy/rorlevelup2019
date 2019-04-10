@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class HireMercenary
   attr_reader :mercenary, :params
   def initialize(params:, mercenary: Mercenary)
@@ -6,7 +8,13 @@ class HireMercenary
   end
 
   def call
-    warrior = warrior_class.create!(name: mercenary.name, clan: clan, building: building, preferred_weapon_kind: mercenary.preferred_weapon_kind, mercenary: mercenary)
+    warrior = warrior_class.create!(
+      name: mercenary.name,
+      clan: clan,
+      building: building,
+      preferred_weapon_kind: mercenary.preferred_weapon_kind,
+      mercenary: mercenary
+    )
     create_weapon
     warrior
   end

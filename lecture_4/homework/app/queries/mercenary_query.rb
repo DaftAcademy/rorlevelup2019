@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MercenaryQuery
   def self.available_now(relation: Mercenary)
     relation.where('available_from < ?', Time.now)

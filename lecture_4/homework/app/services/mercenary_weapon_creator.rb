@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MercenaryWeaponCreator
   attr_reader :mercenary
   def initialize(mercenary: Mercenary)
@@ -12,9 +14,9 @@ class MercenaryWeaponCreator
 
   def create_good_weapon
     case mercenary.preferred_weapon_kind
-    when "melee"
+    when 'melee'
       Weapons::Katana.create!(warrior: mercenary.warrior, range: 2, damage: 25)
-    when "ranged"
+    when 'ranged'
       Weapons::Musket.create!(warrior: mercenary.warrior, range: 40, damage: 10)
     else
       Weapons::Wand.create!(warrior: mercenary.warrior, range: 80, damage: 15)

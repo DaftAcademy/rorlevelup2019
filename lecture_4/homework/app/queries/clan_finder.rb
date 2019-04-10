@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ClanFinder
   attr_reader :params
   def initialize(params:)

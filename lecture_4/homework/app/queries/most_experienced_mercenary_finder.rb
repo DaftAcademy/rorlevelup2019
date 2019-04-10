@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MostExperiencedMercenaryFinder
   def run
     mercenaries = MercenaryQuery.available_now(relation: Mercenary.all)

@@ -23,12 +23,7 @@ class MercenariesController < ApplicationController
 
   #TODO: Finish impementing MercenaryRecruiter
   def employ
-    return unless mercenary.available_from < Time.now
-    clan = find_clan
-    building = find_building
-    warrior_class = clan.warriors.select('type, count(type) as warriors_count').group(:type).order('warriors_count ASC').first.class
-    warrior = warrior_class.create!(name: mercenary.name, clan: clan, building: building, preferred_weapon_kind: mercenary.preferred_weapon_kind, mercenary: mercenary)
-    create_good_weapon()
+    warrior = MercenaryRecruiter.new(params).run
     render json: warrior, include: [:mercenary], status: 201
   end
 
@@ -46,8 +41,4 @@ class MercenariesController < ApplicationController
     ClanFinder.new(params).run
   end
 
-  def create_good_weapon()
-    warrior = WarriorFinder.new(params).run
-    WeaponCreator.new(warrior).run
-  end
 end

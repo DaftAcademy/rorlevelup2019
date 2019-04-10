@@ -4,7 +4,7 @@ module QueryObjects
   class MercenaryQuery
 
     def self.find_by_id(id=nil,relation: Mercenary)
-        if id.nil? == false
+        if id.nil?
             relation.first
         else
             relation.find(id)

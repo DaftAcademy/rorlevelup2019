@@ -2,6 +2,7 @@
 
 class Warrior < ApplicationRecord
   belongs_to :clan
+  has_one :weapon, dependent: :destroy
 
   validates :name, presence: true, uniqueness: { conditions: -> { where(death_date: nil) } }
   validates :armor_quality, numericality: { only_integer: true,

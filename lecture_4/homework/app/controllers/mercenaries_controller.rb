@@ -14,7 +14,7 @@ class MercenariesController < ApplicationController
   def employ_best
     warrior = merc_employer.employ_best
     if warrior
-      render json: warrior, include: [:mercenary]
+      render json: warrior, include: [:mercenary], status: 201
     else
       render json: 'no warrior was available', status: 404
     end
@@ -24,7 +24,7 @@ class MercenariesController < ApplicationController
     # noticed that there is no reason to manually check if warrior is available rather then
     if mercenary.free?
       warrior = merc_employer.employ(mercenary)
-      render json: warrior, include: [:mercenary]
+      render json: warrior, include: [:mercenary], status: 201
     else
       render json: 'he was busy', status: 404
     end

@@ -1,6 +1,7 @@
-class Archer < Warrior
+# frozen_string_literal: true
 
-  validates :weapon, inclusion: { in: "Bow"}, allow_nil: true
+class Archer < Warrior
+  validates :weapon, inclusion: { in: 'Bow' }, allow_nil: true
   def attack
     "#{name} use Bow"
   end

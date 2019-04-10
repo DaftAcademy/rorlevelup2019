@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Clans
   class WarriorsController < ApplicationController
     def show
@@ -44,7 +46,7 @@ module Clans
     end
 
     def warrior_params
-      params.permit(:name, :death_date, :armor_quality, :number_of_battles, :join_date, :kind, :attack, :weapon )
+      params.permit(:name, :death_date, :armor_quality, :number_of_battles, :join_date, :kind, :attack, :weapon)
     end
   end
 end

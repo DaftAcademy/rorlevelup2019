@@ -1,8 +1,7 @@
+# frozen_string_literal: true
+
 class CreateArchers < ActiveRecord::Migration[5.2]
   def change
-    create_table :archers do |t|
-
-      t.timestamps
-    end
+    create_table :archers, &:timestamps
   end
 end

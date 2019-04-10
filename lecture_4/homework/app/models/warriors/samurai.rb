@@ -5,8 +5,12 @@ module Warriors
     attribute :preferred_weapon_kind, :string, default: :melee
 
     def attack
-      weapon ||= Objects::NullWeapon.new
-      "Samurai #{name} attacked with #{weapon.type.demodulize}"
+      "Samurai #{name} attacked with #{weapon_check.type.demodulize}"
+    end
+
+    private 
+    def weapon_check
+      weapon || NullObjects::NullWeapon.new
     end
   end
 end

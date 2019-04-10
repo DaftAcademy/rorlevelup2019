@@ -13,14 +13,21 @@ class MercenariesController < ApplicationController
 
   def employ_best
     warrior= merc_employer.employ_best
+    if warrior
     render json: warrior, include: [:mercenary]
+    else
+    render json: "no warrior was available",status: 404
+    end
   end
 
   def employ
-    #noticed that there is no reason to manually check if warrior is available rather then to user method from model
-    return unless mercenary.free?
+    #noticed that there is no reason to manually check if warrior is available rather then
+    if mercenary.free?
     warrior = merc_employer.employ(mercenary)
     render json: warrior, include: [:mercenary]
+    else
+    render json: "he was busy",status: 404
+    end
   end
 
   private

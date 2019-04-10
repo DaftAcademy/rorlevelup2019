@@ -8,6 +8,5 @@ module Warriors
       weapon ||= Objects::NullWeapon.new
       "Samurai #{name} attacked with #{weapon.type.demodulize}"
     end
-
   end
 end

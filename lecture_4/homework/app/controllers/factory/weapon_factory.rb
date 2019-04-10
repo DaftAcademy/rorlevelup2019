@@ -10,8 +10,8 @@ module Factory
         Weapons::Musket.create!(warrior: mercenary.warrior, range: 40, damage: 10)
       when :magical
         Weapons::Amaterasu.create!(warrior: mercenary.warrior, range: 100, damage: 100)
-      else  
-        #i guess should be some kind of null object here yet it would lead to other nils inside
+      else
+        # i guess should be some kind of null object here yet it would lead to other nils inside
       end
     end
   end

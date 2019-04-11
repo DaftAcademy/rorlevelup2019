@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 class NullWeapon
   def type
-    "no weapon"
+    'no weapon'
   end
 end

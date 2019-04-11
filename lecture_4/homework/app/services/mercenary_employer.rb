@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class MercenaryEmployer
   attr_accessor :mercenary, :params
 
@@ -15,26 +17,28 @@ class MercenaryEmployer
       clan: clan,
       building: building,
       preferred_weapon_kind: mercenary.preferred_weapon_kind,
-      mercenary: mercenary)
+      mercenary: mercenary
+    )
     create_good_weapon(mercenary)
     warrior
   end
 
   private
-    def find_building
-      Building.find_by(id:params[:building_id])
-    end
 
-    def find_clan
-      ClanFinder.new(clan_id:params[:clan_id]).call
-    end
+  def find_building
+    Building.find_by(id: params[:building_id])
+  end
 
-    def create_good_weapon(mercenary)
-      WeaponCreator.new(mercenary:mercenary).call
-    end
+  def find_clan
+    ClanFinder.new(clan_id: params[:clan_id]).call
+  end
 
-    def select_class(clan)
-      clan.warriors.select('type, count(type) as warriors_count')
+  def create_good_weapon(mercenary)
+    WeaponCreator.new(mercenary: mercenary).call
+  end
+
+  def select_class(clan)
+    clan.warriors.select('type, count(type) as warriors_count')
         .group(:type).order('warriors_count ASC').first.class
-    end
+  end
 end

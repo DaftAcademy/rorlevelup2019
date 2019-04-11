@@ -12,16 +12,19 @@ class MercenariesController < ApplicationController
   def employ_best
     mercenary = most_experienced
     warrior = MercenaryEmployer.new(
-      mercenary:mercenary,
-      params:mercenary_params).call
+      mercenary: mercenary,
+      params: mercenary_params
+    ).call
     render json: warrior, include: [:mercenary], status: 201
   end
 
   def employ
     return unless mercenary.available_from < Time.now
+
     warrior = MercenaryEmployer.new(
-      mercenary:mercenary,
-      params:mercenary_params).call
+      mercenary: mercenary,
+      params: mercenary_params
+    ).call
     render json: warrior, include: [:mercenary], status: 201
   end
 

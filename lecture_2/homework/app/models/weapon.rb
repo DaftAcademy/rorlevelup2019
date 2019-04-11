@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Weapon < ApplicationRecord
-  belongs_to :offensive, polymorphic: true
+  belongs_to :warrior
 
   validates :name, presence: true
   validates :damage, numericality: { only_integer: true,

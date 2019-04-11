@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_01_135214) do
+ActiveRecord::Schema.define(version: 2019_04_11_102255) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -80,10 +80,11 @@ ActiveRecord::Schema.define(version: 2019_04_01_135214) do
     t.integer "damage", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "offensive_type"
-    t.bigint "offensive_id"
-    t.index ["offensive_type", "offensive_id"], name: "index_weapons_on_offensive_type_and_offensive_id"
+    t.bigint "warrior_id"
+    t.string "type", default: "Malee"
+    t.index ["warrior_id"], name: "index_weapons_on_warrior_id"
   end
 
   add_foreign_key "warriors", "clans"
+  add_foreign_key "weapons", "warriors"
 end

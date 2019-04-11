@@ -3,32 +3,32 @@
 module Clans
   class WarriorsController < ApplicationController
     def show
-      render json: warrior.as_json(include: 'clan', include: 'defensible')
+      render json: warrior, include: ['clan', 'defensible']
     end
 
     def index
       warriors = clan.warriors
       if params.key?(:alive)
         if params[:alive].to_i == 0
-          render json: warriors.dead.to_json
+          render json: warriors.dead
         else
-          render json: warriors.alive.to_json
+          render json: warriors.alive
         end
       else
-        render json: warriors.to_json
+        render json: warriors
       end
     end
 
     def create
       warrior = clan.warriors.create!(warrior_params)
 
-      render json: warrior.as_json(include: 'clan'), status: :created
+      render json: warrior, include: 'clan', status: :created
     end
 
     def update
       warrior.update!(warrior_params)
 
-      render json: warrior.as_json(include: 'clan')
+      render json: warrior, include: 'clan'
     end
 
     def destroy

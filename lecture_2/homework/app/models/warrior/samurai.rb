@@ -1,5 +1,5 @@
 class Samurai < Warrior
-	def attack
-	  puts "Kiai!"	
-	end
+  def attack
+    puts "Kiai!"	
+  end
 end

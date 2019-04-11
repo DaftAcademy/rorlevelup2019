@@ -3,7 +3,7 @@
 module Clans
   class WarriorsController < ApplicationController
     def show
-      render json: warrior, include: ['clan', 'defensible']
+      render json: warrior, include: %w[clan defensible]
     end
 
     def index

@@ -7,16 +7,14 @@ module Clans
     end
 
     def index
+      # Kod przez Was zaproponowany nie dziala, stad zmiana
       warriors = clan.warriors
-
       if params.key?(:alive)
-        if params[:alive].to_i == 0
-          render json: warriors.dead
-        else
-          render json: warriors.alive
-        end
+        render json: warriors.alive
+      elsif params.key?(:dead)
+        render json: warriors.dead
       else
-        render json: warriors
+        other_cases
       end
     end
 
@@ -47,7 +45,20 @@ module Clans
     end
 
     def warrior_params
-      params.permit(:name, :death_date, :armor_quality, :number_of_battles, :join_date)
+      params.permit(:name,
+                    :death_date,
+                    :armor_quality,
+                    :number_of_battles,
+                    :join_date,
+                    :building_id)
+    end
+
+    def other_cases
+      if request.query_string == ''
+        render json: warriors
+      else
+        render json: { message: 'Your query in not valid' }, status: 400
+      end
     end
   end
 end

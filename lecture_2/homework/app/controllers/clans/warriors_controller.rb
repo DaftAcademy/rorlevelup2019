@@ -1,7 +1,7 @@
 module Clans
   class WarriorsController < ApplicationController
     def show
-      render json: warrior.to_json
+      render json: warrior.to_json(include: :clan, only: [:name])
     end
 
     def index

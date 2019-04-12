@@ -12,11 +12,10 @@ class MercenariesController < ApplicationController
   end
 
   def employ_best
-    warrior = merc_employer.employ_best
-    if warrior
-      render json: warrior, include: [:mercenary], status: 201
-    else
-      render json: 'no warrior was available', status: 404
+    free_merc = merc_employer.employ(QueryObjects::MercenaryQuery.available_by_exp.first)
+    if free_merc
+    merc_employer.employ(mercenary)
+      render json: free_merc,include: [:warrior], status: 201
     end
   end
 

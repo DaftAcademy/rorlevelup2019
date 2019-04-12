@@ -10,13 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_05_090544) do
+ActiveRecord::Schema.define(version: 2019_04_12_074218) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "buildings", force: :cascade do |t|
-    t.string "name"
+    t.string "name", null: false
     t.string "type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -30,14 +30,15 @@ ActiveRecord::Schema.define(version: 2019_04_05_090544) do
   end
 
   create_table "mercenaries", force: :cascade do |t|
-    t.string "name"
-    t.integer "experience"
-    t.string "preferred_weapon_kind"
-    t.datetime "available_from"
-    t.integer "price"
+    t.string "name", null: false
+    t.integer "experience", default: 0, null: false
+    t.string "preferred_weapon_kind", null: false
+    t.datetime "available_from", default: "2019-04-12 08:37:01", null: false
+    t.integer "price", default: 1, null: false
     t.bigint "warrior_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["name"], name: "index_mercenaries_on_name", unique: true
     t.index ["warrior_id"], name: "index_mercenaries_on_warrior_id", unique: true
   end
 
@@ -52,7 +53,7 @@ ActiveRecord::Schema.define(version: 2019_04_05_090544) do
     t.datetime "updated_at", null: false
     t.string "type", default: "Warriors::Samurai", null: false
     t.bigint "building_id"
-    t.string "preferred_weapon_kind"
+    t.string "preferred_weapon_kind", null: false
     t.index ["building_id"], name: "index_warriors_on_building_id"
     t.index ["clan_id"], name: "index_warriors_on_clan_id"
     t.index ["name"], name: "index_warriors_on_name", unique: true, where: "(death_date IS NULL)"
@@ -60,9 +61,9 @@ ActiveRecord::Schema.define(version: 2019_04_05_090544) do
 
   create_table "weapons", force: :cascade do |t|
     t.bigint "warrior_id"
-    t.integer "range"
-    t.integer "damage"
-    t.string "kind"
+    t.integer "range", null: false
+    t.integer "damage", null: false
+    t.string "kind", null: false
     t.string "type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

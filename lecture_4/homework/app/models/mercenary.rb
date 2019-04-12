@@ -19,4 +19,9 @@ class Mercenary < ApplicationRecord
   def free?
     available_from < Time.now
   end
+
+  def available?
+    return false unless free? && warrior.nil?
+    true
+  end
 end

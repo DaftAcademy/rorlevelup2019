@@ -12,21 +12,24 @@ class MercenariesController < ApplicationController
   end
 
   def employ_best
-    free_merc = merc_employer.employ(QueryObjects::MercenaryQuery.available_by_exp.first)
-    if free_merc
+    mercenary = QueryObjects::MercenaryQuery.available_by_exp.first
+    if mercenary
     merc_employer.employ(mercenary)
-      render json: free_merc,include: [:warrior], status: 201
+      render json: mercenary,include: [:warrior], status: 201
+    else
+      raise ActiveRecord::RecordNotFound.new("no available mercenary was found")
     end
   end
 
   def employ
     # noticed that there is no reason to manually check if warrior is available rather then
-    if mercenary.free?
-      warrior = merc_employer.employ(mercenary)
-      render json: warrior, include: [:mercenary], status: 201
-    else
-      render json: 'he was busy', status: 404
+    if mercenary.available?
+      merc_employer.employ(mercenary)
+        render json: mercenary,include: [:warrior], status: 201
+    else 
+        raise ActiveRecord::RecordInvalid.new(mercenary)
     end
+  
   end
 
   private

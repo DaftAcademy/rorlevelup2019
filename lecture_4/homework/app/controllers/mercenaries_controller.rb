@@ -34,10 +34,14 @@ class MercenariesController < ApplicationController
   private
 
   def merc_employer
-    ServiceObjects::MercenaryEmployer.new(params)
+    ServiceObjects::MercenaryEmployer.new(merc_params)
   end
 
   def mercenary
     @mercenary ||= QueryObjects::MercenaryQuery.find_by_id(params[:id])
+  end
+
+  def merc_params
+    params.permit(:name, :experience, :available_from, :price, :clan_id, :building_id, :warrior_id)
   end
 end

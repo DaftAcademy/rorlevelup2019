@@ -8,7 +8,8 @@ module Warriors
       "Samurai #{name} attacked with #{weapon_check.type.demodulize}"
     end
 
-    private 
+    private
+
     def weapon_check
       weapon || NullObjects::NullWeapon.new
     end

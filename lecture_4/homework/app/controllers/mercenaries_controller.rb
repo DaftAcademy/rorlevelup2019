@@ -14,10 +14,10 @@ class MercenariesController < ApplicationController
   def employ_best
     mercenary = QueryObjects::MercenaryQuery.available_by_exp.first
     if mercenary
-    merc_employer.employ(mercenary)
-      render json: mercenary,include: [:warrior], status: 201
+      merc_employer.employ(mercenary)
+      render json: mercenary, include: [:warrior], status: 201
     else
-      raise ActiveRecord::RecordNotFound.new("no available mercenary was found")
+      raise ActiveRecord::RecordNotFound, 'no available mercenary was found'
     end
   end
 
@@ -25,11 +25,10 @@ class MercenariesController < ApplicationController
     # noticed that there is no reason to manually check if warrior is available rather then
     if mercenary.available?
       merc_employer.employ(mercenary)
-        render json: mercenary,include: [:warrior], status: 201
-    else 
-        raise ActiveRecord::RecordInvalid.new(mercenary)
+      render json: mercenary, include: [:warrior], status: 201
+    else
+      raise ActiveRecord::RecordInvalid, mercenary
     end
-  
   end
 
   private

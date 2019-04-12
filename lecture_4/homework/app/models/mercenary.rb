@@ -11,10 +11,9 @@ class Mercenary < ApplicationRecord
 
   validates :warrior, uniqueness: { allow_nil: true }
 
-  
-  #scope :alive, -> { where('death_date IS NULL') }
-  #scope :dead, -> { where('death_date IS NOT NULL') }
-  scope :free, -> {where('available_from <= ?',Time.now)}
+  # scope :alive, -> { where('death_date IS NULL') }
+  # scope :dead, -> { where('death_date IS NOT NULL') }
+  scope :free, -> { where('available_from <= ?', Time.now) }
 
   def free?
     available_from < Time.now
@@ -22,6 +21,7 @@ class Mercenary < ApplicationRecord
 
   def available?
     return false unless free? && warrior.nil?
+
     true
   end
 end

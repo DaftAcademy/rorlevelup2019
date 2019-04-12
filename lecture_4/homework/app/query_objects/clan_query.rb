@@ -9,5 +9,9 @@ module QueryObjects
         relation.find(id)
       end
     end
+
+    def self.find_popular_class(clan = Clan.first, relation: Clan)
+      clan.warriors.select('type, count(type) as warriors_count').group(:type).order('warriors_count ASC').first.class
+    end
   end
 end

@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-
 module ServiceObjects
   class MercenaryEmployer
     def initialize(params)
@@ -10,8 +9,8 @@ module ServiceObjects
     def employ(mercenary)
       clan = find_clan
       building = find_building
-      warrior_class = clan.warriors.select('type, count(type) as warriors_count').group(:type).order('warriors_count ASC').first.class
-      warrior = warrior_class.create!(name: mercenary.name, clan: clan, building: building, preferred_weapon_kind: mercenary.preferred_weapon_kind, mercenary: mercenary)
+      warrior_class = QueryObjects::ClanQuery.find_popular_class(clan)
+      warrior = Warrior.create!(name: mercenary.name, clan: clan, building: building, preferred_weapon_kind: mercenary.preferred_weapon_kind, mercenary: mercenary, type: warrior_class)
       create_good_weapon(mercenary)
     end
 

@@ -6,11 +6,12 @@ module ServiceObjects
       @params = params
     end
 
-    def employ(mercenary)
+    def call(mercenary)
       clan = find_clan
       building = find_building
-      warrior_class = QueryObjects::ClanQuery.find_popular_class(clan)
-      warrior = Warrior.create!(name: mercenary.name, clan: clan, building: building, preferred_weapon_kind: mercenary.preferred_weapon_kind, mercenary: mercenary, type: warrior_class)
+      # warrior_class = QueryObjects::ClanQuery.find_popular_class(clan
+      # warrior = Warrior.create!(name: mercenary.name, clan: clan, building: building, preferred_weapon_kind: mercenary.preferred_weapon_kind, mercenary: mercenary, type: warrior_class)
+      warrior = Factory::WarriorFactory.create(clan: clan, building: building, mercenary: mercenary)
       create_good_weapon(mercenary)
     end
 

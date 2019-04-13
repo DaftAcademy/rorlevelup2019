@@ -14,7 +14,7 @@ class WeaponCreator
     when :ranged
       Weapons::Musket.create!(warrior: mercenary.warrior, range: 40, damage: 10)
     else
-      Weapons::Gun.create!(warrior: mercenary.warrior, range: 80, damage: 40)
+      Weapons::Wand.create!(warrior: mercenary.warrior, range: 80, damage: 40)
     end
   end
 end

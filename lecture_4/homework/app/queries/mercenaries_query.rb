@@ -5,6 +5,10 @@ class MercenariesQuery
     relation.where('available_from < ?', Time.now)
   end
 
+  def self.most_experienced(relation: Mercenary)
+    relation.order(experience: :desc).first
+  end
+
   def self.employed(relation: Mercenary)
     relation.where('warrior_id IS NOT NULL')
   end
@@ -12,4 +16,6 @@ class MercenariesQuery
   def self.unemployed(relation: Mercenary)
     relation.where('warrior_id IS NULL')
   end
+
+
 end

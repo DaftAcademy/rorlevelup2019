@@ -39,6 +39,6 @@ class MercenariesController < ApplicationController
   end
 
   def most_experienced
-    MercenariesQuery.currently_available.order(experience: :desc).first
+    Mercenary.currently_available.most_experienced
   end
 end

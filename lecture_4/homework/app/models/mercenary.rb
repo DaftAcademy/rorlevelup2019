@@ -14,4 +14,5 @@ class Mercenary < ApplicationRecord
   scope :employed, -> { MercenariesQuery.employed }
   scope :unemployed, -> { MercenariesQuery.unemployed }
   scope :currently_available, -> { MercenariesQuery.currently_available }
+  scope :most_experienced, -> { MercenariesQuery.most_experienced }
 end

@@ -16,6 +16,6 @@ class Warrior < ApplicationRecord
   scope :dead, -> { where('death_date IS NOT NULL') }
 
   def attack
-    "#{self.class.name.demodulize} #{name} #{weapon_attac_mesage}"
+    "#{self.class.name.demodulize} #{name} #{weapon_attac_message}"
   end
 end

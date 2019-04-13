@@ -4,7 +4,7 @@ module Warriors
   class Samurai < Warrior
     attribute :preferred_weapon_kind, :string, default: :melee
 
-    def weapon_attack_mesage
+    def weapon_attack_message
       if weapon
         "attacked with #{weapon.type.demodulize}"
       else

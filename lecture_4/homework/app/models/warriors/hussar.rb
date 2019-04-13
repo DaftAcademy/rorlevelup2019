@@ -4,7 +4,7 @@ module Warriors
   class Hussar < Warrior
     attribute :preferred_weapon_kind, :string, default: :ranged
 
-    def weapon_attack_mesage
+    def weapon_attack_message
       if weapon
         "charged while yielding #{weapon.type.demodulize}"
       else

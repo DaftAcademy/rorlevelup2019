@@ -18,6 +18,6 @@ class MercenariesQuery
   end
 
   def self.all(relation: Mercenary)
-    relation.where('available_from < ?', Time.now.in_time_zone).all
+    relation.where('available_from < ? and warrior_id IS ?', Time.now.in_time_zone,nil).all
   end
 end

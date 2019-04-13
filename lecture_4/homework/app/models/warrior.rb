@@ -18,5 +18,4 @@ class Warrior < ApplicationRecord
   def attack
     "#{self.class.name.demodulize} #{name} #{weapon_attac_mesage}"
   end
-  
 end

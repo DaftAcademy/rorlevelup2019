@@ -4,7 +4,7 @@ class CreateMercenaries < ActiveRecord::Migration[5.2]
       t.string :name
       t.integer :experience
       t.string :preferred_weapon_kind
-      t.datetime :available_from
+      t.boolean :available, default: true
       t.integer :price
       t.belongs_to :warrior, foreign_key: true, index: { unique: true }
 

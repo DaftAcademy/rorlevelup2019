@@ -6,7 +6,6 @@ class Mercenary < ApplicationRecord
   validates :name, presence: true
   validates :experience, numericality: { greater_than_or_equal_to: 0 }
   validates :preferred_weapon_kind, presence: true, inclusion: { in: Weapon::KINDS }
-  validates :available_from, presence: true
   validates :price, numericality: { greater_than_or_equal_to: 0 }
 
   validates :warrior, uniqueness: { allow_nil: true }

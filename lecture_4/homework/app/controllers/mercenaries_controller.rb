@@ -1,9 +1,8 @@
 # frozen_string_literal: true
 
-# This controller is written badly on purpose. Please refactor this
 class MercenariesController < ApplicationController
   def index
-    render json: Mercenary.where('available_from < ?', Time.now).all
+    render json: Mercenary.where(available: true).all
   end
 
   def show
@@ -11,21 +10,22 @@ class MercenariesController < ApplicationController
   end
 
   def employ_best
-    mercenary = Mercenary.where('available_from < ?', Time.now).order(price: :asc).first # TODO: what about experience?
-    warrior = WarriorCreator.new(params,mercenary).call
-  
-    render json: warrior, include: [:mercenary, :building, :weapon], status: 201
+    mercenary = MercenariesQuery.best_mercenary
+    warrior = WarriorCreator.new(params, mercenary).call
+
+    render json: warrior, include: %i[mercenary building weapon], status: 201
   end
 
   def employ
-    return unless mercenary.available_from < Time.now
-    warrior = WarriorCreator.new(params,mercenary).call
-    render json: warrior, include: [:mercenary, :building, :weapon], status: 201
+    return unless mercenary.available
+
+    warrior = WarriorCreator.new(params, mercenary).call
+    render json: warrior, include: %i[mercenary building weapon], status: 201
   end
 
   private
 
   def mercenary
-    @mercenary ||= Mercenary.find(params[:id])
+    @mercenary ||= Mercenary.find_by(id: params[:id])
   end
 end

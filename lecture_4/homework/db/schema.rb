@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2019_04_05_090544) do
     t.string "name"
     t.integer "experience"
     t.string "preferred_weapon_kind"
-    t.datetime "available_from"
+    t.boolean "available", default: true
     t.integer "price"
     t.bigint "warrior_id"
     t.datetime "created_at", null: false

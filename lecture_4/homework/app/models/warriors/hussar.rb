@@ -5,7 +5,7 @@ module Warriors
     attribute :preferred_weapon_kind, :string, default: :ranged
 
     def attack
-      "Hussar #{name} charged while yielding #{weapon.type.demodulize}"
+      "Hussar #{name} charged while yielding #{weapon_or_null.type.demodulize}"
     end
   end
 end

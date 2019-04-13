@@ -1,0 +1,963 @@
+  [1m[35m (40.9ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (297.7ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rorlevelup2019"[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rorlevelup2019_test"[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1889.2ms)[0m  [1m[35mCREATE DATABASE "rorlevelup2019" ENCODING = 'unicode'[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (609.0ms)[0m  [1m[35mCREATE DATABASE "rorlevelup2019_test" ENCODING = 'unicode'[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "buildings" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (58.6ms)[0m  [1m[35mCREATE TABLE "buildings" ("id" bigserial primary key, "name" character varying, "type" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "clans" CASCADE[0m
+  ↳ db/schema.rb:25
+  [1m[35m (26.0ms)[0m  [1m[35mCREATE TABLE "clans" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "warriors_count" integer DEFAULT 0 NOT NULL)[0m
+  ↳ db/schema.rb:25
+  [1m[35m (1.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "mercenaries" CASCADE[0m
+  ↳ db/schema.rb:32
+  [1m[35m (21.7ms)[0m  [1m[35mCREATE TABLE "mercenaries" ("id" bigserial primary key, "name" character varying, "experience" integer, "preferred_weapon_kind" character varying, "available_from" timestamp, "price" integer, "warrior_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:32
+  [1m[35m (3.5ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_mercenaries_on_warrior_id" ON "mercenaries"  ("warrior_id")[0m
+  ↳ db/schema.rb:32
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "warriors" CASCADE[0m
+  ↳ db/schema.rb:44
+  [1m[35m (8.6ms)[0m  [1m[35mCREATE TABLE "warriors" ("id" bigserial primary key, "name" character varying NOT NULL, "armor_quality" integer DEFAULT 0, "number_of_battles" integer DEFAULT 0, "join_date" date, "death_date" date, "clan_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "type" character varying DEFAULT 'Warriors::Samurai' NOT NULL, "building_id" bigint, "preferred_weapon_kind" character varying)[0m
+  ↳ db/schema.rb:44
+  [1m[35m (7.0ms)[0m  [1m[35mCREATE  INDEX  "index_warriors_on_building_id" ON "warriors"  ("building_id")[0m
+  ↳ db/schema.rb:44
+  [1m[35m (5.4ms)[0m  [1m[35mCREATE  INDEX  "index_warriors_on_clan_id" ON "warriors"  ("clan_id")[0m
+  ↳ db/schema.rb:44
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_warriors_on_name" ON "warriors"  ("name") WHERE (death_date IS NULL)[0m
+  ↳ db/schema.rb:44
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "weapons" CASCADE[0m
+  ↳ db/schema.rb:61
+  [1m[35m (9.9ms)[0m  [1m[35mCREATE TABLE "weapons" ("id" bigserial primary key, "warrior_id" bigint, "range" integer, "damage" integer, "kind" character varying, "type" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:61
+  [1m[35m (20.1ms)[0m  [1m[35mCREATE  INDEX  "index_weapons_on_warrior_id" ON "weapons"  ("warrior_id")[0m
+  ↳ db/schema.rb:61
+  [1m[35m (9.6ms)[0m  [1m[35mALTER TABLE "mercenaries" ADD CONSTRAINT "fk_rails_3e746575d2"
+FOREIGN KEY ("warrior_id")
+  REFERENCES "warriors" ("id")
+[0m
+  ↳ db/schema.rb:72
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "warriors" ADD CONSTRAINT "fk_rails_8645ae399b"
+FOREIGN KEY ("building_id")
+  REFERENCES "buildings" ("id")
+[0m
+  ↳ db/schema.rb:73
+  [1m[35m (2.7ms)[0m  [1m[35mALTER TABLE "warriors" ADD CONSTRAINT "fk_rails_82966f12f9"
+FOREIGN KEY ("clan_id")
+  REFERENCES "clans" ("id")
+[0m
+  ↳ db/schema.rb:74
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "weapons" ADD CONSTRAINT "fk_rails_397622cb7f"
+FOREIGN KEY ("warrior_id")
+  REFERENCES "warriors" ("id")
+[0m
+  ↳ db/schema.rb:75
+  [1m[35m (12.2ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190405090544)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20190405084731),
+(20190314150921),
+(20190405073739),
+(20190405073518),
+(20190405073127),
+(20190405073313);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (6.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (4.8ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-09 07:28:39.670756"], ["updated_at", "2019-04-09 07:28:39.670756"]]
+  ↳ db/schema.rb:13
+  [1m[35m (2.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.2ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (4.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "buildings" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (15.4ms)[0m  [1m[35mCREATE TABLE "buildings" ("id" bigserial primary key, "name" character varying, "type" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (1.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "clans" CASCADE[0m
+  ↳ db/schema.rb:25
+  [1m[35m (13.3ms)[0m  [1m[35mCREATE TABLE "clans" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "warriors_count" integer DEFAULT 0 NOT NULL)[0m
+  ↳ db/schema.rb:25
+  [1m[35m (1.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "mercenaries" CASCADE[0m
+  ↳ db/schema.rb:32
+  [1m[35m (24.2ms)[0m  [1m[35mCREATE TABLE "mercenaries" ("id" bigserial primary key, "name" character varying, "experience" integer, "preferred_weapon_kind" character varying, "available_from" timestamp, "price" integer, "warrior_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:32
+  [1m[35m (26.4ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_mercenaries_on_warrior_id" ON "mercenaries"  ("warrior_id")[0m
+  ↳ db/schema.rb:32
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "warriors" CASCADE[0m
+  ↳ db/schema.rb:44
+  [1m[35m (10.5ms)[0m  [1m[35mCREATE TABLE "warriors" ("id" bigserial primary key, "name" character varying NOT NULL, "armor_quality" integer DEFAULT 0, "number_of_battles" integer DEFAULT 0, "join_date" date, "death_date" date, "clan_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "type" character varying DEFAULT 'Warriors::Samurai' NOT NULL, "building_id" bigint, "preferred_weapon_kind" character varying)[0m
+  ↳ db/schema.rb:44
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE  INDEX  "index_warriors_on_building_id" ON "warriors"  ("building_id")[0m
+  ↳ db/schema.rb:44
+  [1m[35m (19.9ms)[0m  [1m[35mCREATE  INDEX  "index_warriors_on_clan_id" ON "warriors"  ("clan_id")[0m
+  ↳ db/schema.rb:44
+  [1m[35m (19.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_warriors_on_name" ON "warriors"  ("name") WHERE (death_date IS NULL)[0m
+  ↳ db/schema.rb:44
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "weapons" CASCADE[0m
+  ↳ db/schema.rb:61
+  [1m[35m (10.9ms)[0m  [1m[35mCREATE TABLE "weapons" ("id" bigserial primary key, "warrior_id" bigint, "range" integer, "damage" integer, "kind" character varying, "type" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:61
+  [1m[35m (3.4ms)[0m  [1m[35mCREATE  INDEX  "index_weapons_on_warrior_id" ON "weapons"  ("warrior_id")[0m
+  ↳ db/schema.rb:61
+  [1m[35m (25.5ms)[0m  [1m[35mALTER TABLE "mercenaries" ADD CONSTRAINT "fk_rails_3e746575d2"
+FOREIGN KEY ("warrior_id")
+  REFERENCES "warriors" ("id")
+[0m
+  ↳ db/schema.rb:72
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "warriors" ADD CONSTRAINT "fk_rails_8645ae399b"
+FOREIGN KEY ("building_id")
+  REFERENCES "buildings" ("id")
+[0m
+  ↳ db/schema.rb:73
+  [1m[35m (2.0ms)[0m  [1m[35mALTER TABLE "warriors" ADD CONSTRAINT "fk_rails_82966f12f9"
+FOREIGN KEY ("clan_id")
+  REFERENCES "clans" ("id")
+[0m
+  ↳ db/schema.rb:74
+  [1m[35m (4.8ms)[0m  [1m[35mALTER TABLE "weapons" ADD CONSTRAINT "fk_rails_397622cb7f"
+FOREIGN KEY ("warrior_id")
+  REFERENCES "warriors" ("id")
+[0m
+  ↳ db/schema.rb:75
+  [1m[35m (9.8ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190405090544)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (3.8ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20190405084731),
+(20190314150921),
+(20190405073739),
+(20190405073518),
+(20190405073127),
+(20190405073313);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (24.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.4ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (1.0ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.4ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-09 07:28:40.049520"], ["updated_at", "2019-04-09 07:28:40.049520"]]
+  ↳ db/schema.rb:13
+  [1m[35m (4.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (2.8ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Update (3.8ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2019-04-09 07:28:40.061406"], ["key", "environment"]]
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (19.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:3
+  [1m[36mClan Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "clans" WHERE "clans"."name" = $1 LIMIT $2[0m  [["name", "The very first clan"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:3
+  [1m[36mClan Create (0.5ms)[0m  [1m[32mINSERT INTO "clans" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "The very first clan"], ["created_at", "2019-04-09 07:28:40.243984"], ["updated_at", "2019-04-09 07:28:40.243984"]]
+  ↳ db/seeds.rb:3
+  [1m[35m (41.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:4
+  [1m[36mClan Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "clans" WHERE "clans"."name" = $1 LIMIT $2[0m  [["name", "Training clan"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:4
+  [1m[36mClan Create (0.3ms)[0m  [1m[32mINSERT INTO "clans" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Training clan"], ["created_at", "2019-04-09 07:28:40.290739"], ["updated_at", "2019-04-09 07:28:40.290739"]]
+  ↳ db/seeds.rb:4
+  [1m[35m (14.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:6
+  [1m[36mBuildings::Stronghold Create (0.5ms)[0m  [1m[32mINSERT INTO "buildings" ("name", "type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Main stronghold"], ["type", "Buildings::Stronghold"], ["created_at", "2019-04-09 07:28:40.357662"], ["updated_at", "2019-04-09 07:28:40.357662"]]
+  ↳ db/seeds.rb:6
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:6
+  [1m[35m (2.3ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:7
+  [1m[36mBuildings::Walls Create (0.3ms)[0m  [1m[32mINSERT INTO "buildings" ("name", "type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Northern wall"], ["type", "Buildings::Walls"], ["created_at", "2019-04-09 07:28:40.383714"], ["updated_at", "2019-04-09 07:28:40.383714"]]
+  ↳ db/seeds.rb:7
+  [1m[35m (7.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:7
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:8
+  [1m[36mBuildings::Walls Create (0.3ms)[0m  [1m[32mINSERT INTO "buildings" ("name", "type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Southern wall"], ["type", "Buildings::Walls"], ["created_at", "2019-04-09 07:28:40.396956"], ["updated_at", "2019-04-09 07:28:40.396956"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (17.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:8
+  [1m[35m (10.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mWarrior Exists (2.5ms)[0m  [1m[34mSELECT  1 AS one FROM "warriors" WHERE "warriors"."name" = $1 AND "warriors"."death_date" IS NULL LIMIT $2[0m  [["name", "曽山大輝"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mWarriors::Samurai Create (0.9ms)[0m  [1m[32mINSERT INTO "warriors" ("name", "death_date", "clan_id", "created_at", "updated_at", "preferred_weapon_kind") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "曽山大輝"], ["death_date", "2019-04-02"], ["clan_id", 1], ["created_at", "2019-04-09 07:28:40.656854"], ["updated_at", "2019-04-09 07:28:40.656854"], ["preferred_weapon_kind", "melee"]]
+  ↳ db/seeds.rb:10
+  [1m[36mClan Update All (1.6ms)[0m  [1m[33mUPDATE "clans" SET "warriors_count" = COALESCE("warriors_count", 0) + 1 WHERE "clans"."id" = $1[0m  [["id", 1]]
+  ↳ db/seeds.rb:10
+  [1m[35m (34.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (1.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mWarrior Exists (0.8ms)[0m  [1m[34mSELECT  1 AS one FROM "warriors" WHERE "warriors"."name" = $1 AND "warriors"."death_date" IS NULL LIMIT $2[0m  [["name", "曽山大輝"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mWarriors::Samurai Create (0.6ms)[0m  [1m[32mINSERT INTO "warriors" ("name", "clan_id", "created_at", "updated_at", "building_id", "preferred_weapon_kind") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "曽山大輝"], ["clan_id", 1], ["created_at", "2019-04-09 07:28:40.716191"], ["updated_at", "2019-04-09 07:28:40.716191"], ["building_id", 1], ["preferred_weapon_kind", "melee"]]
+  ↳ db/seeds.rb:11
+  [1m[36mClan Update All (1.4ms)[0m  [1m[33mUPDATE "clans" SET "warriors_count" = COALESCE("warriors_count", 0) + 1 WHERE "clans"."id" = $1[0m  [["id", 1]]
+  ↳ db/seeds.rb:11
+  [1m[35m (4.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:12
+  [1m[36mWarrior Exists (21.8ms)[0m  [1m[34mSELECT  1 AS one FROM "warriors" WHERE "warriors"."name" = $1 AND "warriors"."death_date" IS NULL LIMIT $2[0m  [["name", "澄田清"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:12
+  [1m[36mWarriors::Samurai Create (1.7ms)[0m  [1m[32mINSERT INTO "warriors" ("name", "clan_id", "created_at", "updated_at", "building_id", "preferred_weapon_kind") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "澄田清"], ["clan_id", 2], ["created_at", "2019-04-09 07:28:40.754342"], ["updated_at", "2019-04-09 07:28:40.754342"], ["building_id", 1], ["preferred_weapon_kind", "melee"]]
+  ↳ db/seeds.rb:12
+  [1m[36mClan Update All (3.4ms)[0m  [1m[33mUPDATE "clans" SET "warriors_count" = COALESCE("warriors_count", 0) + 1 WHERE "clans"."id" = $1[0m  [["id", 2]]
+  ↳ db/seeds.rb:12
+  [1m[35m (18.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (3.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:13
+  [1m[36mWarrior Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "warriors" WHERE "warriors"."name" = $1 AND "warriors"."death_date" IS NULL LIMIT $2[0m  [["name", "Idzi Kwiatkowski"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:13
+  [1m[36mWarriors::Hussar Create (0.5ms)[0m  [1m[32mINSERT INTO "warriors" ("name", "clan_id", "created_at", "updated_at", "type", "building_id", "preferred_weapon_kind") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Idzi Kwiatkowski"], ["clan_id", 1], ["created_at", "2019-04-09 07:28:40.832406"], ["updated_at", "2019-04-09 07:28:40.832406"], ["type", "Warriors::Hussar"], ["building_id", 2], ["preferred_weapon_kind", "ranged"]]
+  ↳ db/seeds.rb:13
+  [1m[36mClan Update All (0.3ms)[0m  [1m[33mUPDATE "clans" SET "warriors_count" = COALESCE("warriors_count", 0) + 1 WHERE "clans"."id" = $1[0m  [["id", 1]]
+  ↳ db/seeds.rb:13
+  [1m[35m (1.1ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:14
+  [1m[36mWarrior Exists (0.4ms)[0m  [1m[34mSELECT  1 AS one FROM "warriors" WHERE "warriors"."name" = $1 AND "warriors"."death_date" IS NULL LIMIT $2[0m  [["name", "Świętopełk Król"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:14
+  [1m[36mWarriors::Hussar Create (1.5ms)[0m  [1m[32mINSERT INTO "warriors" ("name", "clan_id", "created_at", "updated_at", "type", "building_id", "preferred_weapon_kind") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Świętopełk Król"], ["clan_id", 2], ["created_at", "2019-04-09 07:28:40.850201"], ["updated_at", "2019-04-09 07:28:40.850201"], ["type", "Warriors::Hussar"], ["building_id", 3], ["preferred_weapon_kind", "ranged"]]
+  ↳ db/seeds.rb:14
+  [1m[36mClan Update All (1.3ms)[0m  [1m[33mUPDATE "clans" SET "warriors_count" = COALESCE("warriors_count", 0) + 1 WHERE "clans"."id" = $1[0m  [["id", 2]]
+  ↳ db/seeds.rb:14
+  [1m[35m (14.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mMercenary Create (2.1ms)[0m  [1m[32mINSERT INTO "mercenaries" ("name", "experience", "preferred_weapon_kind", "available_from", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Cosimo Smallburrow"], ["experience", 10], ["preferred_weapon_kind", "melee"], ["available_from", "2019-04-19 07:28:40.918421"], ["price", 100], ["created_at", "2019-04-09 07:28:40.945730"], ["updated_at", "2019-04-09 07:28:40.945730"]]
+  ↳ db/seeds.rb:16
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mMercenary Create (0.3ms)[0m  [1m[32mINSERT INTO "mercenaries" ("name", "experience", "preferred_weapon_kind", "available_from", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Priamus Brandagamba"], ["experience", 5], ["preferred_weapon_kind", "ranged"], ["available_from", "2019-04-04 07:28:40.951375"], ["price", 20], ["created_at", "2019-04-09 07:28:40.952382"], ["updated_at", "2019-04-09 07:28:40.952382"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (1.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:18
+  [1m[36mMercenary Create (1.9ms)[0m  [1m[32mINSERT INTO "mercenaries" ("name", "experience", "preferred_weapon_kind", "available_from", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Tanta Mugwort"], ["experience", 50], ["preferred_weapon_kind", "ranged"], ["available_from", "2019-04-04 07:28:40.956461"], ["price", 200], ["created_at", "2019-04-09 07:28:40.958630"], ["updated_at", "2019-04-09 07:28:40.958630"]]
+  ↳ db/seeds.rb:18
+  [1m[35m (19.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:18
+  [1m[35m (6.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mWeapons::Katana Create (2.3ms)[0m  [1m[32mINSERT INTO "weapons" ("warrior_id", "range", "damage", "kind", "type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["warrior_id", 2], ["range", 3], ["damage", 30], ["kind", "melee"], ["type", "Weapons::Katana"], ["created_at", "2019-04-09 07:28:41.060111"], ["updated_at", "2019-04-09 07:28:41.060111"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:21
+  [1m[36mWeapons::Katana Create (1.4ms)[0m  [1m[32mINSERT INTO "weapons" ("warrior_id", "range", "damage", "kind", "type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["warrior_id", 3], ["range", 2], ["damage", 35], ["kind", "melee"], ["type", "Weapons::Katana"], ["created_at", "2019-04-09 07:28:41.066682"], ["updated_at", "2019-04-09 07:28:41.066682"]]
+  ↳ db/seeds.rb:21
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:21
+  [1m[35m (2.7ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:22
+  [1m[36mWeapons::Musket Create (0.5ms)[0m  [1m[32mINSERT INTO "weapons" ("warrior_id", "range", "damage", "kind", "type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["warrior_id", 4], ["range", 50], ["damage", 10], ["kind", "ranged"], ["type", "Weapons::Musket"], ["created_at", "2019-04-09 07:28:41.096652"], ["updated_at", "2019-04-09 07:28:41.096652"]]
+  ↳ db/seeds.rb:22
+  [1m[35m (4.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:22
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mWeapons::Musket Create (0.5ms)[0m  [1m[32mINSERT INTO "weapons" ("warrior_id", "range", "damage", "kind", "type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["warrior_id", 5], ["range", 60], ["damage", 8], ["kind", "ranged"], ["type", "Weapons::Musket"], ["created_at", "2019-04-09 07:28:41.108910"], ["updated_at", "2019-04-09 07:28:41.108910"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (24.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+  [1m[36mWarrior Load (0.6ms)[0m  [1m[34mSELECT  "warriors".* FROM "warriors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[35m (0.6ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.3ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT "ar_internal_metadata"."value" FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1[0m  [["key", "environment"]]
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (109.3ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rorlevelup2019"[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (127.4ms)[0m  [1m[35mDROP DATABASE IF EXISTS "rorlevelup2019_test"[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (612.6ms)[0m  [1m[35mCREATE DATABASE "rorlevelup2019" ENCODING = 'unicode'[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (406.2ms)[0m  [1m[35mCREATE DATABASE "rorlevelup2019_test" ENCODING = 'unicode'[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (0.3ms)[0m  [1m[35mDROP TABLE IF EXISTS "buildings" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (74.0ms)[0m  [1m[35mCREATE TABLE "buildings" ("id" bigserial primary key, "name" character varying, "type" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (1.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "clans" CASCADE[0m
+  ↳ db/schema.rb:25
+  [1m[35m (11.1ms)[0m  [1m[35mCREATE TABLE "clans" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "warriors_count" integer DEFAULT 0 NOT NULL)[0m
+  ↳ db/schema.rb:25
+  [1m[35m (1.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "mercenaries" CASCADE[0m
+  ↳ db/schema.rb:32
+  [1m[35m (8.3ms)[0m  [1m[35mCREATE TABLE "mercenaries" ("id" bigserial primary key, "name" character varying, "experience" integer, "preferred_weapon_kind" character varying, "available_from" timestamp, "price" integer, "warrior_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:32
+  [1m[35m (4.3ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_mercenaries_on_warrior_id" ON "mercenaries"  ("warrior_id")[0m
+  ↳ db/schema.rb:32
+  [1m[35m (1.7ms)[0m  [1m[35mDROP TABLE IF EXISTS "warriors" CASCADE[0m
+  ↳ db/schema.rb:44
+  [1m[35m (19.7ms)[0m  [1m[35mCREATE TABLE "warriors" ("id" bigserial primary key, "name" character varying NOT NULL, "armor_quality" integer DEFAULT 0, "number_of_battles" integer DEFAULT 0, "join_date" date, "death_date" date, "clan_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "type" character varying DEFAULT 'Warriors::Samurai' NOT NULL, "building_id" bigint, "preferred_weapon_kind" character varying)[0m
+  ↳ db/schema.rb:44
+  [1m[35m (3.3ms)[0m  [1m[35mCREATE  INDEX  "index_warriors_on_building_id" ON "warriors"  ("building_id")[0m
+  ↳ db/schema.rb:44
+  [1m[35m (3.2ms)[0m  [1m[35mCREATE  INDEX  "index_warriors_on_clan_id" ON "warriors"  ("clan_id")[0m
+  ↳ db/schema.rb:44
+  [1m[35m (3.6ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_warriors_on_name" ON "warriors"  ("name") WHERE (death_date IS NULL)[0m
+  ↳ db/schema.rb:44
+  [1m[35m (2.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "weapons" CASCADE[0m
+  ↳ db/schema.rb:61
+  [1m[35m (9.7ms)[0m  [1m[35mCREATE TABLE "weapons" ("id" bigserial primary key, "warrior_id" bigint, "range" integer, "damage" integer, "kind" character varying, "type" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:61
+  [1m[35m (4.5ms)[0m  [1m[35mCREATE  INDEX  "index_weapons_on_warrior_id" ON "weapons"  ("warrior_id")[0m
+  ↳ db/schema.rb:61
+  [1m[35m (6.3ms)[0m  [1m[35mALTER TABLE "mercenaries" ADD CONSTRAINT "fk_rails_3e746575d2"
+FOREIGN KEY ("warrior_id")
+  REFERENCES "warriors" ("id")
+[0m
+  ↳ db/schema.rb:72
+  [1m[35m (4.6ms)[0m  [1m[35mALTER TABLE "warriors" ADD CONSTRAINT "fk_rails_8645ae399b"
+FOREIGN KEY ("building_id")
+  REFERENCES "buildings" ("id")
+[0m
+  ↳ db/schema.rb:73
+  [1m[35m (5.0ms)[0m  [1m[35mALTER TABLE "warriors" ADD CONSTRAINT "fk_rails_82966f12f9"
+FOREIGN KEY ("clan_id")
+  REFERENCES "clans" ("id")
+[0m
+  ↳ db/schema.rb:74
+  [1m[35m (4.4ms)[0m  [1m[35mALTER TABLE "weapons" ADD CONSTRAINT "fk_rails_397622cb7f"
+FOREIGN KEY ("warrior_id")
+  REFERENCES "warriors" ("id")
+[0m
+  ↳ db/schema.rb:75
+  [1m[35m (7.7ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.7ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190405090544)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.4ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20190405084731),
+(20190314150921),
+(20190405073739),
+(20190405073518),
+(20190405073127),
+(20190405073313);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (31.9ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (0.5ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-09 07:37:09.271391"], ["updated_at", "2019-04-09 07:37:09.271391"]]
+  ↳ db/schema.rb:13
+  [1m[35m (7.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (1.7ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.5ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35mSQL (0.3ms)[0m  [1m[35mCREATE EXTENSION IF NOT EXISTS "plpgsql"[0m
+  ↳ db/schema.rb:16
+  [1m[35m (4.6ms)[0m  [1m[35mDROP TABLE IF EXISTS "buildings" CASCADE[0m
+  ↳ db/schema.rb:18
+  [1m[35m (16.9ms)[0m  [1m[35mCREATE TABLE "buildings" ("id" bigserial primary key, "name" character varying, "type" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:18
+  [1m[35m (1.5ms)[0m  [1m[35mDROP TABLE IF EXISTS "clans" CASCADE[0m
+  ↳ db/schema.rb:25
+  [1m[35m (13.8ms)[0m  [1m[35mCREATE TABLE "clans" ("id" bigserial primary key, "name" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "warriors_count" integer DEFAULT 0 NOT NULL)[0m
+  ↳ db/schema.rb:25
+  [1m[35m (2.1ms)[0m  [1m[35mDROP TABLE IF EXISTS "mercenaries" CASCADE[0m
+  ↳ db/schema.rb:32
+  [1m[35m (8.1ms)[0m  [1m[35mCREATE TABLE "mercenaries" ("id" bigserial primary key, "name" character varying, "experience" integer, "preferred_weapon_kind" character varying, "available_from" timestamp, "price" integer, "warrior_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:32
+  [1m[35m (5.2ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_mercenaries_on_warrior_id" ON "mercenaries"  ("warrior_id")[0m
+  ↳ db/schema.rb:32
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "warriors" CASCADE[0m
+  ↳ db/schema.rb:44
+  [1m[35m (28.0ms)[0m  [1m[35mCREATE TABLE "warriors" ("id" bigserial primary key, "name" character varying NOT NULL, "armor_quality" integer DEFAULT 0, "number_of_battles" integer DEFAULT 0, "join_date" date, "death_date" date, "clan_id" bigint, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL, "type" character varying DEFAULT 'Warriors::Samurai' NOT NULL, "building_id" bigint, "preferred_weapon_kind" character varying)[0m
+  ↳ db/schema.rb:44
+  [1m[35m (19.8ms)[0m  [1m[35mCREATE  INDEX  "index_warriors_on_building_id" ON "warriors"  ("building_id")[0m
+  ↳ db/schema.rb:44
+  [1m[35m (3.7ms)[0m  [1m[35mCREATE  INDEX  "index_warriors_on_clan_id" ON "warriors"  ("clan_id")[0m
+  ↳ db/schema.rb:44
+  [1m[35m (5.7ms)[0m  [1m[35mCREATE UNIQUE INDEX  "index_warriors_on_name" ON "warriors"  ("name") WHERE (death_date IS NULL)[0m
+  ↳ db/schema.rb:44
+  [1m[35m (0.2ms)[0m  [1m[35mDROP TABLE IF EXISTS "weapons" CASCADE[0m
+  ↳ db/schema.rb:61
+  [1m[35m (14.8ms)[0m  [1m[35mCREATE TABLE "weapons" ("id" bigserial primary key, "warrior_id" bigint, "range" integer, "damage" integer, "kind" character varying, "type" character varying NOT NULL, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:61
+  [1m[35m (9.2ms)[0m  [1m[35mCREATE  INDEX  "index_weapons_on_warrior_id" ON "weapons"  ("warrior_id")[0m
+  ↳ db/schema.rb:61
+  [1m[35m (4.2ms)[0m  [1m[35mALTER TABLE "mercenaries" ADD CONSTRAINT "fk_rails_3e746575d2"
+FOREIGN KEY ("warrior_id")
+  REFERENCES "warriors" ("id")
+[0m
+  ↳ db/schema.rb:72
+  [1m[35m (16.7ms)[0m  [1m[35mALTER TABLE "warriors" ADD CONSTRAINT "fk_rails_8645ae399b"
+FOREIGN KEY ("building_id")
+  REFERENCES "buildings" ("id")
+[0m
+  ↳ db/schema.rb:73
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "warriors" ADD CONSTRAINT "fk_rails_82966f12f9"
+FOREIGN KEY ("clan_id")
+  REFERENCES "clans" ("id")
+[0m
+  ↳ db/schema.rb:74
+  [1m[35m (2.2ms)[0m  [1m[35mALTER TABLE "weapons" ADD CONSTRAINT "fk_rails_397622cb7f"
+FOREIGN KEY ("warrior_id")
+  REFERENCES "warriors" ("id")
+[0m
+  ↳ db/schema.rb:75
+  [1m[35m (8.4ms)[0m  [1m[35mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL PRIMARY KEY)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.4ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES (20190405090544)[0m
+  ↳ db/schema.rb:13
+  [1m[35m (1.1ms)[0m  [1m[32mINSERT INTO "schema_migrations" (version) VALUES
+(20190405084731),
+(20190314150921),
+(20190405073739),
+(20190405073518),
+(20190405073127),
+(20190405073313);
+
+[0m
+  ↳ db/schema.rb:13
+  [1m[35m (11.8ms)[0m  [1m[35mCREATE TABLE "ar_internal_metadata" ("key" character varying NOT NULL PRIMARY KEY, "value" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL)[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ db/schema.rb:13
+  [1m[35m (2.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Create (1.6ms)[0m  [1m[32mINSERT INTO "ar_internal_metadata" ("key", "value", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "key"[0m  [["key", "environment"], ["value", "development"], ["created_at", "2019-04-09 07:37:09.553761"], ["updated_at", "2019-04-09 07:37:09.553761"]]
+  ↳ db/schema.rb:13
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/schema.rb:13
+  [1m[36mActiveRecord::InternalMetadata Load (0.3ms)[0m  [1m[34mSELECT  "ar_internal_metadata".* FROM "ar_internal_metadata" WHERE "ar_internal_metadata"."key" = $1 LIMIT $2[0m  [["key", "environment"], ["LIMIT", 1]]
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[36mActiveRecord::InternalMetadata Update (1.5ms)[0m  [1m[33mUPDATE "ar_internal_metadata" SET "value" = $1, "updated_at" = $2 WHERE "ar_internal_metadata"."key" = $3[0m  [["value", "test"], ["updated_at", "2019-04-09 07:37:09.563037"], ["key", "environment"]]
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.7ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /usr/share/rvm/rubies/ruby-2.6.2/lib/ruby/gems/2.6.0/gems/rake-12.3.2/lib/rake/task.rb:273
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:3
+  [1m[36mClan Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "clans" WHERE "clans"."name" = $1 LIMIT $2[0m  [["name", "The very first clan"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:3
+  [1m[36mClan Create (1.8ms)[0m  [1m[32mINSERT INTO "clans" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "The very first clan"], ["created_at", "2019-04-09 07:37:09.623110"], ["updated_at", "2019-04-09 07:37:09.623110"]]
+  ↳ db/seeds.rb:3
+  [1m[35m (32.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:3
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:4
+  [1m[36mClan Exists (0.3ms)[0m  [1m[34mSELECT  1 AS one FROM "clans" WHERE "clans"."name" = $1 LIMIT $2[0m  [["name", "Training clan"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:4
+  [1m[36mClan Create (1.6ms)[0m  [1m[32mINSERT INTO "clans" ("name", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["name", "Training clan"], ["created_at", "2019-04-09 07:37:09.660749"], ["updated_at", "2019-04-09 07:37:09.660749"]]
+  ↳ db/seeds.rb:4
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:4
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:6
+  [1m[36mBuildings::Stronghold Create (0.5ms)[0m  [1m[32mINSERT INTO "buildings" ("name", "type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Main stronghold"], ["type", "Buildings::Stronghold"], ["created_at", "2019-04-09 07:37:09.689028"], ["updated_at", "2019-04-09 07:37:09.689028"]]
+  ↳ db/seeds.rb:6
+  [1m[35m (12.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:6
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:7
+  [1m[36mBuildings::Walls Create (0.3ms)[0m  [1m[32mINSERT INTO "buildings" ("name", "type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Northern wall"], ["type", "Buildings::Walls"], ["created_at", "2019-04-09 07:37:09.719091"], ["updated_at", "2019-04-09 07:37:09.719091"]]
+  ↳ db/seeds.rb:7
+  [1m[35m (14.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:7
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:8
+  [1m[36mBuildings::Walls Create (1.5ms)[0m  [1m[32mINSERT INTO "buildings" ("name", "type", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["name", "Southern wall"], ["type", "Buildings::Walls"], ["created_at", "2019-04-09 07:37:09.737810"], ["updated_at", "2019-04-09 07:37:09.737810"]]
+  ↳ db/seeds.rb:8
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:8
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:10
+  [1m[36mWarrior Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "warriors" WHERE "warriors"."name" = $1 AND "warriors"."death_date" IS NULL LIMIT $2[0m  [["name", "曽山大輝"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:10
+  [1m[36mWarriors::Samurai Create (0.8ms)[0m  [1m[32mINSERT INTO "warriors" ("name", "death_date", "clan_id", "created_at", "updated_at", "preferred_weapon_kind") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "曽山大輝"], ["death_date", "2019-04-02"], ["clan_id", 1], ["created_at", "2019-04-09 07:37:09.801662"], ["updated_at", "2019-04-09 07:37:09.801662"], ["preferred_weapon_kind", "melee"]]
+  ↳ db/seeds.rb:10
+  [1m[36mClan Update All (0.4ms)[0m  [1m[33mUPDATE "clans" SET "warriors_count" = COALESCE("warriors_count", 0) + 1 WHERE "clans"."id" = $1[0m  [["id", 1]]
+  ↳ db/seeds.rb:10
+  [1m[35m (1.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:10
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:11
+  [1m[36mWarrior Exists (1.9ms)[0m  [1m[34mSELECT  1 AS one FROM "warriors" WHERE "warriors"."name" = $1 AND "warriors"."death_date" IS NULL LIMIT $2[0m  [["name", "曽山大輝"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:11
+  [1m[36mWarriors::Samurai Create (1.9ms)[0m  [1m[32mINSERT INTO "warriors" ("name", "clan_id", "created_at", "updated_at", "building_id", "preferred_weapon_kind") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "曽山大輝"], ["clan_id", 1], ["created_at", "2019-04-09 07:37:09.814949"], ["updated_at", "2019-04-09 07:37:09.814949"], ["building_id", 1], ["preferred_weapon_kind", "melee"]]
+  ↳ db/seeds.rb:11
+  [1m[36mClan Update All (1.5ms)[0m  [1m[33mUPDATE "clans" SET "warriors_count" = COALESCE("warriors_count", 0) + 1 WHERE "clans"."id" = $1[0m  [["id", 1]]
+  ↳ db/seeds.rb:11
+  [1m[35m (15.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:11
+  [1m[35m (1.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:12
+  [1m[36mWarrior Exists (1.4ms)[0m  [1m[34mSELECT  1 AS one FROM "warriors" WHERE "warriors"."name" = $1 AND "warriors"."death_date" IS NULL LIMIT $2[0m  [["name", "澄田清"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:12
+  [1m[36mWarriors::Samurai Create (1.6ms)[0m  [1m[32mINSERT INTO "warriors" ("name", "clan_id", "created_at", "updated_at", "building_id", "preferred_weapon_kind") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "澄田清"], ["clan_id", 2], ["created_at", "2019-04-09 07:37:09.841314"], ["updated_at", "2019-04-09 07:37:09.841314"], ["building_id", 1], ["preferred_weapon_kind", "melee"]]
+  ↳ db/seeds.rb:12
+  [1m[36mClan Update All (2.0ms)[0m  [1m[33mUPDATE "clans" SET "warriors_count" = COALESCE("warriors_count", 0) + 1 WHERE "clans"."id" = $1[0m  [["id", 2]]
+  ↳ db/seeds.rb:12
+  [1m[35m (11.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:12
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:13
+  [1m[36mWarrior Exists (0.5ms)[0m  [1m[34mSELECT  1 AS one FROM "warriors" WHERE "warriors"."name" = $1 AND "warriors"."death_date" IS NULL LIMIT $2[0m  [["name", "Idzi Kwiatkowski"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:13
+  [1m[36mWarriors::Hussar Create (1.7ms)[0m  [1m[32mINSERT INTO "warriors" ("name", "clan_id", "created_at", "updated_at", "type", "building_id", "preferred_weapon_kind") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Idzi Kwiatkowski"], ["clan_id", 1], ["created_at", "2019-04-09 07:37:09.902198"], ["updated_at", "2019-04-09 07:37:09.902198"], ["type", "Warriors::Hussar"], ["building_id", 2], ["preferred_weapon_kind", "ranged"]]
+  ↳ db/seeds.rb:13
+  [1m[36mClan Update All (0.3ms)[0m  [1m[33mUPDATE "clans" SET "warriors_count" = COALESCE("warriors_count", 0) + 1 WHERE "clans"."id" = $1[0m  [["id", 1]]
+  ↳ db/seeds.rb:13
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:13
+  [1m[35m (0.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:14
+  [1m[36mWarrior Exists (1.3ms)[0m  [1m[34mSELECT  1 AS one FROM "warriors" WHERE "warriors"."name" = $1 AND "warriors"."death_date" IS NULL LIMIT $2[0m  [["name", "Świętopełk Król"], ["LIMIT", 1]]
+  ↳ db/seeds.rb:14
+  [1m[36mWarriors::Hussar Create (1.6ms)[0m  [1m[32mINSERT INTO "warriors" ("name", "clan_id", "created_at", "updated_at", "type", "building_id", "preferred_weapon_kind") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Świętopełk Król"], ["clan_id", 2], ["created_at", "2019-04-09 07:37:09.913526"], ["updated_at", "2019-04-09 07:37:09.913526"], ["type", "Warriors::Hussar"], ["building_id", 3], ["preferred_weapon_kind", "ranged"]]
+  ↳ db/seeds.rb:14
+  [1m[36mClan Update All (1.4ms)[0m  [1m[33mUPDATE "clans" SET "warriors_count" = COALESCE("warriors_count", 0) + 1 WHERE "clans"."id" = $1[0m  [["id", 2]]
+  ↳ db/seeds.rb:14
+  [1m[35m (1.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:14
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:16
+  [1m[36mMercenary Create (0.8ms)[0m  [1m[32mINSERT INTO "mercenaries" ("name", "experience", "preferred_weapon_kind", "available_from", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Cosimo Smallburrow"], ["experience", 10], ["preferred_weapon_kind", "melee"], ["available_from", "2019-04-19 07:37:09.923620"], ["price", 100], ["created_at", "2019-04-09 07:37:09.944743"], ["updated_at", "2019-04-09 07:37:09.944743"]]
+  ↳ db/seeds.rb:16
+  [1m[35m (10.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:16
+  [1m[35m (1.4ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:17
+  [1m[36mMercenary Create (1.4ms)[0m  [1m[32mINSERT INTO "mercenaries" ("name", "experience", "preferred_weapon_kind", "available_from", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Priamus Brandagamba"], ["experience", 5], ["preferred_weapon_kind", "ranged"], ["available_from", "2019-04-04 07:37:09.960193"], ["price", 20], ["created_at", "2019-04-09 07:37:09.962497"], ["updated_at", "2019-04-09 07:37:09.962497"]]
+  ↳ db/seeds.rb:17
+  [1m[35m (26.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:17
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:18
+  [1m[36mMercenary Create (1.7ms)[0m  [1m[32mINSERT INTO "mercenaries" ("name", "experience", "preferred_weapon_kind", "available_from", "price", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["name", "Tanta Mugwort"], ["experience", 50], ["preferred_weapon_kind", "ranged"], ["available_from", "2019-04-04 07:37:09.991864"], ["price", 200], ["created_at", "2019-04-09 07:37:09.992975"], ["updated_at", "2019-04-09 07:37:09.992975"]]
+  ↳ db/seeds.rb:18
+  [1m[35m (17.8ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:18
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:20
+  [1m[36mWeapons::Katana Create (0.7ms)[0m  [1m[32mINSERT INTO "weapons" ("warrior_id", "range", "damage", "kind", "type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["warrior_id", 2], ["range", 3], ["damage", 30], ["kind", "melee"], ["type", "Weapons::Katana"], ["created_at", "2019-04-09 07:37:10.048292"], ["updated_at", "2019-04-09 07:37:10.048292"]]
+  ↳ db/seeds.rb:20
+  [1m[35m (1.3ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:20
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:21
+  [1m[36mWeapons::Katana Create (0.4ms)[0m  [1m[32mINSERT INTO "weapons" ("warrior_id", "range", "damage", "kind", "type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["warrior_id", 3], ["range", 2], ["damage", 35], ["kind", "melee"], ["type", "Weapons::Katana"], ["created_at", "2019-04-09 07:37:10.058228"], ["updated_at", "2019-04-09 07:37:10.058228"]]
+  ↳ db/seeds.rb:21
+  [1m[35m (1.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:21
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:22
+  [1m[36mWeapons::Musket Create (0.6ms)[0m  [1m[32mINSERT INTO "weapons" ("warrior_id", "range", "damage", "kind", "type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["warrior_id", 4], ["range", 50], ["damage", 10], ["kind", "ranged"], ["type", "Weapons::Musket"], ["created_at", "2019-04-09 07:37:10.079161"], ["updated_at", "2019-04-09 07:37:10.079161"]]
+  ↳ db/seeds.rb:22
+  [1m[35m (9.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:22
+  [1m[35m (1.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ db/seeds.rb:23
+  [1m[36mWeapons::Musket Create (0.8ms)[0m  [1m[32mINSERT INTO "weapons" ("warrior_id", "range", "damage", "kind", "type", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["warrior_id", 5], ["range", 60], ["damage", 8], ["kind", "ranged"], ["type", "Weapons::Musket"], ["created_at", "2019-04-09 07:37:10.093434"], ["updated_at", "2019-04-09 07:37:10.093434"]]
+  ↳ db/seeds.rb:23
+  [1m[35m (18.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ db/seeds.rb:23
+Started GET "/clans" for 127.0.0.1 at 2019-04-09 09:41:15 +0200
+  [1m[35m (8.2ms)[0m  [1m[34mSELECT "schema_migrations"."version" FROM "schema_migrations" ORDER BY "schema_migrations"."version" ASC[0m
+  ↳ /home/wojtek/.rvm/gems/ruby-2.6.2@rorlevelup2019/gems/activerecord-5.2.2.1/lib/active_record/log_subscriber.rb:98
+Processing by ClansController#index as */*
+  [1m[36mClan Load (8.7ms)[0m  [1m[34mSELECT "clans".* FROM "clans"[0m
+  ↳ app/controllers/clans_controller.rb:5
+[active_model_serializers]   [1m[36mWarrior Load (0.5ms)[0m  [1m[34mSELECT "warriors".* FROM "warriors" WHERE "warriors"."clan_id" = $1[0m  [["clan_id", 1]]
+[active_model_serializers]   ↳ app/controllers/clans_controller.rb:5
+[active_model_serializers]   [1m[36mWarrior Load (6.5ms)[0m  [1m[34mSELECT "warriors".* FROM "warriors" WHERE "warriors"."clan_id" = $1[0m  [["clan_id", 2]]
+[active_model_serializers]   ↳ app/controllers/clans_controller.rb:5
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::JsonApi (479.59ms)
+Completed 200 OK in 981ms (Views: 887.4ms | ActiveRecord: 33.9ms)
+
+
+Started POST "/clans/1/warriors" for 127.0.0.1 at 2019-04-09 09:43:21 +0200
+  
+AbstractController::ActionNotFound (The action 'create' could not be found for Clans::WarriorsController):
+  
+actionpack (5.2.2.1) lib/abstract_controller/base.rb:129:in `process'
+actionpack (5.2.2.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.2.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.2.1) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.2.1) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.2.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.2.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.2.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.2.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.6) lib/rack/etag.rb:25:in `call'
+rack (2.0.6) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.6) lib/rack/head.rb:12:in `call'
+activerecord (5.2.2.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.2.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started POST "/clans/1/warriors" for 127.0.0.1 at 2019-04-09 09:44:18 +0200
+  
+AbstractController::ActionNotFound (The action 'create' could not be found for Clans::WarriorsController):
+  
+actionpack (5.2.2.1) lib/abstract_controller/base.rb:129:in `process'
+actionpack (5.2.2.1) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.2.1) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.2.1) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.2.1) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.2.1) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.2.1) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.2.1) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.2.1) lib/action_dispatch/routing/route_set.rb:840:in `call'
+rack (2.0.6) lib/rack/etag.rb:25:in `call'
+rack (2.0.6) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.6) lib/rack/head.rb:12:in `call'
+activerecord (5.2.2.1) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.2.1) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.2.1) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.2.1) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.2.1) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.6) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.2.1) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.2.1) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack (2.0.6) lib/rack/sendfile.rb:111:in `call'
+railties (5.2.2.1) lib/rails/engine.rb:524:in `call'
+puma (3.12.0) lib/puma/configuration.rb:225:in `call'
+puma (3.12.0) lib/puma/server.rb:658:in `handle_request'
+puma (3.12.0) lib/puma/server.rb:472:in `process_client'
+puma (3.12.0) lib/puma/server.rb:332:in `block in run'
+puma (3.12.0) lib/puma/thread_pool.rb:133:in `block in spawn_thread'
+Started POST "/clans/1/warriors" for 127.0.0.1 at 2019-04-09 10:19:37 +0200
+Processing by Clans::WarriorsController#create as */*
+  Parameters: {"clan_id"=>"1"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant Clans::WarriorsController::WarriorCrator):
+  
+app/controllers/clans/warriors_controller.rb:24:in `create'
+Started POST "/clans/1/warriors" for 127.0.0.1 at 2019-04-09 10:20:30 +0200
+Processing by Clans::WarriorsController#create as */*
+  Parameters: {"clan_id"=>"1"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant Clans::WarriorsController::WarriorCrator):
+  
+app/controllers/clans/warriors_controller.rb:24:in `create'
+Started POST "/clans/1/warriors" for 127.0.0.1 at 2019-04-09 10:46:04 +0200
+Processing by Clans::WarriorsController#create as */*
+  Parameters: {"clan_id"=>"1"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant Clans::WarriorsController::WarriorCrator):
+  
+app/controllers/clans/warriors_controller.rb:24:in `create'
+Started POST "/clans/1/warriors" for 127.0.0.1 at 2019-04-09 10:51:41 +0200
+Processing by Clans::WarriorsController#create as */*
+  Parameters: {"clan_id"=>"1"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant Clans::WarriorsController::WarriorCreator):
+  
+app/controllers/clans/warriors_controller.rb:24:in `create'
+Started POST "/clans/1/warriors" for 127.0.0.1 at 2019-04-09 10:51:55 +0200
+Processing by Clans::WarriorsController#create as */*
+  Parameters: {"clan_id"=>"1"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant Clans::WarriorsController::WarriorCreator):
+  
+app/controllers/clans/warriors_controller.rb:24:in `create'
+Started POST "/clans/1/warriors" for 127.0.0.1 at 2019-04-09 10:52:20 +0200
+Processing by Clans::WarriorsController#create as */*
+  Parameters: {"clan_id"=>"1"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant Clans::WarriorsController::WarriorCreator):
+  
+app/controllers/clans/warriors_controller.rb:24:in `create'
+Started POST "/clans/1/warriors" for 127.0.0.1 at 2019-04-09 10:52:36 +0200
+Processing by Clans::WarriorsController#create as */*
+  Parameters: {"clan_id"=>"1"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant Clans::WarriorsController::WarriorCreator):
+  
+app/controllers/clans/warriors_controller.rb:24:in `create'
+Started POST "/clans/1/warriors" for 127.0.0.1 at 2019-04-09 10:52:48 +0200
+Processing by Clans::WarriorsController#create as */*
+  Parameters: {"clan_id"=>"1"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant Clans::WarriorsController::WarriorCreator):
+  
+app/controllers/clans/warriors_controller.rb:24:in `create'
+Started POST "/clans/1/warriors" for 127.0.0.1 at 2019-04-09 10:53:09 +0200
+Processing by Clans::WarriorsController#create as */*
+  Parameters: {"clan_id"=>"1"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (uninitialized constant Clans::WarriorsController::WarriorCreator):
+  
+app/controllers/clans/warriors_controller.rb:24:in `create'
+Started POST "/clans/1/warriors" for 127.0.0.1 at 2019-04-09 10:55:36 +0200
+Processing by Clans::WarriorsController#create as */*
+  Parameters: {"clan_id"=>"1"}
+Completed 500 Internal Server Error in 81ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/wojtek/Pulpit/Ruby2/rorlevelup2019/lecture_4/homework/app/services/warrior_creator.rb:14: syntax error, unexpected ':', expecting end
+            attr_reader: params
+                       ^
+/home/wojtek/Pulpit/Ruby2/rorlevelup2019/lecture_4/homework/app/services/warrior_creator.rb:25: syntax error, unexpected ':', expecting ')'
+...number_of_battles, :join_date :clan_id)
+...                              ^):
+  
+app/services/warrior_creator.rb:14: syntax error, unexpected ':', expecting end
+app/services/warrior_creator.rb:25: syntax error, unexpected ':', expecting ')'
+app/controllers/clans/warriors_controller.rb:24:in `create'
+Started POST "/clans/1/warriors" for 127.0.0.1 at 2019-04-09 10:55:56 +0200
+Processing by Clans::WarriorsController#create as */*
+  Parameters: {"clan_id"=>"1"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/wojtek/Pulpit/Ruby2/rorlevelup2019/lecture_4/homework/app/services/warrior_creator.rb:25: syntax error, unexpected ':', expecting ')'
+...number_of_battles, :join_date :clan_id)
+...                              ^):
+  
+app/services/warrior_creator.rb:25: syntax error, unexpected ':', expecting ')'
+app/controllers/clans/warriors_controller.rb:24:in `create'
+Started POST "/clans/1/warriors" for 127.0.0.1 at 2019-04-09 10:56:10 +0200
+Processing by Clans::WarriorsController#create as */*
+  Parameters: {"clan_id"=>"1"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+
+  
+SyntaxError (/home/wojtek/Pulpit/Ruby2/rorlevelup2019/lecture_4/homework/app/services/warrior_creator.rb:25: syntax error, unexpected ':', expecting ')'
+...number_of_battles, :join_date :clan_id)
+...                              ^):
+  
+app/services/warrior_creator.rb:25: syntax error, unexpected ':', expecting ')'
+app/controllers/clans/warriors_controller.rb:24:in `create'
+Started POST "/clans/1/warriors" for 127.0.0.1 at 2019-04-09 10:56:40 +0200
+Processing by Clans::WarriorsController#create as */*
+  Parameters: {"clan_id"=>"1"}
+Completed 500 Internal Server Error in 138ms (ActiveRecord: 12.0ms)
+
+
+  
+ActionController::UnfilteredParameters (unable to convert unpermitted parameters to hash):
+  
+app/services/warrior_creator.rb:17:in `create'
+app/services/warrior_creator.rb:9:in `call'
+app/controllers/clans/warriors_controller.rb:24:in `create'
+Started POST "/clans/1/warriors?name=Wojtek" for 127.0.0.1 at 2019-04-09 10:56:58 +0200
+Processing by Clans::WarriorsController#create as */*
+  Parameters: {"name"=>"Wojtek", "clan_id"=>"1"}
+Completed 500 Internal Server Error in 0ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionController::UnfilteredParameters (unable to convert unpermitted parameters to hash):
+  
+app/services/warrior_creator.rb:17:in `create'
+app/services/warrior_creator.rb:9:in `call'
+app/controllers/clans/warriors_controller.rb:24:in `create'
+Started POST "/clans/1/warriors?name=Wojtek" for 127.0.0.1 at 2019-04-09 10:57:43 +0200
+Processing by Clans::WarriorsController#create as */*
+  Parameters: {"name"=>"Wojtek", "clan_id"=>"1"}
+Completed 500 Internal Server Error in 72ms (ActiveRecord: 15.3ms)
+
+
+  
+ActionController::UnfilteredParameters (unable to convert unpermitted parameters to hash):
+  
+app/services/warrior_creator.rb:17:in `create'
+app/services/warrior_creator.rb:9:in `call'
+app/controllers/clans/warriors_controller.rb:24:in `create'
+Started POST "/clans/1/warriors?name=Wojtek" for 127.0.0.1 at 2019-04-09 11:02:26 +0200
+Processing by Clans::WarriorsController#create as */*
+  Parameters: {"name"=>"Wojtek", "clan_id"=>"1"}
+Completed 500 Internal Server Error in 30ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/services/warrior_creator.rb:17:in `create'
+app/services/warrior_creator.rb:9:in `call'
+app/controllers/clans/warriors_controller.rb:24:in `create'
+Started POST "/clans/1/warriors?name=Wojtek" for 127.0.0.1 at 2019-04-09 11:04:27 +0200
+Processing by Clans::WarriorsController#create as */*
+  Parameters: {"name"=>"Wojtek", "clan_id"=>"1"}
+Completed 500 Internal Server Error in 35ms (ActiveRecord: 0.0ms)
+
+
+  
+ArgumentError (wrong number of arguments (given 1, expected 0)):
+  
+app/services/warrior_creator.rb:17:in `create'
+app/services/warrior_creator.rb:9:in `call'
+app/controllers/clans/warriors_controller.rb:24:in `create'
+Started POST "/clans/1/warriors?name=Wojtek" for 127.0.0.1 at 2019-04-09 11:05:21 +0200
+Processing by Clans::WarriorsController#create as */*
+  Parameters: {"name"=>"Wojtek", "clan_id"=>"1"}
+  [1m[35m (2.9ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clans/warriors_controller.rb:24
+  [1m[36mClan Load (0.4ms)[0m  [1m[34mSELECT  "clans".* FROM "clans" WHERE "clans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clans/warriors_controller.rb:24
+  [1m[36mWarrior Exists (46.0ms)[0m  [1m[34mSELECT  1 AS one FROM "warriors" WHERE "warriors"."name" = $1 AND "warriors"."death_date" IS NULL LIMIT $2[0m  [["name", "Wojtek"], ["LIMIT", 1]]
+  ↳ app/controllers/clans/warriors_controller.rb:24
+  [1m[36mWarriors::Samurai Create (11.7ms)[0m  [1m[32mINSERT INTO "warriors" ("name", "clan_id", "created_at", "updated_at", "preferred_weapon_kind") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["name", "Wojtek"], ["clan_id", 1], ["created_at", "2019-04-09 09:05:22.170221"], ["updated_at", "2019-04-09 09:05:22.170221"], ["preferred_weapon_kind", "melee"]]
+  ↳ app/controllers/clans/warriors_controller.rb:24
+  [1m[36mClan Update All (7.0ms)[0m  [1m[33mUPDATE "clans" SET "warriors_count" = COALESCE("warriors_count", 0) + 1 WHERE "clans"."id" = $1[0m  [["id", 1]]
+  ↳ app/controllers/clans/warriors_controller.rb:24
+  [1m[35m (40.2ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/clans/warriors_controller.rb:24
+Completed 201 Created in 341ms (Views: 27.7ms | ActiveRecord: 135.0ms)
+
+
+Started POST "/clans/1/warriors?name=Wojtek" for 127.0.0.1 at 2019-04-09 11:07:16 +0200
+Processing by Clans::WarriorsController#create as */*
+  Parameters: {"name"=>"Wojtek", "clan_id"=>"1"}
+  [1m[35m (3.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/clans/warriors_controller.rb:24
+  [1m[36mClan Load (1.7ms)[0m  [1m[34mSELECT  "clans".* FROM "clans" WHERE "clans"."id" = $1 LIMIT $2[0m  [["id", 1], ["LIMIT", 1]]
+  ↳ app/controllers/clans/warriors_controller.rb:24
+  [1m[36mWarrior Exists (2.8ms)[0m  [1m[34mSELECT  1 AS one FROM "warriors" WHERE "warriors"."name" = $1 AND "warriors"."death_date" IS NULL LIMIT $2[0m  [["name", "Wojtek"], ["LIMIT", 1]]
+  ↳ app/controllers/clans/warriors_controller.rb:24
+  [1m[35m (5.3ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/clans/warriors_controller.rb:24
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with ActiveModel::Errors (0.1ms)
+Completed 422 Unprocessable Entity in 532ms (Views: 146.9ms | ActiveRecord: 13.0ms)
+
+
+  [1m[36mWarrior Load (0.4ms)[0m  [1m[34mSELECT  "warriors".* FROM "warriors" LIMIT $1[0m  [["LIMIT", 11]]
+  [1m[36mWarrior Exists (0.6ms)[0m  [1m[34mSELECT  1 AS one FROM "warriors" LIMIT $1[0m  [["LIMIT", 1]]

@@ -31,7 +31,7 @@ class MercenariesController < ApplicationController
   private
 
   def mercenary
-    @mercenary ||= Mercenary.find(params[:id])
+    @mercenary = Mercenary.find(params[:id]) || NullMercenary.new
   end
 
   def mercenary_params

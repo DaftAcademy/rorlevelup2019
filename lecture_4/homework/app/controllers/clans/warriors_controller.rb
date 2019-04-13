@@ -21,13 +21,13 @@ module Clans
     end
 
     def create
-      warrior = clan.warriors.create!(warrior_params)
+      warrior = WarriorCreator.new.call(clan: clan, warrior_params: warrior_params)
 
-      render json: warrior.to_json, include: %i[weapon building], status: 201
+      render json: warrior.to_json, include: %i[weapon building], status: :created
     end
 
     def update
-      warrior.update!(warrior_params)
+      warrior = WarriorCreator.new(warrior).update!(warrior_params: warrior_params)
 
       render json: warrior, include: %i[weapon building]
     end

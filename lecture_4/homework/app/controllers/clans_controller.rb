@@ -12,7 +12,7 @@ class ClansController < ApplicationController
   def create
     clan = Clan.create!(clan_params)
 
-    render json: clan, include: [:warriors], status: 201
+    render json: clan, include: [:warriors], status: :created
   end
 
   private

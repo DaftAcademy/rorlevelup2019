@@ -5,7 +5,7 @@ module Warriors
     attribute :preferred_weapon_kind, :string, default: :melee
 
     def attack
-      "Samurai #{name} attacked with #{weapon.type.demodulize}"
+      "Samurai #{name} attacked with #{my_weapon.type.demodulize}"
     end
   end
 end

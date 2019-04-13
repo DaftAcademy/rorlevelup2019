@@ -1,9 +1,9 @@
 class Warrior < ApplicationRecord
   after_create :leads_of_warrior
-  belongs_to :defensible, polymorphic: true
+  belongs_to :defensible, polymorphic: true, optional: true
   belongs_to :clan
 
-  validates :name, presence: true, 
+  validates :name, presence: true 
   validates :armor_quality, numericality: { only_integer: true,
                                             greater_than_or_equal_to: 0,
                                             less_than_or_equal_to: 100 }

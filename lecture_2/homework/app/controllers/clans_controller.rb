@@ -2,7 +2,7 @@ class ClansController < ApplicationController
   def index
     render json: Clan.all, each_serializer: ClanSerializer
   end
-
+ 
   def create
     clan = Clan.create!(clan_params)
 

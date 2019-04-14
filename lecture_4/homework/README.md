@@ -1,4 +1,6 @@
-Create nulls folder
+# List of changes
+### Create nulls folder
+
     create NullMercenary
         name set to "not a mercenary"
         all variables set to 0 
@@ -8,12 +10,14 @@ Create nulls folder
         weapon kind is set accordingly to warrior preferences to avoid future problems 
 
 
-Create MercenarySerializer
+### Create MercenarySerializer
+
     Instead of making another null object for warriors I've just checked if object is not nil, what gives satisfying output
-        :5 object.warrior.nil? ?  nil : WarriorSerializer.new(object.warrior)
+       object.warrior.nil? ?  nil : WarriorSerializer.new(object.warrior)
 
 
-Update Warrior model
+### Update Warrior model
+
     add  dependent nullify to mercenary foreign key, so now mercenaries can be dismissed and hired again
         has_one :mercenary, dependent: :nullify
 
@@ -26,7 +30,8 @@ Update Warrior model
         end
 
 
-Create MercenaryQuery
+### Create MercenaryQuery
+
     improve queries in MercenaryController
 
         Create methods:
@@ -35,7 +40,8 @@ Create MercenaryQuery
             best - select one mercenary in relation, which have the highest experience and is possibly cheap
 
          
-Create MercenaryHelper   
+### Create MercenaryHelper  
+
     enclosed all advanced methods mercenaries in helper to improove code's clarity
 
         Create methods:
@@ -49,7 +55,8 @@ Create MercenaryHelper
                                     I didn't add any default weapon, because third option is magical and it should be handled best by NullWeapon
 
 
-Update MercenariesController
+### Update MercenariesController
+
     clearer, bug fixed and use queries and helper
 
     Methods:

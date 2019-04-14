@@ -2,11 +2,12 @@
 
 module Warriors
   class Wizard < Warrior
-    attr_accessor :weapon
-    WEAPONS = %w[Fire_ball Avada_kedavra Thunder].freeze
-    EFFECT = ['and kills', 'and miss'].freeze
+    EFFECTS = %w[kills misses].freeze
     def attack
-      "#{name} use #{WEAPONS.sample}, #{EFFECT.sample}"
+      "#{name} use #{equipment}, and #{EFFECTS.sample}"
+    end
+    def weapons_of_choice
+      ["wand"]
     end
 
     validates :equipment, inclusion: { in: WEAPONS }, allow_nil: true

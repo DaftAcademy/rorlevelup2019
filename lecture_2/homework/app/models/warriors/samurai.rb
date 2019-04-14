@@ -2,12 +2,12 @@
 
 module Warriors
   class Samurai < Warrior
-    attr_accessor :weapon
-    WEAPONS = %w[Katana Bow Tanto].freeze
+    validates :equipment, inclusion: { in: 'Bow' }, allow_nil: true
     def attack
-      "#{name} use #{WEAPONS.sample}"
+      "#{name} use #{equipment}"
     end
-
-    validates :equipment, inclusion: { in: WEAPONS }, allow_nil: true
+    def weapons_of_choice
+      %w[ katana bow]
+    end
   end
 end

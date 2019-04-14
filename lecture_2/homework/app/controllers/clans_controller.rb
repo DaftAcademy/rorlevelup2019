@@ -2,16 +2,29 @@
 
 class ClansController < ApplicationController
   def index
-    render json: Clan.all.to_json
+    clans = Clan.all.includes
+    render json: serialize_it(clans).serializable_hash, status: :ok
+  end
+
+  def show
+    clan = Clan.find(params[:id])
+    options = {}
+    options[:include] = [:warriors]
+    render json: ClanSerializer.new(clan, options).serializable_hash
+
   end
 
   def create
     clan = Clan.create!(clan_params)
 
-    render json: clan.to_json, status: 201
+    render json: serialize_it(clan), status: 201
   end
 
   private
+
+  def serialize_it(*args)
+    ClanSerializer.new(options)
+  end
 
   def clan_params
     params.permit(:name)

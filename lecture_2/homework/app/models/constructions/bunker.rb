@@ -1,6 +1,4 @@
-# frozen_string_literal: true
-
-module Costructions
+module Constructions
   class Bunker < ApplicationRecord
     has_many :warriors, as: :defensible
   end

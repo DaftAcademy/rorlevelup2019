@@ -2,12 +2,12 @@
 
 module Warriors
   class Peasant < Warrior
-    attr_accessor :weapon
-    WEAPONS = %w[Fork Scythe Stick_with_shit].freeze
+    validates :equipment, inclusion: { in: 'Bow' }, allow_nil: true
     def attack
-      "#{name} use #{WEAPONS.sample}"
+      "#{name} use #{equipment}"
     end
-
-    validates :equipment, inclusion: { in: WEAPONS }, allow_nil: true
+    def weapons_of_choice
+      %w[ stick_with_shit]
+    end
   end
 end

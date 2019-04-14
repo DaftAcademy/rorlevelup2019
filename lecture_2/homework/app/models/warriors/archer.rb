@@ -3,8 +3,9 @@
 module Warriors
   class Archer < Warrior
     validates :equipment, inclusion: { in: 'Bow' }, allow_nil: true
-    def attack
-      "#{name} use Bow"
+
+    def weapons_of_choice
+      ["Bow"]
     end
   end
 end

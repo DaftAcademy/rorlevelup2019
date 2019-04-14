@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 class Weapon < ApplicationRecord
   belongs_to :warrior
   validate :is_this_apropriate_weapon

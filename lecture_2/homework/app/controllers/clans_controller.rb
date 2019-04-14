@@ -2,7 +2,7 @@
 
 class ClansController < ApplicationController
   def index
-    clans = Clan.all.includes
+    clans = Clan.all
     render json: serialize_it(clans).serializable_hash, status: :ok
   end
 
@@ -22,7 +22,7 @@ class ClansController < ApplicationController
 
   private
 
-  def serialize_it(*args)
+  def serialize_it(options)
     ClanSerializer.new(options)
   end
 

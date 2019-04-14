@@ -1,5 +1,5 @@
-class Hussar < Warrior  
+class Hussar < Character
   def attack
-    "#{name}: CHARGE!!"
+	"#{name}: *hussar attack*"
   end
 end

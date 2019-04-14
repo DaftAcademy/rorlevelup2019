@@ -1,6 +1,10 @@
 class Weapon < ApplicationRecord
-  belongs_to :character, optional: false
-  def calculate_damage(distance)
-    return 0 
-  end
+  #belongs_to :weaponable, polymorphic: true
+  validates :name, presence: true
+  validates :damage, numericality: { only_integer: true,
+                                     greater_than_or_equal_to: 0,
+                                     less_than_or_equal_to: 100 }
+  validates :range, numericality: { only_integer: true,
+                                    greater_than_or_equal_to: 0,
+                                    less_than_or_equal_to: 100 }
 end

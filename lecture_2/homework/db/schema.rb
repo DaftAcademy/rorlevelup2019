@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_09_210018) do
+ActiveRecord::Schema.define(version: 2019_04_14_221902) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,8 +29,9 @@ ActiveRecord::Schema.define(version: 2019_04_09_210018) do
     t.string "name", null: false
     t.integer "armor_quality", default: 0
     t.integer "number_of_battles", default: 0
-    t.date "join_date"
+    t.date "join_date", null: false
     t.date "death_date"
+    t.string "type", default: "Samurai"
     t.bigint "clan_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -52,12 +53,22 @@ ActiveRecord::Schema.define(version: 2019_04_09_210018) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "hussars", force: :cascade do |t|
+  create_table "hussar_mages", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "mages", force: :cascade do |t|
+  create_table "hussar_rangers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hussar_warriors", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "hussars", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -65,19 +76,38 @@ ActiveRecord::Schema.define(version: 2019_04_09_210018) do
   create_table "magical_weapons", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ma_wpnable_type"
+    t.bigint "ma_wpnable_id"
+    t.index ["ma_wpnable_type", "ma_wpnable_id"], name: "index_magical_weapons_on_ma_wpnable_type_and_ma_wpnable_id"
   end
 
   create_table "melee_weapons", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "me_wpnable_type"
+    t.bigint "me_wpnable_id"
+    t.index ["me_wpnable_type", "me_wpnable_id"], name: "index_melee_weapons_on_me_wpnable_type_and_me_wpnable_id"
   end
 
   create_table "ranged_weapons", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ra_wpnable_type"
+    t.bigint "ra_wpnable_id"
+    t.index ["ra_wpnable_type", "ra_wpnable_id"], name: "index_ranged_weapons_on_ra_wpnable_type_and_ra_wpnable_id"
   end
 
-  create_table "rangers", force: :cascade do |t|
+  create_table "samurai_mages", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "samurai_rangers", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "samurai_warriors", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -102,12 +132,11 @@ ActiveRecord::Schema.define(version: 2019_04_09_210018) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "warriors", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "weapons", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "damage", default: 10
+    t.integer "range", default: 1
+    t.string "type", default: "MeleeWeapon"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

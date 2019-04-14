@@ -1,5 +1,5 @@
-class Samurai < Warrior
+class Samurai < Character
   def attack
-    "#{name}: *katana flinging noises*"
+	"#{name}: *samurai attack*"
   end
 end

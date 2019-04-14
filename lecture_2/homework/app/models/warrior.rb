@@ -1,6 +1,7 @@
-class Warrior < Character
-  validates :weapon, inclusion: { in: "melee_weapon"}, allow_nil: true
-  def attack
-    "#{name}: *melee noises*"
-  end
-end
+#class Warrior < Character
+#  self.abstract_class = true
+#  validates :weapon, inclusion: { in: "melee_weapon"}, allow_nil: true
+#  def attack
+#    "#{name}: *melee noises*"
+#  end
+#end

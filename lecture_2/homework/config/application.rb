@@ -34,4 +34,9 @@ module Lecture1
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
   end
+#SENTRY
+Raven.configure do |config|
+  config.dsn = 'https://87babab81c5344c496a16c9b2515b9e3:7661070b86c04bd48fdd136cd6e81fe8@sentry.io/1438693'
+end
+
 end

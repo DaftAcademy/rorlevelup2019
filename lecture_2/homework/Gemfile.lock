@@ -24,6 +24,11 @@ GEM
       erubi (~> 1.4)
       rails-dom-testing (~> 2.0)
       rails-html-sanitizer (~> 1.0, >= 1.0.3)
+    active_model_serializers (0.10.9)
+      actionpack (>= 4.1, < 6)
+      activemodel (>= 4.1, < 6)
+      case_transform (>= 0.2)
+      jsonapi-renderer (>= 0.1.1.beta1, < 0.3)
     activejob (5.2.2.1)
       activesupport (= 5.2.2.1)
       globalid (>= 0.3.6)
@@ -48,17 +53,22 @@ GEM
       msgpack (~> 1.0)
     builder (3.2.3)
     byebug (11.0.1)
+    case_transform (0.2)
+      activesupport
     concurrent-ruby (1.1.5)
     crass (1.0.4)
     erubi (1.8.0)
     faker (1.9.3)
       i18n (>= 0.7)
+    faraday (0.15.4)
+      multipart-post (>= 1.2, < 3)
     ffi (1.10.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
     jaro_winkler (1.5.2)
+    jsonapi-renderer (0.2.0)
     listen (3.1.5)
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
@@ -76,6 +86,7 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.11.3)
     msgpack (1.2.9)
+    multipart-post (2.0.0)
     nio4r (2.3.1)
     nokogiri (1.10.2)
       mini_portile2 (~> 2.4.0)
@@ -129,6 +140,8 @@ GEM
       rubocop (>= 0.67.0)
     ruby-progressbar (1.10.0)
     ruby_dep (1.5.0)
+    sentry-raven (2.9.0)
+      faraday (>= 0.7.6, < 1.0)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -154,6 +167,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  active_model_serializers (~> 0.10.9)
   bootsnap (>= 1.1.0)
   byebug
   faker (~> 1.6, >= 1.6.3)
@@ -162,6 +176,7 @@ DEPENDENCIES
   puma (~> 3.11)
   rails (~> 5.2.2)
   rubocop-performance (~> 1.1)
+  sentry-raven
   spring
   spring-watcher-listen (~> 2.0.0)
   tzinfo-data

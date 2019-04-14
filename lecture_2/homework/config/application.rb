@@ -18,7 +18,10 @@ require 'rails/test_unit/railtie'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-
+ActiveModelSerializers.config.adapter = :json_api
+Raven.configure do |config|
+  config.dsn = 'https://63f4434d2d72479cb574e72764a6fa6e:8657ed2a257c48bdbfe04a518c45d1b4@sentry.io/1438695'
+end
 module Lecture1
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.

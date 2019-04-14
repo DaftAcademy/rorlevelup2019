@@ -2,7 +2,8 @@
 
 class Magical < Weapon
   def calculate_damage(distance)
-    return 0 if distance > 5*range
+    return 0 if distance > 5 * range
+
     dammage
   end
 end

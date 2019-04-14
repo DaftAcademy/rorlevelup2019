@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Clans
   class SamuraisController < ApplicationController
     def show
@@ -7,7 +9,7 @@ module Clans
     def index
       samurais = clan.samurais
       if params.key?(:alive)
-        if params[:alive].to_i == 0
+        if params[:alive].to_i.zero?
           render json: samurais.dead.to_json
         else
           render json: samurais.alive.to_json

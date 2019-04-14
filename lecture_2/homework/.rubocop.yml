@@ -1,0 +1,14 @@
+Style/Documentation:
+    Enabled: false
+
+Metrics/LineLength:
+  Max: 99
+
+AllCops:
+  Exclude:
+    - 'Gemfile'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'script/**/*'
+    - 'bin/{rails,rake,update,setup}'
+    - !ruby/regexp /old_and_unused\.rb$/

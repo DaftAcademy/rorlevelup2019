@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class ClansController < ApplicationController
   def index
     render json: Clan.all.to_json

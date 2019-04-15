@@ -15,11 +15,8 @@ class MercenariesController < ApplicationController
   end
 
   def create
-    warrior = WarriorCreator.new(
-      id: params[:id],
-      clan_id: params[:clan_id],
-      building_id: params[:building_id]
-    ).call
+    warrior = WarriorCreator.new(params: mercenary_params).call
+
     render json: warrior, include: [:mercenary], status: 201
   end
 
@@ -27,5 +24,9 @@ class MercenariesController < ApplicationController
 
   def mercenary
     @mercenary ||= Mercenary.find(params[:id])
+  end
+
+  def mercenary_params
+    params.permit(:id, :clan_id, :building_id)
   end
 end

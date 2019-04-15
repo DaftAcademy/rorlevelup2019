@@ -1,8 +1,8 @@
 class WarriorCreator
-  def initialize(id:, clan_id:, building_id:)
-    @id = id
-    @clan_id = clan_id
-    @building_id = building_id
+  def initialize(params:)
+    @id = params[:id]
+    @clan_id = params[:clan_id]
+    @building_id = params[:building_id]
   end
 
   def call

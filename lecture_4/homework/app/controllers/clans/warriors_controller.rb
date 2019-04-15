@@ -23,7 +23,7 @@ module Clans
     def create
       warrior = clan.warriors.create!(warrior_params)
 
-      render json: warrior.to_json, include: %i[weapon building], status: 201
+      render json: warrior, include: %i[weapon building], status: 201
     end
 
     def update

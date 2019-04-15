@@ -3,7 +3,7 @@
 # This controller is written badly on purpose. Please refactor this
 class MercenariesController < ApplicationController
   def index
-    render json: Mercenary.where('available_from < ?', Time.now).all
+    render json: Mercenary.available
   end
 
   def show
@@ -11,22 +11,29 @@ class MercenariesController < ApplicationController
   end
 
   def employ_best
-    mercenary = Mercenary.where('available_from < ?', Time.now).order(price: :asc).first # TODO: what about experience?
+    mercenary = Mercenary.available.price_asc.exp_desc.first
     clan = find_clan
     building = find_building
-    warrior_class = clan.warriors.select('type, count(type) as warriors_count').group(:type).order('warriors_count ASC').first.class
-    warrior = warrior_class.create!(name: mercenary.name, clan: clan, building: building, preferred_weapon_kind: mercenary.preferred_weapon_kind, mercenary: mercenary)
-    create_good_weapon(mercenary)
+    warrior_class = WarriorClassFinder.new(relation: clan.warriors).call
+    warrior = WarriorCreator.new(relation: warrior_class,
+                                 clan: clan,
+                                 building: building,
+                                 mercenary: mercenary).call
+
     render json: warrior, include: [:mercenary], status: 201
   end
 
   def employ
     return unless mercenary.available_from < Time.now
+
     clan = find_clan
     building = find_building
-    warrior_class = clan.warriors.select('type, count(type) as warriors_count').group(:type).order('warriors_count ASC').first.class
-    warrior = warrior_class.create!(name: mercenary.name, clan: clan, building: building, preferred_weapon_kind: mercenary.preferred_weapon_kind, mercenary: mercenary)
-    create_good_weapon(mercenary)
+    warrior_class = WarriorClassFinder.new(relation: clan.warriors).call
+    warrior = WarriorCreator.new(relation: warrior_class,
+                                 clan: clan,
+                                 building: building,
+                                 mercenary: mercenary).call
+
     render json: warrior, include: [:mercenary], status: 201
   end
 
@@ -37,9 +44,7 @@ class MercenariesController < ApplicationController
   end
 
   def find_building
-    if params[:building_id]
-      Building.find(params[:building_id])
-    end
+    Building.find(params[:building_id]) if params[:building_id]
   end
 
   def find_clan
@@ -47,17 +52,6 @@ class MercenariesController < ApplicationController
       Clan.find(params[:clan_id])
     else
       Clan.order(warriors_count: :desc).first
-    end
-  end
-
-  def create_good_weapon(mercenary)
-    case mercenary.preferred_weapon_kind
-    when :melee
-      Weapons::Katana.create!(warrior: mercenary.warrior, range: 2, damage: 25)
-    when :ranged
-      Weapons::Musket.create!(warrior: mercenary.warrior, range: 40, damage: 10)
-    else
-      # TODO: some default?
     end
   end
 end

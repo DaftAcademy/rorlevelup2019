@@ -5,13 +5,6 @@ Rails.application.routes.draw do
     resources :warriors, module: :clans
   end
 
-  resources :mercenaries, only: %i[index show] do
-    collection do
-      post 'employ_best'
-    end
-
-    member do
-      post 'employ'
-    end
-  end
+  resources :mercenaries, only: %i[index show create]
+  post '/mercenaries/:id', to: 'mercenaries#create'
 end

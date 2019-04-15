@@ -20,6 +20,8 @@ class Warrior < ApplicationRecord
   after_destroy :update_siege
 
   def update_siege
+    if building
     Reports::SiegeReport.check_siege_ability(building: building)
+    end
   end
 end

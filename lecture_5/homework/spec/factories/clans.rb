@@ -2,6 +2,6 @@
 
 FactoryBot.define do
   factory :clan do
-    name { Faker::Name.last_name }
+    name { Faker::Games::Witcher.school }
   end
 end

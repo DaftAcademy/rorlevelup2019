@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :building do
-    name { Faker::Name.last_name }
+    name { Faker::Games::Witcher.location }
     type { 'Buildings::Walls' }
     granary { 500 }
   end

@@ -46,7 +46,7 @@ module Clans
     end
 
     def warrior_params
-      params.permit(:name, :death_date, :armor_quality, :number_of_battles, :join_date)
+      params.permit(:name, :death_date, :armor_quality, :number_of_battles, :join_date, :defensible_type, :defensible_id, :weapon_kind)
     end
 
     def serializer

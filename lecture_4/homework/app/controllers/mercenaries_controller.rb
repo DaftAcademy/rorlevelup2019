@@ -11,7 +11,7 @@ class MercenariesController < ApplicationController
   end
 
   def employ_best
-    best_mercenary = mercenaries.available.order(experience: :desc).first
+    best_mercenary = MercenariesQuery.find_best
     return unless best_mercenary
 
     clan = find_clan
@@ -24,7 +24,7 @@ class MercenariesController < ApplicationController
   end
 
   def employ
-    return unless mercenary.available_from < Time.now
+    return unless MercenariesQuery.can_be_hired(mercenary_id: mercenary.id)
 
     clan = find_clan
     building = find_building
@@ -38,11 +38,11 @@ class MercenariesController < ApplicationController
   private
 
   def mercenaries
-    @mercenaries ||= Mercenary.all
+    @mercenaries ||= MercenariesQuery.all_mercenaries
   end
 
   def mercenary
-    @mercenary ||= Mercenary.find(params[:id])
+    @mercenary ||= MercenariesQuery.mercenary(mercenary_id: params[:id])
   end
 
   def find_building

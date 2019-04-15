@@ -7,7 +7,7 @@ RSpec.describe ClansController, type: :controller do
     context 'single clan' do
       let(:clan) { create(:clan) }
       it 'get single clan' do
-        get "clans/#{clan.id}"
+        get :show, params: {id: clan.id}
         res = JSON.parse(response.body)
         expect(res.dig('name')).to eq(clan.name)
       end

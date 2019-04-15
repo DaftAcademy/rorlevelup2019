@@ -3,7 +3,7 @@
 module Clans
   class WarriorsController < ApplicationController
     def show
-      render json: serializer.new(warrior)
+      render json: serializer.new(warrior, include: %i[clan weapon defensible])
     end
 
     def index

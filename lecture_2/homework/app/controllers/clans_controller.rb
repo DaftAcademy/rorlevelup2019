@@ -1,33 +1,25 @@
 class ClansController < ApplicationController
   def index
-    render json: Clan.all.to_json
+    render json: Clan.all
   end
 
   def create
     clan = Clan.create!(clan_params)
-    render json: clan.to_json, status: 201
-	rescue ActiveRecord::ActiveRecordError => e
-      render json: e.to_json, status: 422
+    render json: clan, status: 201
   end
   
   def show
-    render json: clan.to_json, status: 200
-	rescue ActiveRecord::ActiveRecordError => e
-      render json: e.to_json, status: 404
+    render json: clan, status: 200
   end
   
   def update
     clan.update(clan_params)
-	render json: clan.to_json, status: 201
-	rescue ActiveRecord::ActiveRecordError => e
-	  render json: e.to_json, status: 422
+	render json: clan, status: 201
   end
   
   def destroy
     clan.destroy!
     head 204
-    rescue ActiveRecord::ActiveRecordError => e
-      render json: e.to_json, status: 404
   end
 
   private

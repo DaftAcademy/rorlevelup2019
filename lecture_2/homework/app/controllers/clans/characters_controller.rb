@@ -4,22 +4,22 @@ module Clans
       characters = clan.characters.all
       if params.key?(:alive)
         if params[:alive].to_i == 0
-          render json: characters.dead
+          render json: characters.dead, include: ['clan', 'defensible'], status: 200
         else
-          render json: characters.alive
+          render json: characters.alive, include: ['clan', 'defensible'], status: 200
         end
       else
-        render json: characters
+        render json: characters, include: ['clan', 'defensible'], status: 200
       end
     end
 
     def create
       character = clan.characters.create!(character_params)
-	  render json: character, status: 201
+	  render json: character, include: ['clan', 'defensible'], status: 201
     end
 	
 	def show
-      render json: character
+      render json: character, include: ['clan', 'defensible'], status: 200
     end
 
     def update

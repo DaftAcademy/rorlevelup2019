@@ -52,3 +52,6 @@ gem 'faker'
 
 # Serializers
 gem 'active_model_serializers'
+
+# Sentry
+gem 'sentry-raven'

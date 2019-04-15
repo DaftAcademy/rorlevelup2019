@@ -19,12 +19,12 @@ x = 0
       death_date:     nil,
 	  clan:	clan
 	  )
-	MeleeWeapon.create!(
-	name: Faker::Appliance.equipment + " of " + [Faker::Ancient.god, Faker::Ancient.primordial, Faker::Ancient.titan, Faker::Ancient.hero].sample,
-	damage: Faker::Number.between(0, 100),
-	range: Faker::Number.between(0, 3),
-	me_wpnable: sam
-	)
+	# MeleeWeapon.create!(
+	# name: Faker::Appliance.equipment + " of " + [Faker::Ancient.god, Faker::Ancient.primordial, Faker::Ancient.titan, Faker::Ancient.hero].sample,
+	# damage: Faker::Number.between(0, 100),
+	# range: Faker::Number.between(0, 3),
+	# me_wpnable: sam
+	# )
 	x=x+1
   end
   Faker::Number.between(2, 10).times do
@@ -36,12 +36,12 @@ x = 0
       death_date:     nil,
 	  clan:	clan
 	  )
-	MagicalWeapon.create!(
-	name: Faker::Appliance.equipment + " of " + [Faker::Ancient.god, Faker::Ancient.primordial, Faker::Ancient.titan, Faker::Ancient.hero].sample,
-	damage: Faker::Number.between(0, 100),
-	range: Faker::Number.between(0, 100),
-	ma_wpnable: hus
-	)
+	# MagicalWeapon.create!(
+	# name: Faker::Appliance.equipment + " of " + [Faker::Ancient.god, Faker::Ancient.primordial, Faker::Ancient.titan, Faker::Ancient.hero].sample,
+	# damage: Faker::Number.between(0, 100),
+	# range: Faker::Number.between(0, 100),
+	# ma_wpnable: hus
+	# )
 	x=x+1
   end
   Faker::UniqueGenerator.clear
@@ -54,12 +54,12 @@ x = 0
       death_date:     Faker::Date.backward(20),
 	  clan:	clan
 	  )
-	MeleeWeapon.create!(
-	name: Faker::Appliance.equipment + " of " + [Faker::Ancient.god, Faker::Ancient.primordial, Faker::Ancient.titan, Faker::Ancient.hero].sample,
-	damage: Faker::Number.between(0, 100),
-	range: Faker::Number.between(0, 3),
-	me_wpnable: sam
-	)
+	# MeleeWeapon.create!(
+	# name: Faker::Appliance.equipment + " of " + [Faker::Ancient.god, Faker::Ancient.primordial, Faker::Ancient.titan, Faker::Ancient.hero].sample,
+	# damage: Faker::Number.between(0, 100),
+	# range: Faker::Number.between(0, 3),
+	# me_wpnable: sam
+	# )
 	x=x+1
   end
   Faker::Number.between(1, 5).times do
@@ -71,12 +71,12 @@ x = 0
       death_date:     Faker::Date.backward(20),
 	  clan:	clan
 	  )
-	MagicalWeapon.create!(
-	name: Faker::Appliance.equipment + " of " + [Faker::Ancient.god, Faker::Ancient.primordial, Faker::Ancient.titan, Faker::Ancient.hero].sample,
-	damage: Faker::Number.between(0, 100),
-	range: Faker::Number.between(0, 100),
-	ma_wpnable: hus
-	)
+	# MagicalWeapon.create!(
+	# name: Faker::Appliance.equipment + " of " + [Faker::Ancient.god, Faker::Ancient.primordial, Faker::Ancient.titan, Faker::Ancient.hero].sample,
+	# damage: Faker::Number.between(0, 100),
+	# range: Faker::Number.between(0, 100),
+	# ma_wpnable: hus
+	# )
 	x=x+1
   end
   

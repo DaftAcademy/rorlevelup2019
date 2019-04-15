@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 class SamuraiWarrior < Samurai
   has_one :melee_weapon, dependent: :destroy, as: :me_wpnable
   def attack
-	"#{name}: *samurai melee attack*"
+    "#{name}: *samurai melee attack*"
   end
 end

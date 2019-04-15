@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class CreateClansAndCharacters < ActiveRecord::Migration[5.2]
   def change
     create_table :clans do |t|
@@ -11,7 +13,7 @@ class CreateClansAndCharacters < ActiveRecord::Migration[5.2]
       t.integer :number_of_battles, default: 0
       t.date :join_date, null: false
       t.date :death_date
-	  t.string :type, default: 'Samurai'
+      t.string :type, default: 'Samurai'
       t.references :clan, foreign_key: true, index: true
       t.timestamps
     end

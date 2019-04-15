@@ -14,4 +14,16 @@ class Warrior < ApplicationRecord
 
   scope :alive, -> { where('death_date IS NULL') }
   scope :dead, -> { where('death_date IS NOT NULL') }
+
+  def attack
+    "#{type.demodulize} #{name} attacked with #{weapon_null_check.type.demodulize}"
+  end
+
+  def weapon_null_check
+    weapon || NullWeapon.new
+  end
+
+  def mercenary_null_check
+    mercenary || NullMercenary.new
+  end
 end

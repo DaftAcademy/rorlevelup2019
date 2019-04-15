@@ -7,7 +7,7 @@ class WarriorCreator
 
   def call
     attributes = find_attributes(id: @id, clan_id: @clan_id, building_id: @building_id)
-    return unless attributes[:mercenary] && attributes[:mercenary].available_from < Time.now
+    return {"error": "There are no warriors available"} unless attributes[:mercenary] && attributes[:mercenary].available_from < Time.now
     create_warrior(
       mercenary: attributes[:mercenary],
       clan: attributes[:clan],

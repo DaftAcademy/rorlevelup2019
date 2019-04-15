@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_03_14_150921) do
+ActiveRecord::Schema.define(version: 2019_04_02_161256) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,7 +21,40 @@ ActiveRecord::Schema.define(version: 2019_03_14_150921) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "samurais", force: :cascade do |t|
+  create_table "fortresses", force: :cascade do |t|
+    t.string "name", null: false
+    t.boolean "fosse", default: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "gates", force: :cascade do |t|
+    t.string "name", null: false
+    t.string "material", default: "wood"
+    t.integer "thickness", default: 1
+    t.integer "strength", default: 100
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "towers", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "height", default: 20
+    t.integer "strength", default: 100
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "walls", force: :cascade do |t|
+    t.string "name", null: false
+    t.integer "height", default: 10
+    t.integer "thickness", default: 5
+    t.integer "strength", default: 100
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "warriors", force: :cascade do |t|
     t.string "name", null: false
     t.integer "armor_quality", default: 0
     t.integer "number_of_battles", default: 0
@@ -30,8 +63,25 @@ ActiveRecord::Schema.define(version: 2019_03_14_150921) do
     t.bigint "clan_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["clan_id"], name: "index_samurais_on_clan_id"
+    t.string "type", default: "Samurai"
+    t.string "defensible_type"
+    t.bigint "defensible_id"
+    t.index ["clan_id"], name: "index_warriors_on_clan_id"
+    t.index ["defensible_type", "defensible_id"], name: "index_warriors_on_defensible_type_and_defensible_id"
+    t.index ["name", "clan_id"], name: "index_warriors_on_name_and_clan_id", unique: true, where: "(death_date IS NULL)"
   end
 
-  add_foreign_key "samurais", "clans"
+  create_table "weapons", force: :cascade do |t|
+    t.string "name"
+    t.integer "range", default: 0
+    t.integer "damage", default: 0
+    t.string "type", default: "Melee"
+    t.bigint "warrior_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["warrior_id"], name: "index_weapons_on_warrior_id"
+  end
+
+  add_foreign_key "warriors", "clans"
+  add_foreign_key "weapons", "warriors"
 end

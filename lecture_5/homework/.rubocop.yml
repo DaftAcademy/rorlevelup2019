@@ -10,4 +10,4 @@ Style/Documentation:
 Metrics/LineLength:
   Max: 100
 
-require: rubocop-performance
+require: rubocop-rspec

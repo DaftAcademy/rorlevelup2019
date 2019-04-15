@@ -51,6 +51,8 @@ GEM
     concurrent-ruby (1.1.5)
     crass (1.0.4)
     erubi (1.8.0)
+    faker (1.9.3)
+      i18n (>= 0.7)
     faraday (0.15.4)
       multipart-post (>= 1.2, < 3)
     fast_jsonapi (1.5)
@@ -159,6 +161,7 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
+  faker
   fast_jsonapi
   listen (>= 3.0.5, < 3.2)
   pg

@@ -16,8 +16,8 @@ class MercenariesController < ApplicationController
 
     clan = find_clan
     building = find_building
-    warrior_class = clan.warriors.select('type, count(type) as warriors_count').group(:type).order('warriors_count ASC').first.class
-    warrior = warrior_class.create!(name: best_mercenary.name, clan: clan, building: building, preferred_weapon_kind: best_mercenary.preferred_weapon_kind, mercenary: best_mercenary)
+    warrior_class = WarriorsQueries.choose_class(clan: clan)
+    warrior = WarriorsQueries.create_mercenary_warrior(warrior_class: warrior_class, mercenary: best_mercenary, clan: clan, building: building)
     create_good_weapon(best_mercenary)
 
     render json: warrior, include: [:mercenary], status: 201
@@ -28,8 +28,8 @@ class MercenariesController < ApplicationController
 
     clan = find_clan
     building = find_building
-    warrior_class = clan.warriors.select('type, count(type) as warriors_count').group(:type).order('warriors_count ASC').first.class
-    warrior = warrior_class.create!(name: mercenary.name, clan: clan, building: building, preferred_weapon_kind: mercenary.preferred_weapon_kind, mercenary: mercenary)
+    warrior_class = WarriorsQueries.choose_class(clan: clan)
+    warrior = WarriorsQueries.create_mercenary_warrior(warrior_class: warrior_class, mercenary: mercenary, clan: clan, building: building)
     create_good_weapon(mercenary)
 
     render json: warrior, include: [:mercenary], status: 201
@@ -46,17 +46,11 @@ class MercenariesController < ApplicationController
   end
 
   def find_building
-    if params[:building_id]
-      Building.find(params[:building_id])
-    end
+    BuildingsQueries.find_building(id: params[:building_id])
   end
 
   def find_clan
-    if params[:clan_id]
-      Clan.find(params[:clan_id])
-    else
-      Clan.order(warriors_count: :desc).first
-    end
+    ClansQueries.find(clan_id: params[:clan_id])
   end
 
   def create_good_weapon(mercenary)

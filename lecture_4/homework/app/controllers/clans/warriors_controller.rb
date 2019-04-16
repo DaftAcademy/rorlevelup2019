@@ -7,7 +7,7 @@ module Clans
     end
 
     def index
-      warriors = clan.warriors
+      warriors = WarriorsQueries.all_clans_warriors(clan: clan)
 
       if params.key?(:alive)
         if params[:alive].to_i.zero?
@@ -21,29 +21,29 @@ module Clans
     end
 
     def create
-      warrior = clan.warriors.create!(warrior_params)
+      warrior = WarriorsQueries.create_warrior(warrior_params: warrior_params, clan: clan)
 
       render json: warrior.to_json, include: %i[weapon building], status: 201
     end
 
     def update
-      warrior.update!(warrior_params)
+      WarriorsQueries.update_warrior(warrior: warrior, warrior_params: warrior_params)
 
       render json: warrior, include: %i[weapon building]
     end
 
     def destroy
-      warrior.destroy!
+      WarriorsQueries.destroy_warrior(warrior: warrior)
     end
 
     private
 
     def clan
-      @clan ||= Clan.find(params[:clan_id])
+      @clan ||= ClansQueries.find(clan_id: params[:clan_id])
     end
 
     def warrior
-      @warrior ||= clan.warriors.find(params[:id])
+      @warrior ||= WarriorsQueries.find_warrior(clan: clan, warrior_id: params[:id])
     end
 
     def warrior_params

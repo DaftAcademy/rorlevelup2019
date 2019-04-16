@@ -2,7 +2,7 @@
 
 class ClansController < ApplicationController
   def index
-    render json: Clan.all
+    render json: ClansQueries.all_clans
   end
 
   def show
@@ -10,7 +10,7 @@ class ClansController < ApplicationController
   end
 
   def create
-    clan = Clan.create!(clan_params)
+    clan = ClansQueries.create_clan(clan_params: clan_params)
 
     render json: clan, include: [:warriors], status: 201
   end
@@ -18,7 +18,7 @@ class ClansController < ApplicationController
   private
 
   def clan
-    @clan ||= Clan.find(params[:id])
+    @clan ||= ClansQueries.find(clan_id: params[:id])
   end
 
   def clan_params

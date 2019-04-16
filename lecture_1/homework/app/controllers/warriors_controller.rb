@@ -44,18 +44,12 @@ class WarriorsController < ApplicationController
   end
 
   def warrior_params
-    params.permit(:name, :armor, :battles, :join_date, :death_date, :type, :weapon,
-      weapon_attributes: [:id, :damage, :range, :type])
+    WarriorParams.new(params).get
   end
 
   def warrior_json(warrior)
     @serializer = WarriorSerializer.new(warrior)
     return @serializer.serialized_json
-  end
-
-  def filter_warriors(warriors, params)
-    warriors = filter_alive(warriors, params[:alive]) if params[:alive].present?
-    warriors
   end
 
 end

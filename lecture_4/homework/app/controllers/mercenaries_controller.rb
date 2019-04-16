@@ -37,9 +37,7 @@ class MercenariesController < ApplicationController
   end
 
   def find_building
-    if params[:building_id]
-      Building.find(params[:building_id])
-    end
+    Building.find(params[:building_id]) if params[:building_id]
   end
 
   def find_clan

@@ -5,5 +5,5 @@ Rails.application.routes.draw do
     resources :warriors, module: :clans
   end
 
-  resources :buildings, only: %i[index show]
+  resources :buildings, only: %i[index create show]
 end

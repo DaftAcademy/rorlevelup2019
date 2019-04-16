@@ -2,7 +2,11 @@
 
 class Building < ApplicationRecord
   has_many :warriors, dependent: :nullify
-
+  validates :type, inclusion: { in: %w(Buildings::Stronghold Buildings::Walls)}
+  validates :siege_ability, presence: true, 
+                            numericality: { greater_than_or_equal_to: 0, 
+							only_integer: true }
   validates :granary, presence: true,
-                      numerically: { greater_than_or_equal_to: 0, only_integer: true }
+                      numericality: { greater_than_or_equal_to: 0, 
+					  only_integer: true }
 end

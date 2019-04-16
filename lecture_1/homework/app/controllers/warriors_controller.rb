@@ -4,9 +4,11 @@ class WarriorsController < ApplicationController
 
   # GET /clans/:clan_id/warriors
   def index
-    warriors = clan.warriors
+    warriors = params[:alive] ? Warrior.alive : Warrior
 
-    warriors = filter_warriors(warriors, params)
+    warriors = WarriorsQuery.belonging_to_clan(clan_id: params[:clan_id], relation: warriors)
+
+    warriors = WarriorsQuery.having_birthday(relation: warriors) if params[:birthday]
 
     warriors = warriors.first(params[:limit].to_i) if params[:limit].present?
 
@@ -15,13 +17,13 @@ class WarriorsController < ApplicationController
 
   # POST /clans/:clan_id/warriors
   def create
-    warrior = clan.warriors.create!(warrior_params)
+    warrior = WarriorsCreator.new(clan, warrior_params).call
     render json: warrior_json(warrior), status: 201
   end
 
   # PUT /clans/:clan_id/warriors/:id
   def update
-    warrior.update!(samurai_params)
+    warrior.update!(warrior_params)
     render json: warrior_json(warrior)
   end
 
@@ -42,7 +44,8 @@ class WarriorsController < ApplicationController
   end
 
   def warrior_params
-    params.permit(:name, :armor, :battles, :join_date, :death_date, :type, :weapon)
+    params.permit(:name, :armor, :battles, :join_date, :death_date, :type, :weapon,
+      weapon_attributes: [:id, :damage, :range, :type])
   end
 
   def warrior_json(warrior)
@@ -54,13 +57,5 @@ class WarriorsController < ApplicationController
     warriors = filter_alive(warriors, params[:alive]) if params[:alive].present?
     warriors
   end
-
-  def filter_alive(warriors, is_alive)
-    warriors = warriors.where(death_date: nil) if is_alive == 'true'
-    warriors = warriors.where.not(death_date: nil) if is_alive == 'false'
-    warriors
-  end
-
-
 
 end

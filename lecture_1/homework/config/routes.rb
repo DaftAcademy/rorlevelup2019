@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   resources :clans, only: %i[index create] do
     resources :warriors, only: %i[index create update destroy] do
-      resources :weapons, only: %i[index]
+      resources :weapons, only: %i[index create update]
     end
   end
   resources :barricades, only: %i[index create]

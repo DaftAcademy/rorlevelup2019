@@ -10,21 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_03_133456) do
-
-  create_table "barricades", force: :cascade do |t|
-    t.string "name", limit: 256, null: false
-    t.integer "defense", null: false
-  end
+ActiveRecord::Schema.define(version: 2019_04_15_174916) do
 
   create_table "clans", force: :cascade do |t|
     t.string "name", limit: 256, null: false
     t.index ["name"], name: "index_clans_on_name", unique: true
-  end
-
-  create_table "strongholds", force: :cascade do |t|
-    t.string "name", limit: 256, null: false
-    t.integer "defense", null: false
   end
 
   create_table "warriors", force: :cascade do |t|

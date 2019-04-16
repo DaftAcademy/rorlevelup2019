@@ -53,3 +53,9 @@ gem 'fast_jsonapi'
 gem 'sentry-raven'
 
 gem 'rspec-rails'
+
+gem 'simplecov', group: :spec
+
+gem 'deep-cover', group: :spec
+
+gem 'rubocop-rspec'

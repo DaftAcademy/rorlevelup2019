@@ -2,11 +2,11 @@
 
 class Warrior < ApplicationRecord
     belongs_to :clan
-   # belongs_to :defensible, polymorphic: true
+    belongs_to :building
     has_one :weapon, inverse_of: :warrior
     accepts_nested_attributes_for :weapon
 
-    #validates_presence_of :weapon
+    validates_presence_of :weapon
   
     validates :name, presence: true, length: { maximum: 256 }
     validates_uniqueness_of :name, scope: :clan_id, conditions: -> { where(death_date: 'nil') }, message: "There can be only one living samurai of that name in a clan."

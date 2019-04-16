@@ -15,6 +15,11 @@ class WarriorsController < ApplicationController
     render json: warrior_json(warriors)
   end
 
+  # GET /clans/:clan_id/warriors/:id
+  def show
+    render json: warrior_json(warrior)
+  end
+
   # POST /clans/:clan_id/warriors
   def create
     warrior = WarriorsCreator.new(clan, warrior_params).call
@@ -40,7 +45,7 @@ class WarriorsController < ApplicationController
   end
 
   def warrior
-    @warrior ||= clan.warriors.find(params[:id])
+    @warrior ||= (clan.warriors.find_by(id: params[:id]) || NullWarrior.new)
   end
 
   def warrior_params

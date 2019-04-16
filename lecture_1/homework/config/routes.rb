@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :clans, only: %i[index create] do
-    resources :warriors, only: %i[index create update destroy] do
-      resources :weapons, only: %i[index create update]
+  resources :clans, only: %i[index show create] do
+    resources :warriors, only: %i[index show create update destroy] do
+      resources :weapons, only: %i[index show create update]
     end
   end
-  resources :barricades, only: %i[index create]
+  resources :buildings, only: %i[index show]
 end

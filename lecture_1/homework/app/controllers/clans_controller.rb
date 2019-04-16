@@ -6,6 +6,11 @@ class ClansController < ApplicationController
     render json: clan_json(Clan.all)
   end
 
+  # GET /clans/id
+  def show
+    render json: clan_json(clan), include: [:warriors]
+  end
+
   # POST /clans
   def create
     clan = ClansCreator.new(clan_params).call
@@ -20,7 +25,7 @@ class ClansController < ApplicationController
   end
 
   def clan
-    Clan.find(params[:clan_id])
+    @clan ||= (Clan.find_by(id: params[:id]) || NullClan.new)
   end
 
   def clan_params

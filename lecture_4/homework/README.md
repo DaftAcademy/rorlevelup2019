@@ -56,3 +56,5 @@ W `create_good_weapon` dodałem *NullObjecta* `NullWeapon` jako opcję "else".
 
 `app/queries/*`:
 *QueryObjecty*, zazwyczaj głównie do wyszukiwanie obiektu po `id`; bardziej rozwinięty jest `MercenariesQuery`, ponieważ musiał obsłużyć dodatkowo sortowanie i selekcję dostępnych najemników.
+
+2019/04/16: dodałem namespace do `/nulls/*`, `/services/*`, `/queries/*`

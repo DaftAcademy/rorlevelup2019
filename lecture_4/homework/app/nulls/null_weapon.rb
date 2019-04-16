@@ -2,17 +2,17 @@
 
 # app/nulls/null_weapon.rb
 module Nulls
-class NullWeapon
-  def type
-    'bare hands! No weapon equipped.'
-  end
+  class NullWeapon
+    def type
+      'bare hands! No weapon equipped.'
+    end
 
-  def range
-    nil
-  end
+    def range
+      nil
+    end
 
-  def damage
-    nil
+    def damage
+      nil
+    end
   end
-end
 end

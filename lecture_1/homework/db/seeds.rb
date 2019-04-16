@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+<<<<<<< HEAD
 
 
 require 'faker'
@@ -22,3 +23,5 @@ end
       clan_id: Faker::Number.between(1, 5)
   )
 end
+=======
+>>>>>>> 869f06f13ea441eb64c8e1c15f18c4cd4d70cc24

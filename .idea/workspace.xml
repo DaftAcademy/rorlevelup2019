@@ -46,11 +46,15 @@
       <usages-collector id="statistics.lifecycle.project">
         <counts>
 <<<<<<< HEAD
+<<<<<<< HEAD
           <entry key="project.closed" value="5" />
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.21" value="1" />
 =======
           <entry key="project.closed" value="3" />
+=======
+          <entry key="project.closed" value="4" />
+>>>>>>> master
           <entry key="project.open.time.11" value="1" />
           <entry key="project.open.time.19" value="1" />
 >>>>>>> 957b5935d6135acc289e1dcdbde1a6800c4761ad
@@ -59,15 +63,24 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
+<<<<<<< HEAD
           <entry key="Gemfile" value="2" />
           <entry key="gitignore" value="1" />
           <entry key="rb" value="18" />
+=======
+          <entry key="Gemfile" value="1" />
+          <entry key="rb" value="20" />
+>>>>>>> master
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
+<<<<<<< HEAD
           <entry key="PLAIN_TEXT" value="1" />
           <entry key="Ruby" value="20" />
+=======
+          <entry key="Ruby" value="21" />
+>>>>>>> master
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
@@ -86,8 +99,9 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+    <leaf>
       <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/lecture_2/homework/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
@@ -103,10 +117,19 @@
       </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lecture_2/homework/app/controllers/strongholds_controller.rb">
+=======
+        <entry file="file://$PROJECT_DIR$/lecture_5/homework/app/models/clan.rb">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lecture_5/homework/app/models/mercenary.rb">
+>>>>>>> master
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+<<<<<<< HEAD
         <entry file="file://$PROJECT_DIR$/lecture_2/homework/app/controllers/trees_controller.rb">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
@@ -183,6 +206,49 @@
 >>>>>>> 957b5935d6135acc289e1dcdbde1a6800c4761ad
             </state>
           </provider>
+=======
+        <entry file="file://$PROJECT_DIR$/lecture_5/homework/db/schema.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="620">
+              <caret line="54" column="36" selection-start-line="54" selection-start-column="36" selection-end-line="54" selection-end-column="36" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lecture_5/homework/app/controllers/buildings_controller.rb">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lecture_5/homework/app/controllers/clans_controller.rb">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lecture_5/homework/app/models/weapon.rb">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lecture_5/homework/app/models/weapons/katana.rb">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lecture_5/homework/app/models/weapons/musket.rb">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lecture_5/homework/app/models/warriors/hussar.rb">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lecture_5/homework/app/models/warriors/samurai.rb">
+          <provider selected="true" editor-type-id="text-editor" />
+>>>>>>> master
         </entry>
       </file>
     </leaf>
@@ -215,10 +281,17 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
+<<<<<<< HEAD
     <option name="x" value="-84" />
     <option name="y" value="104" />
     <option name="width" value="931" />
     <option name="height" value="803" />
+=======
+    <option name="x" value="338" />
+    <option name="y" value="125" />
+    <option name="width" value="917" />
+    <option name="height" value="809" />
+>>>>>>> master
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -226,7 +299,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -234,6 +306,7 @@
               <item name="rorlevelup2019" type="b2602c69:ProjectViewProjectNode" />
               <item name="rorlevelup2019" type="462c0819:PsiDirectoryNode" />
             </path>
+<<<<<<< HEAD
             <path>
               <item name="rorlevelup2019" type="b2602c69:ProjectViewProjectNode" />
               <item name="rorlevelup2019" type="462c0819:PsiDirectoryNode" />
@@ -287,16 +360,24 @@
               <item name="lecture_4" type="462c0819:PsiDirectoryNode" />
 >>>>>>> 957b5935d6135acc289e1dcdbde1a6800c4761ad
             </path>
+=======
+>>>>>>> master
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lecture_1" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -333,6 +414,7 @@
   </component>
   <component name="TimeTrackingManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="4617000" />
   </component>
   <component name="ToolWindowManager">
@@ -341,12 +423,19 @@
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24746907" />
 =======
     <option name="totallyTimeSpent" value="1398000" />
+=======
+    <option name="totallyTimeSpent" value="1894000" />
+>>>>>>> master
   </component>
   <component name="ToolWindowManager">
-    <frame x="417" y="266" width="1132" height="803" extended-state="0" />
+    <frame x="338" y="125" width="917" height="809" extended-state="0" />
     <layout>
+<<<<<<< HEAD
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26788992" />
 >>>>>>> 957b5935d6135acc289e1dcdbde1a6800c4761ad
+=======
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24914286" />
+>>>>>>> master
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -519,6 +608,60 @@
 >>>>>>> 957b5935d6135acc289e1dcdbde1a6800c4761ad
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lecture_1/crud_example.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="45" selection-start-line="45" selection-end-line="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lecture_5/homework/app/models/building.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lecture_5/homework/app/models/warrior.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lecture_5/homework/app/models/weapon.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lecture_5/homework/app/models/weapons/katana.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lecture_5/homework/app/models/weapons/musket.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lecture_2/homework/config/routes.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="108">
+          <caret line="9" selection-start-line="9" selection-end-line="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lecture_5/homework/app/models/warriors/hussar.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lecture_5/homework/app/models/warriors/samurai.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lecture_5/homework/app/models/clan.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lecture_5/homework/app/models/mercenary.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lecture_5/homework/db/schema.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="620">
+          <caret line="54" column="36" selection-start-line="54" selection-start-column="36" selection-end-line="54" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lecture_5/homework/app/controllers/buildings_controller.rb">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lecture_5/homework/app/controllers/clans_controller.rb">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>

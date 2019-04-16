@@ -11,6 +11,8 @@ class Mercenary < ApplicationRecord
 
   validates :warrior, uniqueness: { allow_nil: true }
 
+  scope :available, -> { MercenariesQuery.available }
+  scope :cheapest, -> { MercenariesQuery.cheapest }
   scope :alive, -> { where('death_date IS NULL') }
   scope :dead, -> { where('death_date IS NOT NULL') }
 end

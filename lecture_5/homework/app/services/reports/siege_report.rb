@@ -2,21 +2,21 @@
 
 module Reports
   class SiegeReport
-    def self.check_siege_ability(building:)
+    def self.call(building:,warrior_id: nil)
       # this should stop the method if getting null
       return unless building
 
       # bulding cant be defended without warriors
-      if building.warriors.any?
-        warriors_count = building.warriors.where(type: 'Warriors::Samurai').count
-        hussar_count = building.warriors.where(type: 'Warriors::Hussar').count
+      if building.warriors.where.not(id: warrior_id).any?
+        warriors_count = building.warriors.where(type: 'Warriors::Samurai').where.not(id: warrior_id).count
+        hussar_count = building.warriors.where(type: 'Warriors::Hussar').where.not(id: warrior_id).count
         total_rice_need = warriors_count + hussar_count * 2 + building.default_rice_need
         siege_ability = building.granary / total_rice_need
         building.siege_ability = siege_ability
       else
         building.siege_ability = 0
       end
-      building.save
+      building.save!
     end
   end
 end

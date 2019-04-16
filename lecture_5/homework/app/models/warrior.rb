@@ -16,10 +16,19 @@ class Warrior < ApplicationRecord
   scope :dead, -> { where('death_date IS NOT NULL') }
 
   after_create :update_siege
-  after_update :update_siege
+  before_update :update_siege_was, if: :building_id_changed?
+  after_update  :update_siege, if: :building_id_changed?
   after_destroy :update_siege
 
   def update_siege
-    Reports::SiegeReport.check_siege_ability(building: building) if building
+    Reports::SiegeReport.call(building: building) if building
   end
+
+  def update_siege_was
+    if building_id_was!=building_id then
+    Reports::SiegeReport.call(building: Building.find(building_id_was),warrior_id: id) if building_id_was
+    end
+  end
+
+
 end

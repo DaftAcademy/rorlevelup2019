@@ -5,22 +5,51 @@ require 'rails_helper'
 RSpec.describe Reports::SiegeReport, type: :helper do
   subject(:clan) { create(:clan) }
   subject(:building) { create(:building) }
+  subject(:building2) { create(:building) }
   context(' valid data ') do
     it 'set building siege_value to be 250' do
-      create(:warrior,:samurai, clan: clan, building: building)
-      create(:warrior,:samurai, clan: clan, building: building)
-      Reports::SiegeReport.check_siege_ability(building: building)
+      w1=create(:warrior,:samurai, clan: clan, building: building)
+      w2=create(:warrior,:samurai, clan: clan, building: building)
+      Reports::SiegeReport.call(building: building)
       expect(building.siege_ability).to eq(250)
     end
+
+    it 'set building siege_value to be 500 after one warrior was destroyed' do
+      w1=create(:warrior,:samurai, clan: clan, building: building)
+      w2=create(:warrior,:samurai, clan: clan, building: building)
+      w2.destroy!
+      Reports::SiegeReport.call(building: building)
+      expect(building.siege_ability).to eq(500)
+    end
+
+    it 'set building siege_value to be 0 after both warriors was destroyed' do
+      w1=create(:warrior,:samurai, clan: clan, building: building)
+      w2=create(:warrior,:samurai, clan: clan, building: building)
+      w1.destroy!
+      w2.destroy!
+      Reports::SiegeReport.call(building: building)
+      expect(building.siege_ability).to eq(0)
+    end
+
+    it 'set building siege_value to be 500 after building change' do
+      w1=create(:warrior,:samurai, clan: clan, building: building)
+      w2=create(:warrior,:samurai, clan: clan, building: building)
+      w2.update!(building: building2)
+      Reports::SiegeReport.call(building: building)
+      expect(building.siege_ability).to eq(500)
+    end
+    
+    
+
   end
 
   context(' invalid data ') do
     it 'should return nothing' do
-      expect(Reports::SiegeReport.check_siege_ability(building: nil)).to be_nil
+      expect(Reports::SiegeReport.call(building: nil)).to be_nil
     end
 
     it 'should set building to 0 siege_ability' do
-      Reports::SiegeReport.check_siege_ability(building: building)
+      Reports::SiegeReport.call(building: building)
       expect(building.siege_ability).to eq(0)
     end
   end

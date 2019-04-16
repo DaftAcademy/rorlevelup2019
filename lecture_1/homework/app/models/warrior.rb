@@ -2,8 +2,8 @@
 
 class Warrior < ApplicationRecord
     belongs_to :clan
-    belongs_to :building
-    has_one :weapon, inverse_of: :warrior
+    belongs_to :building, optional: true
+    has_one :weapon, inverse_of: :warrior, dependent: :destroy
     accepts_nested_attributes_for :weapon
 
     validates_presence_of :weapon

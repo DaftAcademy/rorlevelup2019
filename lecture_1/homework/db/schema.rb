@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_16_180514) do
+ActiveRecord::Schema.define(version: 2019_04_16_204117) do
 
   create_table "buildings", force: :cascade do |t|
     t.string "name", null: false
@@ -37,6 +37,8 @@ ActiveRecord::Schema.define(version: 2019_04_16_180514) do
     t.string "type", default: "Samurai"
     t.string "defensible_type"
     t.integer "defensible_id"
+    t.integer "building_id"
+    t.index ["building_id"], name: "index_warriors_on_building_id"
     t.index ["clan_id"], name: "index_warriors_on_clan_id"
     t.index ["defensible_type", "defensible_id"], name: "index_warriors_on_defensible_type_and_defensible_id"
   end

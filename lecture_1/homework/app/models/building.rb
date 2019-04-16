@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class Building < ApplicationRecord
-    has_many :warriors
+    has_many :warriors, dependent: :nullify
     has_one :granary, inverse_of: :building
     accepts_nested_attributes_for :granary
 

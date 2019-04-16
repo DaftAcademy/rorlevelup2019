@@ -6,5 +6,9 @@ Rails.application.routes.draw do
       resources :weapons, only: %i[index show create update]
     end
   end
-  resources :buildings, only: %i[index show]
+  resources :buildings, only: %i[index show] do
+    member do
+      get 'siege_report'
+    end
+  end
 end

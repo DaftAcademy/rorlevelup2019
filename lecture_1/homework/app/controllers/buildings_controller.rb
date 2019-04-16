@@ -12,7 +12,11 @@ class BuildingsController < ApplicationController
 
     # GET /buildings/id/siege_report
     def siege_report
-        render json: siege_report_json(building)
+        if building.is_a?(NullBuilding)
+            render json: siege_report_json(Reports::NullSiegeReport.new), status: 404
+        else
+            render json: siege_report_json(Reports::SiegeReport.new(building))
+        end
     end
 
     def building
@@ -24,8 +28,8 @@ class BuildingsController < ApplicationController
         return @serializer.serialized_json
     end
 
-    def siege_report_json(building)
-        @siege_serializer ||= Reports::SiegeReportSerializer.new(Reports::SiegeReport.new(building))
+    def siege_report_json(siege_report)
+        @siege_serializer ||= Reports::SiegeReportSerializer.new(siege_report)
         return @siege_serializer.serialized_json
     end
 

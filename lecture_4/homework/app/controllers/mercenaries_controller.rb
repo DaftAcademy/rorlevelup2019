@@ -2,7 +2,7 @@
 
 class MercenariesController < ApplicationController
   def index
-    render json: MercenariesQuery.available.all
+    render json: Queries::MercenariesQuery.available.all
   end
 
   def show
@@ -10,19 +10,19 @@ class MercenariesController < ApplicationController
   end
 
   def employ
-    mercenary = MercenariesQuery.available.sample
+    mercenary = Queries::MercenariesQuery.available.sample
     mercenary_employer.call(mercenary)
     render json: mercenary, include: [:warrior], status: 201
   end
 
   def employ_best
-    mercenary = MercenariesQuery.sort_available_exp_descending.first
+    mercenary = Queries::MercenariesQuery.sort_available_exp_descending.first
     mercenary_employer.call(mercenary)
     render json: mercenary, include: [:warrior], status: 201
   end
 
   def employ_cheapest
-    mercenary = MercenariesQuery.sort_available_price_ascending.first
+    mercenary = Queries::MercenariesQuery.sort_available_price_ascending.first
     mercenary_employer.call(mercenary)
     render json: mercenary, include: [:warrior], status: 201
   end
@@ -30,11 +30,11 @@ class MercenariesController < ApplicationController
   private
 
   def mercenary_employer
-    MercenaryEmployer.new(mercenary_params)
+    Services::MercenaryEmployer.new(mercenary_params)
   end
 
   def mercenary
-    @mercenary ||= MercenariesQuery.find_by_id(params[:id])
+    @mercenary ||= Queries::MercenariesQuery.find_by_id(params[:id])
   end
 
   def mercenary_params

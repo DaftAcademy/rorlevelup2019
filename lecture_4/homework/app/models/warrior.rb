@@ -20,10 +20,10 @@ class Warrior < ApplicationRecord
   end
 
   def weapon_null_check
-    weapon || NullWeapon.new
+    weapon || Nulls::NullWeapon.new
   end
 
   def mercenary_null_check
-    mercenary || NullMercenary.new
+    mercenary || Nulls::NullMercenary.new
   end
 end

@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # app/nulls/null_weapon.rb
+module Nulls
 class NullWeapon
   def type
     'bare hands! No weapon equipped.'
@@ -13,4 +14,5 @@ class NullWeapon
   def damage
     nil
   end
+end
 end

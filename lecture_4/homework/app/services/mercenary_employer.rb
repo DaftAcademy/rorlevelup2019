@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+module Services
 class MercenaryEmployer
   def initialize(mercenary_params)
     @params = mercenary_params
@@ -8,7 +9,7 @@ class MercenaryEmployer
   def self.call(mercenary)
     clan = find_clan
     building = find_building
-    warrior_class = WarriorsQuery.get_class
+    warrior_class = Queries::WarriorsQuery.get_class
     warrior_class.create!(name: mercenary.name,
                           clan: clan,
                           building: building,
@@ -22,11 +23,11 @@ class MercenaryEmployer
   attr_reader :params
 
   def find_building
-    BuildingsQuery.find_by_id(params[:building_id])
+    Queries::BuildingsQuery.find_by_id(params[:building_id])
   end
 
   def find_clan
-    ClansQuery.find_by_id(params[:clan_id])
+    Queries::ClansQuery.find_by_id(params[:clan_id])
   end
 
   def create_good_weapon(mercenary)
@@ -36,7 +37,8 @@ class MercenaryEmployer
     when :ranged
       Weapons::Musket.create!(warrior: mercenary.warrior, range: 40, damage: 10)
     else
-      NullWeapon.new
+      Nulls::NullWeapon.new
     end
   end
+end
 end

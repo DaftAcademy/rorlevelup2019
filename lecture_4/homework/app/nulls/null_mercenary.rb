@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 # app/nulls/null_mercenary.rb
+module Nulls
 class NullMercenary
   def name
     'Name hasn\'t been initialized'
@@ -21,4 +22,5 @@ class NullMercenary
   def price
     nil
   end
+end
 end

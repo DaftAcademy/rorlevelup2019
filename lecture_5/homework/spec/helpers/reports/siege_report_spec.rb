@@ -8,23 +8,23 @@ RSpec.describe Reports::SiegeReport, type: :helper do
   subject(:building2) { create(:building) }
   context(' valid data ') do
     it 'set building siege_value to be 250' do
-      w1=create(:warrior,:samurai, clan: clan, building: building)
-      w2=create(:warrior,:samurai, clan: clan, building: building)
+      w1 = create(:warrior, :samurai, clan: clan, building: building)
+      w2 = create(:warrior, :samurai, clan: clan, building: building)
       Reports::SiegeReport.call(building: building)
       expect(building.siege_ability).to eq(250)
     end
 
     it 'set building siege_value to be 500 after one warrior was destroyed' do
-      w1=create(:warrior,:samurai, clan: clan, building: building)
-      w2=create(:warrior,:samurai, clan: clan, building: building)
+      w1 = create(:warrior, :samurai, clan: clan, building: building)
+      w2 = create(:warrior, :samurai, clan: clan, building: building)
       w2.destroy!
       Reports::SiegeReport.call(building: building)
       expect(building.siege_ability).to eq(500)
     end
 
     it 'set building siege_value to be 0 after both warriors was destroyed' do
-      w1=create(:warrior,:samurai, clan: clan, building: building)
-      w2=create(:warrior,:samurai, clan: clan, building: building)
+      w1 = create(:warrior, :samurai, clan: clan, building: building)
+      w2 = create(:warrior, :samurai, clan: clan, building: building)
       w1.destroy!
       w2.destroy!
       Reports::SiegeReport.call(building: building)
@@ -32,15 +32,12 @@ RSpec.describe Reports::SiegeReport, type: :helper do
     end
 
     it 'set building siege_value to be 500 after building change' do
-      w1=create(:warrior,:samurai, clan: clan, building: building)
-      w2=create(:warrior,:samurai, clan: clan, building: building)
+      w1 = create(:warrior, :samurai, clan: clan, building: building)
+      w2 = create(:warrior, :samurai, clan: clan, building: building)
       w2.update!(building: building2)
       Reports::SiegeReport.call(building: building)
       expect(building.siege_ability).to eq(500)
     end
-    
-    
-
   end
 
   context(' invalid data ') do

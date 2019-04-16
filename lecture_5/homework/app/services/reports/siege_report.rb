@@ -2,7 +2,7 @@
 
 module Reports
   class SiegeReport
-    def self.call(building:,warrior_id: nil)
+    def self.call(building:, warrior_id: nil)
       # this should stop the method if getting null
       return unless building
 
@@ -20,4 +20,3 @@ module Reports
     end
   end
 end
-

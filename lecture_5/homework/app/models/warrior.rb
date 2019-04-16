@@ -25,10 +25,8 @@ class Warrior < ApplicationRecord
   end
 
   def update_siege_was
-    if building_id_was!=building_id then
-    Reports::SiegeReport.call(building: Building.find(building_id_was),warrior_id: id) if building_id_was
+    if building_id_was != building_id
+      Reports::SiegeReport.call(building: Building.find(building_id_was), warrior_id: id) if building_id_was
     end
   end
-
-
 end

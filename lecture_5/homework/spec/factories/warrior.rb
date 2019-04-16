@@ -3,14 +3,13 @@
 FactoryBot.define do
   factory :warrior do
     name { Faker::Games::Witcher.character }
-    
+
     trait :samurai do
-        type { 'Warriors::Samurai' }
+      type { 'Warriors::Samurai' }
     end
 
     trait :hussar do
-        type { 'Warriors::Hussar' }
-    end 
-
+      type { 'Warriors::Hussar' }
+    end
   end
 end

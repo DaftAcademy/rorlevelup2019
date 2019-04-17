@@ -26,6 +26,7 @@ class MercenaryRecruiter
       clan: clan,
       building: building
     )
+    WeaponCreator.new(mercenary: mercenary).call
   end
 end
 
@@ -62,5 +63,30 @@ class BuildingFinder
 
   def find_building
     BuildingsQueries.find_building(id: params)
+  end
+end
+
+class WeaponCreator
+  def initialize(mercenary:)
+    @mercenary = mercenary
+  end
+
+  def call
+    create_good_weapon
+  end
+
+  private
+
+  attr_reader :mercenary
+
+  def create_good_weapon
+    case mercenary.preferred_weapon_kind.to_sym
+    when :melee
+      Weapons::Katana.create!(warrior: mercenary.warrior, range: 2, damage: 25)
+    when :ranged
+      Weapons::Musket.create!(warrior: mercenary.warrior, range: 40, damage: 10)
+    else
+      Weapons::MagicWand.create!(warrior: mercenary.warrior, range: 20, damage: 45)
+    end
   end
 end

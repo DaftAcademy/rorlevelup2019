@@ -12,12 +12,9 @@ class MercenariesController < ApplicationController
 
   def employ_best
     mercenary = MercenariesQuery.find_best
-
     render json: { error: NoMercenary.new.employ } and return unless mercenary
 
     MercenaryRecruiter.call(mercenary: mercenary, params: params)
-    create_good_weapon(mercenary: mercenary)
-
     render json: mercenary, include: %i[warrior], status: 201
   end
 
@@ -27,8 +24,6 @@ class MercenariesController < ApplicationController
     end
 
     MercenaryRecruiter.call(mercenary: mercenary, params: params)
-    create_good_weapon(mercenary: mercenary)
-
     render json: mercenary, include: %i[warrior], status: 201
   end
 
@@ -40,16 +35,5 @@ class MercenariesController < ApplicationController
 
   def mercenary
     @mercenary ||= MercenariesQuery.mercenary(mercenary_id: params[:id])
-  end
-
-  def create_good_weapon(mercenary:)
-    case mercenary.preferred_weapon_kind.to_sym
-    when :melee
-      Weapons::Katana.create!(warrior: mercenary.warrior, range: 2, damage: 25)
-    when :ranged
-      Weapons::Musket.create!(warrior: mercenary.warrior, range: 40, damage: 10)
-    else
-      Weapons::MagicWand.create!(warrior: mercenary.warrior, range: 20, damage: 45)
-    end
   end
 end

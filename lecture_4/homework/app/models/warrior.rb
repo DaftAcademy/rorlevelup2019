@@ -22,4 +22,8 @@ class Warrior < ApplicationRecord
   def null_weapon_check
     weapon || NullWeapon.new
   end
+
+  def mercenary_null_check
+    mercenary || NullMercenary.new
+  end
 end

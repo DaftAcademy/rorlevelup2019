@@ -41,6 +41,7 @@ RSpec.describe Reports::SiegeReport, type: :helper do
       w2.destroy!
     end
 
+    #Fail got 250 instead of 500
     it 'set building siege_value to be 500 after building change' do
       w1 = create(:warrior, :samurai, clan: clan, building: building)
       w2 = create(:warrior, :samurai, clan: clan, building: building)
@@ -50,6 +51,7 @@ RSpec.describe Reports::SiegeReport, type: :helper do
       w1.destroy
       w2.destroy
     end
+    # Fail got 500 instead of 0
     it 'set building siege_value to be 0 after building2 change' do
       w1 = create(:warrior, :samurai, clan: clan, building: building)
       w2 = create(:warrior, :samurai, clan: clan, building: building2)

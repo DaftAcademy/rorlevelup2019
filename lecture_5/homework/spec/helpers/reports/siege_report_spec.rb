@@ -31,12 +31,12 @@ RSpec.describe Reports::SiegeReport, type: :helper do
       expect(building.siege_ability).to eq(0)
     end
 
-    # fail should get 250 instead of 500
+    # fail should 500 instead of 250
     it 'set building siege_value to be 250 after building change' do
       w1 = create(:warrior, :samurai, clan: clan, building: building)
       w2 = create(:warrior, :samurai, clan: clan, building: building2)
-      # Reports::SiegeReport.call(building: building)
-      w2.update!(building: building)
+      Reports::SiegeReport.call(building: building)
+      w2.update(building: building)
       expect(building.siege_ability).to eq(500)
     end
 
@@ -44,15 +44,16 @@ RSpec.describe Reports::SiegeReport, type: :helper do
     it 'set building siege_value to be 500 after building change' do
       w1 = create(:warrior, :samurai, clan: clan, building: building)
       w2 = create(:warrior, :samurai, clan: clan, building: building)
-      # Reports::SiegeReport.call(building: building)
+      Reports::SiegeReport.call(building: building)
       w2.update!(building: building2)
+
       expect(building.siege_ability).to eq(250)
     end
     # Fail got 500 instead of 0
     it 'set building siege_value to be 0 after building2 change' do
       w1 = create(:warrior, :samurai, clan: clan, building: building)
       w2 = create(:warrior, :samurai, clan: clan, building: building2)
-      # Reports::SiegeReport.call(building: building)
+      Reports::SiegeReport.call(building: building)
       w2.update!(building: building)
       expect(building2.siege_ability).to eq(500)
     end

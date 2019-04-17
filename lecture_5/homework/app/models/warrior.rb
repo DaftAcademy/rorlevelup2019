@@ -29,7 +29,7 @@ class Warrior < ApplicationRecord
   end
 
   # it seems like rspec didnt invoke those callbacks
-  # when i was esting manually it works
+  # when i was testing manually it works
   # probably messed up in factory and tests :(
   def update_siege_after
     if prev_building_id

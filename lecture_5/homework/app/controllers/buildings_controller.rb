@@ -2,17 +2,17 @@
 
 class BuildingsController < ApplicationController
   def index
-    render json: Building.all.order(:id), include: :warriors
+    render json: Building.all.order(:id), include: [:warriors]
   end
 
   def show
-    render json: building, include: :warriors
+    render json: building, include: [:warriors]
   end
 
   private
 
   def build_params
-    params.permit(:id, :name)
+    params.permit(:name,:granary)
   end
 
   def building

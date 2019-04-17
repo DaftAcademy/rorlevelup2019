@@ -16,11 +16,11 @@ class WeaponCreator
   def create_good_weapon
     case mercenary.preferred_weapon_kind.to_sym
     when :melee
-      Weapons::Katana.create!(warrior: mercenary.warrior, range: 2, damage: 25)
+      WeaponsQueries.create_katana(warrior: mercenary.warrior, relation: Weapons::Katana)
     when :ranged
-      Weapons::Musket.create!(warrior: mercenary.warrior, range: 40, damage: 10)
+      WeaponsQueries.create_musket(warrior: mercenary.warrior, relation: Weapons::Musket)
     else
-      Weapons::MagicWand.create!(warrior: mercenary.warrior, range: 20, damage: 45)
+      WeaponsQueries.create_magic_wand(warrior: mercenary.warrior, relation: Weapons::MagicWand)
     end
   end
 end

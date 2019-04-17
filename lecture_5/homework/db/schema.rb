@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_15_133246) do
+ActiveRecord::Schema.define(version: 2019_04_17_075546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(version: 2019_04_15_133246) do
     t.string "type", default: "Warriors::Samurai", null: false
     t.bigint "building_id"
     t.string "preferred_weapon_kind"
+    t.integer "prev_building_id"
     t.index ["building_id"], name: "index_warriors_on_building_id"
     t.index ["clan_id"], name: "index_warriors_on_clan_id"
     t.index ["name"], name: "index_warriors_on_name", unique: true, where: "(death_date IS NULL)"

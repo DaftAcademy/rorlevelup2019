@@ -2,7 +2,7 @@
 
 class BuildingsController < ApplicationController
   def index
-    render json: Building.all, include: :warriors
+    render json: Building.all.order(:id), include: :warriors
   end
 
   def show

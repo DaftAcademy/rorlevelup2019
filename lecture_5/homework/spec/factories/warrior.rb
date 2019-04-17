@@ -2,7 +2,7 @@
 
 FactoryBot.define do
   factory :warrior do
-    name  {Faker::Games::Witcher.character}
+    name  { Faker::Games::Witcher.character }
     association :building
     association :clan
 

@@ -16,9 +16,10 @@ class Warrior < ApplicationRecord
   scope :dead, -> { where('death_date IS NOT NULL') }
 
   after_create :update_siege
-  before_update :update_siege_was, if: :building_id_changed?
+  before_update :update_prev_building
   # cant put same if: :building_id_changed?  since it will always return false
-  after_update  :update_siege
+  after_update  :update_siege_after
+  # after_commit :update_siege_after
   after_destroy :update_siege
 
   def update_siege
@@ -27,14 +28,27 @@ class Warrior < ApplicationRecord
     Reports::SiegeReport.call(building: building) if building
   end
 
-  def update_siege_was
+  # it seems like rspec didnt invoke those callbacks
+  # when i was esting manually it works
+  # probably messed up in factory and tests :(
+  def update_siege_after
+    if prev_building_id
+      # if warrior changed his building run this on both
+      # since in that moment he is no longer in old list , rather in new building
+      # so this way i can keep both old and new buildings updated
+      # puts "prev building: #{prev_building_id} current: #{building_id}"
+      Reports::SiegeReport.call(building: Building.find(prev_building_id))
+      Reports::SiegeReport.call(building: Building.find(building_id))
+      # set this to nil to prevent callback invoking from random update
+      update_column(:prev_building_id, nil)
+    end
+  end
+
+  def update_prev_building
     # if warrior is changing his buildings
     if building_id_was != building_id
-      # call report on previous building and ignore his warrior
-      # since he remains in that building list in during this process time(not 100% sure though)
-      # this way old building will have updated siege_ability
-      # dont seems to work with rspec test, but when doing it manually via console it works
-      Reports::SiegeReport.call(building: Building.find(building_id_was), warrior_id: id) if building_id_was
+      # save this attribute wihtout triggering callbacks
+      update_column(:prev_building_id, building_id_was)
     end
   end
 end

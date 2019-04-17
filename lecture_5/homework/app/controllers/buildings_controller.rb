@@ -14,14 +14,14 @@ class BuildingsController < ApplicationController
   def show
     render json: building, include: [:warriors], status: 200
   end
-  
+
   private
-  
+
   def building
     @building ||= Building.find(params[:id])
   end
 
   def building_params
-    params.permit(:name, :type)
+    params.permit(:name, :type, :granary)
   end
 end

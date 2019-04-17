@@ -14,4 +14,10 @@ class Warrior < ApplicationRecord
 
   scope :alive, -> { where('death_date IS NULL') }
   scope :dead, -> { where('death_date IS NOT NULL') }
+
+  after_save :update_siege_abilities
+
+  def update_siege_abilities
+    Reports::SiegeReport.new(building: building).call if building_id
+  end
 end

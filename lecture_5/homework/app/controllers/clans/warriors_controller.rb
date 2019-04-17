@@ -3,20 +3,20 @@
 module Clans
   class WarriorsController < ApplicationController
     def show
-      render json: warrior, include: %i[weapon building]
+      render json: warrior, include: %i[weapon building], status: 200
     end
 
     def index
       warriors = clan.warriors
 
       if params.key?(:alive)
-        if params[:alive].to_i == 0
+        if params[:alive].to_i.zero?
           render json: warriors.dead
         else
-          render json: warriors.alive
+          render json: warriors.alive, status: 200
         end
       else
-        render json: warriors
+        render json: warriors, status: 200
       end
     end
 
@@ -29,11 +29,12 @@ module Clans
     def update
       warrior.update!(warrior_params)
 
-      render json: warrior, include: %i[weapon building]
+      render json: warrior, include: %i[weapon building], status: 201
     end
 
     def destroy
       warrior.destroy!
+      head 204
     end
 
     private

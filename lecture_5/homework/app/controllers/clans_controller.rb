@@ -2,11 +2,11 @@
 
 class ClansController < ApplicationController
   def index
-    render json: Clan.all
+    render json: Clan.all, status: 200
   end
 
   def show
-    render json: clan, include: [:warriors]
+    render json: clan, include: [:warriors], status: 200
   end
 
   def create

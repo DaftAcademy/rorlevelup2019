@@ -12,40 +12,28 @@ class MercenariesController < ApplicationController
 
   def employ_best
     mercenary = Mercenary.available.price_asc.exp_desc.first
-    warrior = WarriorRecruiter.new(mercenary: mercenary,
-                                   params: mercenary_params).call
+    WarriorRecruiter.new(mercenary: mercenary,
+                         params: mercenary_params).call
 
-    render json: warrior, include: [:mercenary], status: 201
+    render json: mercenary, include: [:warrior], status: 201
   end
 
   def employ
     return unless mercenary.available_from < Time.now
 
-    warrior = WarriorRecruiter.new(mercenary: mercenary,
-                                   params: mercenary_params).call
+    WarriorRecruiter.new(mercenary: mercenary,
+                         params: mercenary_params).call
 
-    render json: warrior, include: [:mercenary], status: 201
+    render json: mercenary, include: [:warrior], status: 201
   end
 
   private
 
   def mercenary
-    @mercenary ||= Mercenary.find(params[:id])
-  end
-
-  def find_building
-    Building.find(params[:building_id]) if params[:building_id]
-  end
-
-  def find_clan
-    if params[:clan_id]
-      Clan.find(params[:clan_id])
-    else
-      Clan.order(warriors_count: :desc).first
-    end
+    @mercenary ||= Mercenary.find_by(id: params[:id])
   end
 
   def mercenary_params
-    params.permit(:building_id, :clan_id)
+    params.permit(:building_id, :clan_id, :type)
   end
 end

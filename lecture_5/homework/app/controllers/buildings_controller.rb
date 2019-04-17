@@ -2,7 +2,7 @@
 
 class BuildingsController < ApplicationController
   def index
-    render json: Building.all.includes( warriors: [:weapon, :clan]), include: :warriors
+    render json: Building.all.includes(warriors: %i[weapon clan]), include: :warriors
   end
 
   def show

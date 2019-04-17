@@ -1,12 +1,13 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe BuildingsController, type: :request do
-
   describe 'GET /buildings' do
     it 'responds with 200' do
       get '/buildings'
       expect(response).to have_http_status(200)
-      expect(JSON.parse(response.body)["data"]).to be_empty
+      expect(JSON.parse(response.body)['data']).to be_empty
     end
   end
 
@@ -25,5 +26,4 @@ RSpec.describe BuildingsController, type: :request do
       expect(response).to have_http_status(200)
     end
   end
-
 end

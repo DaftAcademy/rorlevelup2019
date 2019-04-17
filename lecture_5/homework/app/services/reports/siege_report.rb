@@ -8,7 +8,7 @@ module Reports
     end
 
     def call
-      @warriors.present? ? @building.siege_ability = @building.granary / food_demand : @building.siege_ability = 0
+      @building.siege_ability = (@warriors.present? ? @building.granary / food_demand : 0)
       @building.save
       @building.siege_ability
     end
@@ -17,8 +17,8 @@ module Reports
 
     def food_demand
       daily_basic = 10
-      samurais = @warriors.where(type: "Warriors::Samurai").count
-      hussars = @warriors.where(type: "Warriors::Hussar").count * 2
+      samurais = @warriors.where(type: 'Warriors::Samurai').count
+      hussars = @warriors.where(type: 'Warriors::Hussar').count * 2
       daily_basic + samurais + hussars
     end
   end

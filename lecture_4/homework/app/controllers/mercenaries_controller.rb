@@ -1,6 +1,5 @@
 # frozen_string_literal: true
 
-# This controller is written badly on purpose. Please refactor this
 class MercenariesController < ApplicationController
   def index
     render json: mercenaries

@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_04_15_133246) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "granary", default: 0, null: false
-    t.integer "siege_ability", default: 0
+    t.integer "siege_ability", default: 0, null: false
     t.integer "default_rice_need", default: 0
   end
 

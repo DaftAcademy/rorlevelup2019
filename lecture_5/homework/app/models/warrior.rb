@@ -33,6 +33,7 @@ class Warrior < ApplicationRecord
       # call report on previous building and ignore his warrior
       # since he remains in that building list in during this process time(not 100% sure though)
       # this way old building will have updated siege_ability
+      # dont seems to work with rspec test, but when doing it manually via console it works
       Reports::SiegeReport.call(building: Building.find(building_id_was), warrior_id: id) if building_id_was
     end
   end

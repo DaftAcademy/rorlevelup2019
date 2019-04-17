@@ -11,28 +11,25 @@ class MercenariesController < ApplicationController
   end
 
   def employ_best
-    best_mercenary = MercenariesQuery.find_best
-    return unless best_mercenary
+    mercenary = MercenariesQuery.find_best
 
-    clan = find_clan
-    building = find_building
-    warrior_class = WarriorsQueries.choose_class(clan: clan)
-    warrior = WarriorsQueries.create_mercenary_warrior(warrior_class: warrior_class, mercenary: best_mercenary, clan: clan, building: building)
-    create_good_weapon(best_mercenary)
+    render json: { error: NoMercenary.new.employ } and return unless mercenary
 
-    render json: warrior, include: [:mercenary], status: 201
+    MercenaryRecruiter.call(mercenary: mercenary, params: params)
+    create_good_weapon(mercenary: mercenary)
+
+    render json: mercenary, include: %i[warrior], status: 201
   end
 
   def employ
-    return unless MercenariesQuery.can_be_hired(mercenary_id: mercenary.id)
+    unless MercenariesQuery.can_be_hired(mercenary_id: mercenary.id)
+      render json: { error: NoMercenary.new.employ } and return
+    end
 
-    clan = find_clan
-    building = find_building
-    warrior_class = WarriorsQueries.choose_class(clan: clan)
-    warrior = WarriorsQueries.create_mercenary_warrior(warrior_class: warrior_class, mercenary: mercenary, clan: clan, building: building)
-    create_good_weapon(mercenary)
+    MercenaryRecruiter.call(mercenary: mercenary, params: params)
+    create_good_weapon(mercenary: mercenary)
 
-    render json: warrior, include: [:mercenary], status: 201
+    render json: mercenary, include: %i[warrior], status: 201
   end
 
   private
@@ -45,16 +42,8 @@ class MercenariesController < ApplicationController
     @mercenary ||= MercenariesQuery.mercenary(mercenary_id: params[:id])
   end
 
-  def find_building
-    BuildingsQueries.find_building(id: params[:building_id])
-  end
-
-  def find_clan
-    ClansQueries.find(clan_id: params[:clan_id])
-  end
-
-  def create_good_weapon(mercenary)
-    case mercenary.preferred_weapon_kind
+  def create_good_weapon(mercenary:)
+    case mercenary.preferred_weapon_kind.to_sym
     when :melee
       Weapons::Katana.create!(warrior: mercenary.warrior, range: 2, damage: 25)
     when :ranged

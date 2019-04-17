@@ -9,7 +9,7 @@ RSpec.describe ClansController, type: :controller do
       it 'get single clan' do
         get :show, params: {id: clan.id}
         res = JSON.parse(response.body)
-        expect(res.dig('name')).to eq(clan.name)
+        expect(res["data"]["attributes"]["name"]).to eq(clan.name)
       end
     end
   end

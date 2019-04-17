@@ -124,6 +124,12 @@ RSpec.describe Reports::SiegeReport, type: :service do
   end
 end
 
+# rspec ./spec/services/reports/siege_report_spec.rb:93 # Reports::SiegeReport#call with 1 hussar, 1 samurai and 11 supplies returns 0
+# rspec ./spec/services/reports/siege_report_spec.rb:106 # Reports::SiegeReport#call with 1 hussar, 1 samurai and 12 supplies returns 0
+# rspec ./spec/services/reports/siege_report_spec.rb:118 # Reports::SiegeReport#call with 1 hussar, 1 samurai and 13 supplies returns 1
+# ||||
+# vvvv
+
 # Reports::SiegeReport#call with 1 hussar, 1 samurai and 11 supplies returns 0
 # Failure/Error: let(:hussar2) { FactoryBot.create(:hussar, name: 'HussarName2') }
 

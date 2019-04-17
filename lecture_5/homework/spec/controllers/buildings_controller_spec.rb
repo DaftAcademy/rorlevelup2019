@@ -30,12 +30,6 @@ RSpec.describe BuildingsController, type: :controller do
   end
 end
 
-# rspec ./spec/services/reports/siege_report_spec.rb:93 # Reports::SiegeReport#call with 1 hussar, 1 samurai and 11 supplies returns 0
-# rspec ./spec/services/reports/siege_report_spec.rb:106 # Reports::SiegeReport#call with 1 hussar, 1 samurai and 12 supplies returns 0
-# rspec ./spec/services/reports/siege_report_spec.rb:118 # Reports::SiegeReport#call with 1 hussar, 1 samurai and 13 supplies returns 1
-# ||||
-# vvvv
-
 # BuildingsController POST /buildings with valid params with correct name
 # responds with 201
 # Failure/Error: before { post '/buildings', params: params }

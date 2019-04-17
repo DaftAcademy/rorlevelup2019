@@ -19,6 +19,9 @@ expensive_mercenary = Mercenary.create!(name: 'Tanta Mugwort', experience: 50, p
 expensive_mercenary_2 = Mercenary.create!(name: 'Moby Dick', experience: 60, preferred_weapon_kind: 'melee', price: 220, available_from: 6.day.ago)
 expensive_mercenary_3 = Mercenary.create!(name: 'Woody Allen', experience: 70, preferred_weapon_kind: 'ranged', price: 240, available_from: 7.day.ago)
 expensive_mercenary_4 = Mercenary.create!(name: 'Tony Hawk', experience: 80, preferred_weapon_kind: 'melee', price: 260, available_from: 8.day.ago)
+expensive_mercenary_5 = Mercenary.create!(name: 'Magic Man', experience: 100, preferred_weapon_kind: 'magical', price: 280, available_from: 8.day.ago)
+expensive_mercenary_6 = Mercenary.create!(name: 'Harry Potter', experience: 120, preferred_weapon_kind: 'magical', price: 300, available_from: 8.day.ago)
+expensive_mercenary_7 = Mercenary.create!(name: 'Bruce Magic Lee', experience: 140, preferred_weapon_kind: 'magical', price: 320, available_from: 8.day.ago)
 
 Weapons::Katana.create!(warrior: samurai_2, range: 3, damage: 30)
 Weapons::Katana.create!(warrior: samurai_3, range: 2, damage: 35)

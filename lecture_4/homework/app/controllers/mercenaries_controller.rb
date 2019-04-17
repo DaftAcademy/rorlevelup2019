@@ -60,7 +60,7 @@ class MercenariesController < ApplicationController
     when :ranged
       Weapons::Musket.create!(warrior: mercenary.warrior, range: 40, damage: 10)
     else
-      # TODO: some default?
+      Weapons::MagicWand.create!(warrior: mercenary.warrior, range: 20, damage: 45)
     end
   end
 end

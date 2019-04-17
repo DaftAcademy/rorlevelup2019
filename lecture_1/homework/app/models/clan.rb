@@ -1,5 +1,7 @@
-class Clan < ApplicationRecord
-	has_many :samurais, dependent: :destroy
+# frozen_string_literal: true
 
-	validates name, presence: true
+class Clan < ApplicationRecord
+  has_many :samurais, dependent: :destroy
+
+  validates name, presence: true
 end

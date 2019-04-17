@@ -1,10 +1,12 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
   get 'samurais/index'
   get 'clans/index'
-  get '/clans/:clan_id/alive', to: 'samurais#alive'
-  get '/clans/:clan_id/dead', to: 'samurais#dead'
-  resources :clans do
-    resources :samurais
+  resources :clans, param: :name do
+    resources :samurais do
+      resources :alive, only: %i[index]
+      resources :dead, only: %i[index]
+    end
   end
 end
-

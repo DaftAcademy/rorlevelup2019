@@ -11,19 +11,15 @@ class MercenariesController < ApplicationController
 
   def employ_best
     mercenary = MercenariesQuery.find_best
-    render json: { error: NoMercenary.new.employ } and return unless mercenary
+    render_no_available_mercenary and return unless mercenary
 
-    MercenaryRecruiter.call(mercenary: mercenary, params: params)
-    render json: mercenary, include: %i[warrior], status: 201
+    recruit_mercenary(mercenary: mercenary)
   end
 
   def employ
-    unless MercenariesQuery.can_be_hired(mercenary_id: mercenary.id)
-      render json: { error: NoMercenary.new.employ } and return
-    end
+    render_no_available_mercenary and return unless can_be_hired?
 
-    MercenaryRecruiter.call(mercenary: mercenary, params: params)
-    render json: mercenary, include: %i[warrior], status: 201
+    recruit_mercenary(mercenary: mercenary)
   end
 
   private
@@ -34,5 +30,18 @@ class MercenariesController < ApplicationController
 
   def mercenary
     @mercenary ||= MercenariesQuery.mercenary(mercenary_id: params[:id])
+  end
+
+  def recruit_mercenary(mercenary:)
+    MercenaryRecruiter.call(mercenary: mercenary, params: params)
+    render json: mercenary, include: %i[warrior], status: 201
+  end
+
+  def render_no_available_mercenary
+    render json: { error: NoMercenary.new.employ }
+  end
+
+  def can_be_hired?
+    MercenariesQuery.can_be_hired(mercenary_id: mercenary.id)
   end
 end

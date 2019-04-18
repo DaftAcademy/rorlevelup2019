@@ -3,13 +3,15 @@
 first_clan = Clan.create!(name: 'The very first clan')
 training_clan = Clan.create!(name: 'Training clan')
 
-stronghold = Buildings::Stronghold.create!(name: 'Main stronghold', granary: 5000)
+stronghold = Buildings::Stronghold.create!(name: 'Main stronghold', granary: 5000,default_rice_need: 10)
+stronghold_empty = Buildings::Stronghold.create!(name: 'Empty stronghold', granary: 5000,default_rice_need: 10)
 northern_wall = Buildings::Walls.create!(name: 'Northern wall', granary: 100)
 southern_wall = Buildings::Walls.create!(name: 'Southern wall', granary: 100)
 
 samurai_1 = Warriors::Samurai.create!(name: '曽山大輝', clan: first_clan, death_date: 1.week.ago)
 samurai_2 = Warriors::Samurai.create!(name: '曽山大輝', clan: first_clan, building: stronghold)
 samurai_3 = Warriors::Samurai.create!(name: '澄田清', clan: training_clan, building: stronghold)
+hussar_4 = Warriors::Hussar.create!(name: 'Banzai Hito', clan: first_clan, building: stronghold)
 hussar_1 = Warriors::Hussar.create!(name: 'Idzi Kwiatkowski', clan: first_clan, building: northern_wall)
 hussar_2 = Warriors::Hussar.create!(name: 'Świętopełk Król', clan: training_clan, building: southern_wall)
 

@@ -8,6 +8,8 @@ ruby '2.6.2'
 gem 'rspec-rails'
 gem 'factory_bot_rails'
 gem 'faker'
+gem 'rubocop-rspec'
+
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'

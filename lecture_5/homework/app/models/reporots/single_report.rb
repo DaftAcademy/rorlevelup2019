@@ -2,7 +2,7 @@
 
 module Reports
   class SiegeReport
-    def self.call(building:)
+    def self.check_siege_ability(building:)
       # this should stop the method if getting null
       return unless building
 
@@ -16,7 +16,7 @@ module Reports
       else
         building.siege_ability = 0
       end
-      building.save!
+      building.save
     end
   end
 end

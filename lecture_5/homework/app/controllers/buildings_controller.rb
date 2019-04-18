@@ -11,5 +11,7 @@ class BuildingsController < ApplicationController
 
   def buildings
     @buildings ||= BuildingsQueries.buildings(relation: Building)
+
+    { message: NoBuildings.new.buildings } if @buildings.empty?
   end
 end

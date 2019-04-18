@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_05_090544) do
+ActiveRecord::Schema.define(version: 2019_04_11_103848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,11 +30,11 @@ ActiveRecord::Schema.define(version: 2019_04_05_090544) do
   end
 
   create_table "mercenaries", force: :cascade do |t|
-    t.string "name"
-    t.integer "experience"
-    t.string "preferred_weapon_kind"
-    t.datetime "available_from"
-    t.integer "price"
+    t.string "name", null: false
+    t.integer "experience", null: false
+    t.string "preferred_weapon_kind", null: false
+    t.datetime "available_from", null: false
+    t.integer "price", null: false
     t.bigint "warrior_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

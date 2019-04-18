@@ -7,4 +7,5 @@ class WarriorSerializer < ActiveModel::Serializer
   belongs_to :clan
   belongs_to :building
   has_one :weapon
+  has_one :mercenary
 end

@@ -5,9 +5,10 @@ class Weapon < ApplicationRecord
 
   belongs_to :warrior
 
-  validates :range, numericality: { greater_than_or_equal_to: 0 }
-  validates :damage, numericality: { greater_than_or_equal_to: 0 }
-  validates :kind, inclusion: { in: KINDS }
+  validates :range, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :damage, presence: true, numericality: { greater_than_or_equal_to: 0 }
+  validates :kind, presence: true, inclusion: { in: KINDS }
+  validates :type, presence: true
 
   validate :can_be_used?
 

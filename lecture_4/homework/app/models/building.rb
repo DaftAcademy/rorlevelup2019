@@ -2,4 +2,6 @@
 
 class Building < ApplicationRecord
   has_many :warriors, dependent: :nullify
+
+  validates :name, presence: true
 end

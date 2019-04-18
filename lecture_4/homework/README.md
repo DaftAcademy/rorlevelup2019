@@ -1,3 +1,4 @@
+
 # Zadanie domowe ze standardów tworzenia oprogramowania (czwarty wykład)
 
 Szogun jest ostatnio strasznie niecierpliwy. W czasie jak dodawaliśmy obsługę standardu JSON:API do projektu dołączył nowy programista. Został poproszony o stworzenie bazy najemników (model `Mercenary`) i kontrolera, który pozwala ich zatrudniać `WarriorsController`. Niestety kod który zostawił pozostawia wiele do życzenia.
@@ -19,3 +20,41 @@ W kontrolerze najemników pracy będzie trochę więcej. Niestaranny kod powoduj
 
 Powodzenia
 
+
+# Komentarz do rozwiązania:
+
+`app/models/warriors/samurai`; `app/models/warriors/hussar`:
+1. Metod `attack` przeniesiona do klasy bazowej, ponieważ sama treść wiadomości nie wnosi nic nowego. Oczywiście, jeżeli byłoby to istotne, `attack` powinien zostać w klasach potomnych - nie wpłynie to na poprawność działania aplikacji.
+2. *NullObject* zastosowany zgodnie z podpowiedzią. Brak przypisanej broni/najemnika nie powinien stanowić już problemu.
+
+
+`app/models/mercenary`:
+1. Kod wygląda jak skopiowany z modelu warrior; dla porządku należy usunąć linijki dotyczące pól niezawartych w `schemie`. Druga możliwość to poprawienie modelu najemnika w bazie danych, by zawierał również pola `join_date` i `death_date` - jednak informacje o ewentualnej dacie śmierci najemnika absolutnie nic nie wnoszą, a data dołączenia nie ma tu racji bytu. Na wszelki wypadek, zamiast całkowitego usunięcie, miejsce w kodzie odnotowałbym do konsultacji z autorem (*TODO*).
+2. Dodałem `scope available`, wyświetlające dostępnych najemników
+
+
+`app/controllers/mercenaries_controller`:
+metody:
+`index` - pokazuje dostępnych najemników
+`show` - pokazuje najemników z połączonymi wojownikami
+`employ` - zatrudnia losowego najemnika
+`employ_best` - zatrudnia najbardziej doświadczonego najemnika
+`employ_cheapest` - zatrudnia najtańszego najemnika
+Częsć funkcjonalności przeniesiona do *ServiceObjecta* `MercenaryEmployer`
+Zapytania przeniesione do *QueryObjecta* `MercenariesQuery`
+
+Niektóre metody zwracały: `render json: warrior, include: [:mercenary]`,
+poprawiłem na: `render json: mercenary, include: [:warrior]`
+
+`app/services/mercenary_employer`:
+*ServiceObject*, służy do zatrudniania najemników (call).
+Zapytania w *QueryObjectach* `BuildingsQuery` oraz `ClansQuery`. 
+W `create_good_weapon` dodałem *NullObjecta* `NullWeapon` jako opcję "else".
+
+`app/nulls/null_mercenary`; `app/nulls/null_weapon`:
+*NullObjecty*
+
+`app/queries/*`:
+*QueryObjecty*, zazwyczaj głównie do wyszukiwanie obiektu po `id`; bardziej rozwinięty jest `MercenariesQuery`, ponieważ musiał obsłużyć dodatkowo sortowanie i selekcję dostępnych najemników.
+
+2019/04/16: dodałem namespace do `/nulls/*`, `/services/*`, `/queries/*`

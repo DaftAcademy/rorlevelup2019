@@ -11,6 +11,8 @@ class Mercenary < ApplicationRecord
 
   validates :warrior, uniqueness: { allow_nil: true }
 
-  scope :alive, -> { where('death_date IS NULL') }
-  scope :dead, -> { where('death_date IS NOT NULL') }
+  # TODO: should mercenaries have these scopes?
+  # scope :alive, -> { where('death_date IS NULL') }
+  # scope :dead, -> { where('death_date IS NOT NULL') }
+  scope :available, -> { where('available_from < ? and warrior_id is null', Time.now) }
 end

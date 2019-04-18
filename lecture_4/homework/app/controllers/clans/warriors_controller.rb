@@ -10,7 +10,7 @@ module Clans
       warriors = clan.warriors
 
       if params.key?(:alive)
-        if params[:alive].to_i == 0
+        if params[:alive].to_i.zero?
           render json: warriors.dead
         else
           render json: warriors.alive

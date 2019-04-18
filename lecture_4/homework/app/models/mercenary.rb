@@ -13,4 +13,5 @@ class Mercenary < ApplicationRecord
 
   scope :alive, -> { where('death_date IS NULL') }
   scope :dead, -> { where('death_date IS NOT NULL') }
+  scope :available, -> { where('available_from < ? AND warrior_id IS NULL', Time.now) }
 end

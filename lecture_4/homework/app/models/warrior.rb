@@ -14,4 +14,8 @@ class Warrior < ApplicationRecord
 
   scope :alive, -> { where('death_date IS NULL') }
   scope :dead, -> { where('death_date IS NOT NULL') }
+
+  def mercenary
+    super || NoMercenary.new.mercenary
+  end
 end

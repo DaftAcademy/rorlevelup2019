@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_05_090544) do
+ActiveRecord::Schema.define(version: 2019_04_17_141807) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 2019_04_05_090544) do
     t.string "type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "granary", default: 0, null: false
+    t.integer "siege_ability", default: 0, null: false
+    t.integer "default_rice_need", default: 0
   end
 
   create_table "clans", force: :cascade do |t|
@@ -41,6 +44,11 @@ ActiveRecord::Schema.define(version: 2019_04_05_090544) do
     t.index ["warrior_id"], name: "index_mercenaries_on_warrior_id", unique: true
   end
 
+  create_table "reporots_single_reports", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "warriors", force: :cascade do |t|
     t.string "name", null: false
     t.integer "armor_quality", default: 0
@@ -53,6 +61,7 @@ ActiveRecord::Schema.define(version: 2019_04_05_090544) do
     t.string "type", default: "Warriors::Samurai", null: false
     t.bigint "building_id"
     t.string "preferred_weapon_kind"
+    t.integer "prev_building_id"
     t.index ["building_id"], name: "index_warriors_on_building_id"
     t.index ["clan_id"], name: "index_warriors_on_clan_id"
     t.index ["name"], name: "index_warriors_on_name", unique: true, where: "(death_date IS NULL)"

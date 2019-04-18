@@ -43,22 +43,47 @@ GEM
       minitest (~> 5.1)
       tzinfo (~> 1.1)
     arel (9.0.0)
+    ast (2.4.0)
+    backports (3.13.0)
+    binding_of_caller (0.8.0)
+      debug_inspector (>= 0.0.1)
     bootsnap (1.4.1)
       msgpack (~> 1.0)
     builder (3.2.3)
     byebug (11.0.0)
+    coderay (1.1.2)
     concurrent-ruby (1.1.5)
     crass (1.0.4)
+    debug_inspector (0.0.3)
+    deep-cover (0.7.2)
+      deep-cover-core (= 0.7.2)
+      highline
+      thor (>= 0.20.3)
+      with_progress
+    deep-cover-core (0.7.2)
+      backports (>= 3.11.0)
+      binding_of_caller
+      parser (~> 2.5.0)
+      pry
+      term-ansicolor
+      terminal-table
+    diff-lcs (1.3)
+    docile (1.3.1)
     erubi (1.8.0)
+    faraday (0.15.4)
+      multipart-post (>= 1.2, < 3)
+    fast_jsonapi (1.5)
+      activesupport (>= 4.2)
     ffi (1.10.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
+    highline (2.0.2)
     i18n (1.6.0)
       concurrent-ruby (~> 1.0)
+    jaro_winkler (1.5.2)
+    json (2.2.0)
     listen (3.1.5)
-      rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
-      ruby_dep (~> 1.2)
     loofah (2.2.3)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -72,9 +97,17 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.11.3)
     msgpack (1.2.9)
+    multipart-post (2.0.0)
     nio4r (2.3.1)
     nokogiri (1.10.1)
       mini_portile2 (~> 2.4.0)
+    parallel (1.17.0)
+    parser (2.5.3.0)
+      ast (~> 2.4.0)
+    pry (0.12.2)
+      coderay (~> 1.1.0)
+      method_source (~> 0.9.0)
+    psych (3.1.0)
     puma (3.12.0)
     rack (2.0.6)
     rack-test (1.1.0)
@@ -103,11 +136,45 @@ GEM
       method_source
       rake (>= 0.8.7)
       thor (>= 0.19.0, < 2.0)
+    rainbow (3.0.0)
     rake (12.3.2)
-    rb-fsevent (0.10.3)
     rb-inotify (0.10.0)
       ffi (~> 1.0)
-    ruby_dep (1.5.0)
+    rspec-core (3.8.0)
+      rspec-support (~> 3.8.0)
+    rspec-expectations (3.8.2)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-mocks (3.8.0)
+      diff-lcs (>= 1.2.0, < 2.0)
+      rspec-support (~> 3.8.0)
+    rspec-rails (3.8.2)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      railties (>= 3.0)
+      rspec-core (~> 3.8.0)
+      rspec-expectations (~> 3.8.0)
+      rspec-mocks (~> 3.8.0)
+      rspec-support (~> 3.8.0)
+    rspec-support (3.8.0)
+    rubocop (0.67.2)
+      jaro_winkler (~> 1.5.1)
+      parallel (~> 1.10)
+      parser (>= 2.5, != 2.5.1.1)
+      psych (>= 3.1.0)
+      rainbow (>= 2.2.2, < 4.0)
+      ruby-progressbar (~> 1.7)
+      unicode-display_width (>= 1.4.0, < 1.6)
+    rubocop-rspec (1.32.0)
+      rubocop (>= 0.60.0)
+    ruby-progressbar (1.10.0)
+    sentry-raven (2.9.0)
+      faraday (>= 0.7.6, < 1.0)
+    simplecov (0.16.1)
+      docile (~> 1.1)
+      json (>= 1.8, < 3)
+      simplecov-html (~> 0.10.0)
+    simplecov-html (0.10.2)
     spring (2.0.2)
       activesupport (>= 4.2)
     spring-watcher-listen (2.0.1)
@@ -120,14 +187,22 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.0)
+    sqlite3 (1.3.13)
+    term-ansicolor (1.7.1)
+      tins (~> 1.0)
+    terminal-table (1.8.0)
+      unicode-display_width (~> 1.1, >= 1.1.1)
     thor (0.20.3)
     thread_safe (0.3.6)
+    tins (1.20.2)
     tzinfo (1.2.5)
       thread_safe (~> 0.1)
+    unicode-display_width (1.5.0)
     websocket-driver (0.7.0)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.3)
+    with_progress (1.0.1)
+      ruby-progressbar (~> 1.4)
 
 PLATFORMS
   ruby
@@ -135,16 +210,22 @@ PLATFORMS
 DEPENDENCIES
   bootsnap (>= 1.1.0)
   byebug
+  deep-cover
+  fast_jsonapi
   listen (>= 3.0.5, < 3.2)
   puma (~> 3.11)
   rails (~> 5.2.2)
+  rspec-rails
+  rubocop-rspec
+  sentry-raven
+  simplecov
   spring
   spring-watcher-listen (~> 2.0.0)
-  sqlite3
+  sqlite3 (~> 1.3.6)
   tzinfo-data
 
 RUBY VERSION
-   ruby 2.4.0p0
+   ruby 2.5.1p57
 
 BUNDLED WITH
    2.0.1

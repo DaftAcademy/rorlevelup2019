@@ -4,7 +4,6 @@ class Weapon < ApplicationRecord
   KINDS = %w[magical melee ranged].freeze
 
   belongs_to :warrior
-
   validates :range, numericality: { greater_than_or_equal_to: 0 }
   validates :damage, numericality: { greater_than_or_equal_to: 0 }
   validates :kind, inclusion: { in: KINDS }

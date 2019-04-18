@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+
 first_clan = Clan.create!(name: 'The very first clan')
 training_clan = Clan.create!(name: 'Training clan')
 
@@ -16,6 +17,8 @@ hussar_2 = Warriors::Hussar.create!(name: 'Świętopełk Król', clan: training_
 unavailable_mercenary = Mercenary.create!(name: 'Cosimo Smallburrow', experience: 10, preferred_weapon_kind: 'melee', price: 100, available_from: 10.day.from_now)
 available_mercenary = Mercenary.create!(name: 'Priamus Brandagamba', experience: 5, preferred_weapon_kind: 'ranged', price: 20, available_from: 5.day.ago)
 expensive_mercenary = Mercenary.create!(name: 'Tanta Mugwort', experience: 50, preferred_weapon_kind: 'ranged', price: 200, available_from: 5.day.ago)
+test_mercenary = Mercenary.create!(name: 'TT', experience: 50, preferred_weapon_kind: 'magical', price: 100, available_from: 5.day.ago)
+
 
 Weapons::Katana.create!(warrior: samurai_2, range: 3, damage: 30)
 Weapons::Katana.create!(warrior: samurai_3, range: 2, damage: 35)

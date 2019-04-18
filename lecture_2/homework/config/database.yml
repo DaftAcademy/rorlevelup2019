@@ -9,3 +9,5 @@ development:
 test: &test
   <<: *default
   database: flode_test
+  host: localhost
+

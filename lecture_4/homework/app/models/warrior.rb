@@ -4,7 +4,7 @@ class Warrior < ApplicationRecord
   belongs_to :clan, counter_cache: true
   belongs_to :building, optional: true
   has_one :weapon, dependent: :destroy
-  has_one :mercenary
+  has_one :mercenary, dependent: :nullify
 
   validates :name, presence: true, uniqueness: { conditions: -> { where(death_date: nil) } }
   validates :armor_quality, numericality: { only_integer: true,
@@ -14,4 +14,12 @@ class Warrior < ApplicationRecord
 
   scope :alive, -> { where('death_date IS NULL') }
   scope :dead, -> { where('death_date IS NOT NULL') }
+
+  def mercenary
+    super || NullMercenary.new
+  end
+
+  def weapon
+    super || NullWeapon.new(preferred_weapon_kind)
+  end
 end

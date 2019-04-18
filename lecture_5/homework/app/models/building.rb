@@ -5,4 +5,6 @@ class Building < ApplicationRecord
 
   validates :granary, presence: true,
                       numericality: { greater_than_or_equal_to: 0, only_integer: true }
+  validates :siege_ability, presence: true,
+                            numericality: { greater_than_or_equal_to: 0, only_integer: true }
 end

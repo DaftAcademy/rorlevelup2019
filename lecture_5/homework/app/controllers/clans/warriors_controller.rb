@@ -10,7 +10,7 @@ module Clans
       warriors = clan.warriors
 
       if params.key?(:alive)
-        if params[:alive].to_i == 0
+        if params[:alive].to_i.zero?
           render json: warriors.dead
         else
           render json: warriors.alive
@@ -47,7 +47,8 @@ module Clans
     end
 
     def warrior_params
-      params.permit(:name, :death_date, :armor_quality, :number_of_battles, :join_date)
+      params.permit(:name, :death_date, :armor_quality,
+                    :number_of_battles, :join_date, :building_id)
     end
   end
 end

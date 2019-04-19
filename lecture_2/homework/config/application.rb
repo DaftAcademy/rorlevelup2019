@@ -33,3 +33,9 @@ module Lecture1
     config.api_only = true
   end
 end
+
+module Lecture2
+  class Application < Rails::Application
+    config.autoload_paths += Dir[Rails.root.join("app", "models", "{*/}")]
+  end
+end

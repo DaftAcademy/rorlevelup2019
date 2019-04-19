@@ -1,6 +1,19 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
+<<<<<<< HEAD
+ruby '2.5.1'
+
+#my added gems
+gem 'faker', '~> 1.9'
+gem 'sqlite3', '~> 1.3.6'
+
+
+gem 'rails', '~> 5.2.2'
+gem 'puma', '~> 3.11'
+gem 'bootsnap', '>= 1.1.0', require: false
+
+=======
 ruby '2.4.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
@@ -27,6 +40,7 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
+>>>>>>> 869f06f13ea441eb64c8e1c15f18c4cd4d70cc24
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -41,5 +55,8 @@ group :development do
 end
 
 
+<<<<<<< HEAD
+=======
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+>>>>>>> 869f06f13ea441eb64c8e1c15f18c4cd4d70cc24
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

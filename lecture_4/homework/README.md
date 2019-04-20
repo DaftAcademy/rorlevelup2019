@@ -19,3 +19,17 @@ W kontrolerze najemników pracy będzie trochę więcej. Niestaranny kod powoduj
 
 Powodzenia
 
+
+# Solution
+
+- przeniesienie metody attack z modeli samurai i hussar do klasy bazowej warrior
+Metoda miała bardzo podobną treść wiadomości - żeby nie naruszać DRY.
+
+- NullObjecty dla broni i najemnika, tak aby nie było błędów.
+
+- QueryObjecty - w większości do wyszukiwania po id, przy mercenaries jeszcze do
+sortowania najemników w zależności od preferencji zakupy - najlepsi/najgorsi
+
+- kontroler mercenaries: akcja index pokazuje dostępnych najemników,
+akcja show pokazuje najemników wraz z wojownikami, akcja employ worst zatrudnia
+najtańszego najemnika, a employ best najbardziej doświadczonego, employ - losowego

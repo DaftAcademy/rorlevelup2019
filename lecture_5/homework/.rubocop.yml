@@ -9,3 +9,5 @@ Style/Documentation:
 
 Metrics/LineLength:
   Max: 100
+
+require: rubocop-rspec

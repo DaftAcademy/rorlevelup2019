@@ -1,0 +1,2 @@
+class Wall < ApplicationRecord
+end

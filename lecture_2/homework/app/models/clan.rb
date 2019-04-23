@@ -1,4 +1,7 @@
+# frozen_string_literal: true
+
 class Clan < ApplicationRecord
-  has_many :samurais, dependent: :destroy
-  validates :name, presence: true
+  belongs_to :defensible, polymorphic: true
+  has_many :warriors, dependent: :destroy
+  validates :name, presence: true, uniqueness: true
 end

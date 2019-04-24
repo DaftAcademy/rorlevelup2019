@@ -20,6 +20,6 @@ class Warrior < ApplicationRecord
   scope :without_horse, -> { where(horse: false) }
 
   def siege_report
-    return Reports::SiegeReport.new(building: building).call if building_id
+    return Reports::SiegeReport.new(building: building).call if building
   end
 end

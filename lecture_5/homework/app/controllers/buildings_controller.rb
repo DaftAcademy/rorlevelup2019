@@ -5,7 +5,9 @@ class BuildingsController < ApplicationController
     render json: buildings, status: 200
   end
 
-  def show; end
+  def show
+    render json: building
+  end
 
   private
 
@@ -15,5 +17,9 @@ class BuildingsController < ApplicationController
 
   def fetch_buildings
     BuildingsQueries.buildings(relation: Building)
+  end
+
+  def building
+    @building = BuildingsQueries.building(relation: Building, id: params[:id])
   end
 end

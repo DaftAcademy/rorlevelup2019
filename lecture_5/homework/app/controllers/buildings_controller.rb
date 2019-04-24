@@ -10,8 +10,10 @@ class BuildingsController < ApplicationController
   private
 
   def buildings
-    @buildings ||= BuildingsQueries.buildings(relation: Building)
+    @buildings ||= fetch_buildings.present? ? fetch_buildings : NoBuildings.new.buildings
+  end
 
-    { message: NoBuildings.new.buildings } if @buildings.empty?
+  def fetch_buildings
+    BuildingsQueries.buildings(relation: Building)
   end
 end

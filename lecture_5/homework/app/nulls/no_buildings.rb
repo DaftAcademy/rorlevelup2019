@@ -2,6 +2,6 @@
 
 class NoBuildings
   def buildings
-    'There are no buildings'
+    { message: 'There are no buildings' }
   end
 end

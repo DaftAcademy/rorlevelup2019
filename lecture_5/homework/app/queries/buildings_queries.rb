@@ -2,6 +2,6 @@
 
 class BuildingsQueries
   def self.buildings(relation:)
-    relation.all
+    relation.includes(:warriors).all
   end
 end

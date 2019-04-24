@@ -5,8 +5,4 @@ class Building < ApplicationRecord
 
   validates :granary, presence: true,
                       numericality: { greater_than_or_equal_to: 0, only_integer: true }
-
-  def buildings
-    super || NoBuildings.new.buildings
-  end
 end

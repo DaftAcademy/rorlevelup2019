@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 class Warrior < ApplicationRecord
-  after_save :siege_report
   belongs_to :clan, counter_cache: true
   belongs_to :building, optional: true
   has_one :weapon, dependent: :destroy
@@ -18,8 +17,4 @@ class Warrior < ApplicationRecord
   scope :dead, -> { where('death_date IS NOT NULL') }
   scope :with_horse, -> { where(horse: true) }
   scope :without_horse, -> { where(horse: false) }
-
-  def siege_report
-    return Reports::SiegeReport.new(building: building).call if building_id
-  end
 end

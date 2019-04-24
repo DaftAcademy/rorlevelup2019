@@ -9,7 +9,7 @@ module Reports
     end
 
     def call
-      @building.siege_ability = @building.warriors.any? ? SiegeCalculatorService.new(@building).call : 0
+      @building.siege_ability = @building.warriors.alive.any? ? SiegeCalculatorService.new(@building).call : 0
     end
   end
 end

@@ -12,4 +12,8 @@ class BuildingSerializer < ActiveModel::Serializer
   def warriors_alive
     object.warriors.alive.count
   end
+
+   def siege_report
+     return Reports::SiegeReport.new(building: building).call if building
+   end
 end

@@ -65,9 +65,10 @@ RSpec.describe 'Buildings API', type: :request do
         response_json = JSON.parse(response.body)
         expect(response_json['data']).to include(
           'id' => building_id.to_s,
-          'attributes' => hash_including(
-            'name' => 'Building_1'
-          )
+          'attributes' => {
+            'name' => 'Building_1',
+            'siege-ability' => 0.0
+          }
         )
       end
     end

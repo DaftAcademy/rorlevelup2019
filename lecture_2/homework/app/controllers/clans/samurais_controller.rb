@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Clans
   class SamuraisController < ApplicationController
     def show

@@ -13,11 +13,18 @@ Część z nich powinna być bardzo prosta, bo została już zaimplementowana po
 Dwie następne funkcjonalności wymagają już nieco więcej samodzielnej pracy:
 
 - Z czasem, gdy klany zaczęły rosnąć, Szogunowi zaczęli mylić się wojownicy. Poprosił Cię, aby uniemożliwość istnienie dwóch wojowników o tym samym imieniu. Oczywiście reguła ta dotyczy tylko żywych, więc poległych można zastąpić nowym wojownikiem o tym samy imiemiu.
+<<<<<<< HEAD
+=======
 
+>>>>>>> 869f06f13ea441eb64c8e1c15f18c4cd4d70cc24
   - Jeśli chcesz podjąć się zadania nieco trudniejszego, ogranicz unikalność imienia tylko do wojowników wewnątrz jednego klanu.
 
 - Na sam koniec zostało chyba najważniejsze zadanie. Zupełnie zapomnieliśmy, że wojownicy do walki potrzebują mieć jakąś broń :flushed: Stwórz odpowiednie migracje, modele i metody, które pozwolą na realizację następujących wymagań:
   - Każda broń jest jednego z trzech rodzajów: magiczna (`magical`), biała (`melee`) i miotająca (`ranged`). 
+<<<<<<< HEAD
+  - Każdy wojownik umie walczyć tylko jednym rodzajem broni i musi mieć swój prywatny egzemplarz. 
+  - Każda sztuka broni ma swój własny zasięg i obrażenia, które są uwzględnione w metodzie `calculate_damage`. Na przykład, miecz zada 100% możliwych obrażeń w odległości do 2 metrów, ale powyżej już 0%. Łuk z kolei będzie mniej skuteczny na bliższe odległości. Wzory obliczające obrażenia możesz napisać według własnego uznania.
+=======
 
   - Każdy wojownik umie walczyć tylko jednym rodzajem broni i musi mieć swój prywatny egzemplarz. 
 
@@ -32,6 +39,7 @@ Dwie następne funkcjonalności wymagają już nieco więcej samodzielnej pracy:
     ```
 
     Łuk z kolei będzie mniej skuteczny na bliższe odległości. Wzory obliczające obrażenia możesz napisać według własnego uznania.
+>>>>>>> 869f06f13ea441eb64c8e1c15f18c4cd4d70cc24
 
 ![archery](vendor/images/archery.gif)
 

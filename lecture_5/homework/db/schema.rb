@@ -21,7 +21,7 @@ ActiveRecord::Schema.define(version: 2019_04_25_195137) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "granary", default: 0, null: false
-    t.float "siege_ability", default: 0.0, null: false
+    t.integer "siege_ability"
   end
 
   create_table "clans", force: :cascade do |t|

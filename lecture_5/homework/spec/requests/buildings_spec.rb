@@ -67,7 +67,7 @@ RSpec.describe 'Buildings API', type: :request do
           'id' => building_id.to_s,
           'attributes' => {
             'name' => 'Building_1',
-            'siege-ability' => 0.0
+            'siege-ability' => 0
           }
         )
       end

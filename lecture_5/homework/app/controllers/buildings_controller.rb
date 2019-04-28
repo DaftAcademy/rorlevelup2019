@@ -20,6 +20,6 @@ class BuildingsController < ApplicationController
   end
 
   def building
-    @building = BuildingsQueries.building(relation: Building, id: params[:id])
+    @building ||= BuildingsQueries.building(relation: Building, id: params[:id])
   end
 end

@@ -17,6 +17,7 @@ module Reports
     end
 
     def no_siege_ability
+      save_siege_report_result(0)
       @building.siege_ability = 0
     end
 
@@ -59,6 +60,11 @@ module Reports
     end
 
     def save_siege_report_result(result)
+      BuildingsQueries.update_siege_ability(
+        relation: Building,
+        building: @building,
+        result: result
+      )
       @building.siege_ability = result
     end
   end

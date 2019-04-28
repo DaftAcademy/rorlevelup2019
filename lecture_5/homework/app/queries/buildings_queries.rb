@@ -12,4 +12,8 @@ class BuildingsQueries
   def self.count_warriors_of_specified_type(relation:, building:, type:)
     relation.find(building.id).warriors.where(type: type).count
   end
+
+  def self.update_siege_ability(relation:, building:, result:)
+    relation.find(building.id).update(siege_ability: result)
+  end
 end

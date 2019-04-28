@@ -21,7 +21,37 @@ module Reports
     end
 
     def create_siege_report
-      @building.siege_ability
+      daily_food_demand = compute_daily_food_demand
+      result = compute_siege_ability(daily_food_demand)
+      save_siege_report_result(result)
+    end
+
+    def compute_daily_food_demand
+      stronghold_staff + hussars + samurais
+    end
+
+    def stronghold_staff
+      10
+    end
+
+    def hussars
+      BuildingsQueries.hussars(relation: Building, building: @building) * 2
+    end
+
+    def samurais
+      BuildingsQueries.samurais(relation: Building, building: @building)
+    end
+
+    def compute_siege_ability(daily_food_demand)
+      granary / daily_food_demand
+    end
+
+    def granary
+      @building.granary
+    end
+
+    def save_siege_report_result(result)
+      @building.siege_ability = result
     end
   end
 end

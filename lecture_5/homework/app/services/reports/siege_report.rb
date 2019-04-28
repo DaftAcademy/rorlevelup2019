@@ -39,7 +39,7 @@ module Reports
         relation: Building,
         building: @building,
         type: 'Warriors::Hussar'
-        ) * 2
+      ) * 2
     end
 
     def samurais

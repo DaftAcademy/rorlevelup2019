@@ -40,6 +40,23 @@ RSpec.describe Reports::SiegeReport, type: :service do
           expect(siege_report).to eq(4)
         end
       end
+
+      context 'when the number of warriors exceeds daily granary abilities' do
+        let(:army) { create_list(:warrior, 100) }
+
+        it 'returns report with siege ability equals to 0' do
+          expect(siege_report).to eq(0)
+        end
+      end
+    end
+
+    context 'with building which has an army but the granary is empty' do
+      let(:building) { create(:building, warriors: army, granary: 0) }
+      let(:army) { create_list(:warrior, 10) }
+
+      it 'returns report with siege ability equals to 0' do
+        expect(siege_report).to eq(0)
+      end
     end
   end
 end

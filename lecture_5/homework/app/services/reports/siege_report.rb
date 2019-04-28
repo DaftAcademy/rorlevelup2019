@@ -7,7 +7,7 @@ module Reports
     end
 
     def call
-      no_army? ? no_siege_ability : create_siege_report
+      no_army? ? no_siege_ability : compute_siege_ability
     end
 
     private
@@ -20,9 +20,9 @@ module Reports
       @building.siege_ability = 0
     end
 
-    def create_siege_report
+    def compute_siege_ability
       daily_food_demand = compute_daily_food_demand
-      result = compute_siege_ability(daily_food_demand)
+      result = siege_ability(daily_food_demand)
       save_siege_report_result(result)
     end
 
@@ -35,14 +35,22 @@ module Reports
     end
 
     def hussars
-      BuildingsQueries.hussars(relation: Building, building: @building) * 2
+      BuildingsQueries.count_warriors_of_specified_type(
+        relation: Building,
+        building: @building,
+        type: 'Warriors::Hussar'
+        ) * 2
     end
 
     def samurais
-      BuildingsQueries.samurais(relation: Building, building: @building)
+      BuildingsQueries.count_warriors_of_specified_type(
+        relation: Building,
+        building: @building,
+        type: 'Warriors::Samurai'
+      )
     end
 
-    def compute_siege_ability(daily_food_demand)
+    def siege_ability(daily_food_demand)
       granary / daily_food_demand
     end
 

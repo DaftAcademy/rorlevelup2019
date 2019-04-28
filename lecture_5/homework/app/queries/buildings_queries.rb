@@ -9,11 +9,7 @@ class BuildingsQueries
     relation.find(id)
   end
 
-  def self.hussars(relation:, building:)
-    relation.find(building.id).warriors.where(type: 'Warriors::Hussar').count
-  end
-
-  def self.samurais(relation:, building:)
-    relation.find(building.id).warriors.where(type: 'Warriors::Samurai').count
+  def self.count_warriors_of_specified_type(relation:, building:, type:)
+    relation.find(building.id).warriors.where(type: type).count
   end
 end

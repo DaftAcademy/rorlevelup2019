@@ -1,17 +1,36 @@
+# frozen_string_literal: true
+
 class ClansController < ApplicationController
   def index
-    render json: Clan.all.to_json
+    render json: Clan.all, status: 200
   end
 
   def create
     clan = Clan.create!(clan_params)
+    render json: clan, status: 201
+  end
 
-    render json: clan.to_json, status: 201
+  def show
+    render json: clan, status: 200
+  end
+
+  def update
+    clan.update(clan_params)
+    render json: clan, status: 201
+  end
+
+  def destroy
+    clan.destroy!
+    head 204
   end
 
   private
 
+  def clan
+    Clan.find(params[:id])
+  end
+
   def clan_params
-    params.permit(:name)
+    params.permit(:name, :id)
   end
 end

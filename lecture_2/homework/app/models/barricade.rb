@@ -1,0 +1,1 @@
+class Barricade < Construction; end

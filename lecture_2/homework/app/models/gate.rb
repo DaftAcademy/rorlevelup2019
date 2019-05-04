@@ -1,0 +1,1 @@
+class Gate < Construction; end

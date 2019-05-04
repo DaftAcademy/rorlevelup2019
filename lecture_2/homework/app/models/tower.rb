@@ -1,0 +1,1 @@
+class Tower < Construction; end

@@ -1,0 +1,1 @@
+class Stronghold < Construction; end

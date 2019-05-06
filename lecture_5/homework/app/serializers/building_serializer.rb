@@ -13,7 +13,7 @@ class BuildingSerializer < ActiveModel::Serializer
     object.warriors.select { |w| !w.death_date }.length
   end
 
-   def siege_report
-     return Reports::SiegeReport.new(building: building).call if building
+   def siege_ability
+     return Reports::SiegeReport.new(building: object).call if object
    end
 end

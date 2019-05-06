@@ -9,6 +9,6 @@ class DeadOrAliveService
   end
 
   def call
-    @params_key.to_i == 0 ? @warriors.dead : @warriors.alive
+    @params_key.to_i == 0 ? warriors.alive : warriors.dead
   end
 end

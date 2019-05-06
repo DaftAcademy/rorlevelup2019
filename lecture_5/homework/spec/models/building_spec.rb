@@ -28,16 +28,6 @@ RSpec.describe Building, type: :model do
       expect(@building.warriors.without_horse.count).to eq(2)
     end
 
-    it 'is not valid without granary' do
-      @building.granary = nil
-      expect(@building).not_to be_valid
-    end
-
-    it 'is not valid without siege_ability' do
-      @building.siege_ability = nil
-      expect(@building).not_to be_valid
-    end
-
     it 'building is valid in default curcumstances' do
       expect(@building).to be_valid
     end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_04_05_090544) do
+ActiveRecord::Schema.define(version: 2019_05_06_173053) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 2019_04_05_090544) do
     t.string "type", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "granary", default: 0, null: false
+    t.integer "horse_units", default: 0, null: false
+    t.integer "infantry_units", default: 0, null: false
   end
 
   create_table "clans", force: :cascade do |t|
@@ -53,6 +56,7 @@ ActiveRecord::Schema.define(version: 2019_04_05_090544) do
     t.string "type", default: "Warriors::Samurai", null: false
     t.bigint "building_id"
     t.string "preferred_weapon_kind"
+    t.boolean "horse", default: false
     t.index ["building_id"], name: "index_warriors_on_building_id"
     t.index ["clan_id"], name: "index_warriors_on_clan_id"
     t.index ["name"], name: "index_warriors_on_name", unique: true, where: "(death_date IS NULL)"

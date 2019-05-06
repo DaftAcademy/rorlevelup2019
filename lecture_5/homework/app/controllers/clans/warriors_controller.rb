@@ -8,16 +8,10 @@ module Clans
 
     def index
       warriors = clan.warriors
+      params_key = params[:alive]
+      render_alive = params_key ? DeadOrAliveService.new(warriors, params_key).call : warriors
 
-      if params.key?(:alive)
-        if params[:alive].to_i == 0
-          render json: warriors.dead
-        else
-          render json: warriors.alive
-        end
-      else
-        render json: warriors
-      end
+      render json: render_alive
     end
 
     def create
@@ -47,7 +41,7 @@ module Clans
     end
 
     def warrior_params
-      params.permit(:name, :death_date, :armor_quality, :number_of_battles, :join_date)
+      params.permit(:name, :death_date, :armor_quality, :number_of_battles, :join_date, :horse)
     end
   end
 end

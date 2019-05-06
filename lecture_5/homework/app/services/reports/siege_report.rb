@@ -2,14 +2,15 @@
 
 module Reports
   class SiegeReport
-    attr_reader :building
+    attr_reader :building, :warriors
 
     def initialize(building:)
       @building = building
+      @warriors = building.warriors.alive
     end
 
     def call
-      @building.warriors.alive.any? ? SiegeCalculatorService.new(@building).call : 0
+      warriors.any? ? SiegeCalculatorService.new(building, warriors).call : 0
     end
   end
 end

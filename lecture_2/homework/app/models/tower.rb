@@ -1,0 +1,2 @@
+class Tower < Building
+end

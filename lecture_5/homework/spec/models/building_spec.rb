@@ -20,10 +20,6 @@ RSpec.describe Building, type: :model do
       @warrior4 = create(:warrior, name: 'Some New Guy', clan_id: @clan.id, horse: true)
     end
 
-    it 'is building object' do
-      expect(@building).to be_an(Building)
-    end
-
     it 'works with with_horse scope' do
       expect(@building.warriors.with_horse.count).to eq(1)
     end

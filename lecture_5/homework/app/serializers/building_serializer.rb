@@ -6,11 +6,11 @@ class BuildingSerializer < ActiveModel::Serializer
   has_many :warriors
 
   def type
-    object.type.split('::')[1]
+    object.type.demodulize
   end
 
   def warriors_alive
-    object.warriors.alive.count
+    object.warriors.select { |w| !w.death_date }.length
   end
 
    def siege_report

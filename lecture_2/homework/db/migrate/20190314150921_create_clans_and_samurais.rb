@@ -1,7 +1,7 @@
 class CreateClansAndSamurais < ActiveRecord::Migration[5.2]
   def change
     create_table :clans do |t|
-      t.string :name, null: false
+      t.string :name, null: false, uniquness: true
       t.timestamps
     end
 

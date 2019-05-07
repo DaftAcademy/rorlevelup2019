@@ -1,3 +1,10 @@
+# frozen_string_literal: true
+
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+  resources :clans, only: %i[index create] do
+    resources :warriors, only: %i[index create update destroy] do
+      resources :weapons, only: %i[index]
+    end
+  end
+  resources :barricades, only: %i[index create]
 end

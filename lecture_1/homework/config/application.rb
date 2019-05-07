@@ -1,17 +1,19 @@
+# frozen_string_literal: true
+
 require_relative 'boot'
 
-require "rails"
+require 'rails'
 # Pick the frameworks you want:
-require "active_model/railtie"
-require "active_job/railtie"
-require "active_record/railtie"
-require "active_storage/engine"
-require "action_controller/railtie"
-require "action_mailer/railtie"
-require "action_view/railtie"
-require "action_cable/engine"
+require 'active_model/railtie'
+require 'active_job/railtie'
+require 'active_record/railtie'
+require 'active_storage/engine'
+require 'action_controller/railtie'
+require 'action_mailer/railtie'
+require 'action_view/railtie'
+require 'action_cable/engine'
 # require "sprockets/railtie"
-require "rails/test_unit/railtie"
+require 'rails/test_unit/railtie'
 
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
@@ -32,4 +34,8 @@ module Lecture1
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
   end
+end
+
+Raven.configure do |config|
+  config.dsn = 'https://ef34a25d19614ea8a135644b1fbe3df6:4393a31f314646f8a9b108a2479fcd3b@sentry.io/1430496'
 end

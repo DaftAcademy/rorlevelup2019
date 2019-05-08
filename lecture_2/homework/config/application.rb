@@ -33,3 +33,4 @@ module Lecture1
     config.api_only = true
   end
 end
+ActiveModelSerializers.config.adapter = :json_api

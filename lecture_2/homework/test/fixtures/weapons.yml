@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  species: MyString
+  damage: 1
+  range: 1
+  warrior: one
+
+two:
+  species: MyString
+  damage: 1
+  range: 1
+  warrior: two
